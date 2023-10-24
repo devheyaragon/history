@@ -1,0 +1,283 @@
+aragon-sat (1.4.4) stable; urgency=low
+
+  * Restart LED service after changing siteID
+
+ -- root <jens@proknx.com>  Tue, 10 Oct 2023 12:00:00 +0100
+
+aragon-sat (1.4.3) stable; urgency=low
+
+  * Restart hotword-led service on config update
+  * Added API for Restart hotword-led service 
+
+ -- root <jens@proknx.com>  Mon, 25 Sep 2023 16:00:00 +0100
+
+aragon-sat (1.4.2) stable; urgency=low
+
+  * Build number++ to indicate DirectHelp can be used
+
+ -- root <jens@proknx.com>  Tue, 11 Sep 2023 17:00:00 +0100
+
+aragon-sat (1.4.1) stable; urgency=low
+
+  * Added API '/config/wakewords/download'
+
+ -- root <jens@proknx.com>  Tue, 22 Aug 2023 14:00:00 +0100
+
+aragon-sat (1.4.0) stable; urgency=low
+
+  * Added support for integrrated DSpotter wakeword
+
+ -- root <jens@proknx.com>  Mon, 21 Aug 2023 15:00:00 +0100
+
+aragon-sat (1.3.8) stable; urgency=low
+
+  * Offline: Restart Chrony every 11 min
+
+ -- root <jens@proknx.com>  Fri, 05 May 2023 15:00:00 +0100
+
+aragon-sat (1.3.7) stable; urgency=low
+
+  * Added Rhasspy Monitor restarts it after 3 min fail
+
+ -- root <jens@proknx.com>  Mon, 17 Apr 2023 10:00:00 +0100
+
+aragon-sat (1.3.6) stable; urgency=low
+
+  * Added UI: Restart apps, Reboot
+  * added more files to LogFile.zip
+
+ -- root <jens@proknx.com>  Fri, 07 Apr 2023 13:00:00 +0100
+
+aragon-sat (1.3.5) stable; urgency=low
+
+  * Added APIs: /util/installchrony, /util/logs and support commands
+  * Added UI: Logfiles, Hello, Forget Master, Install Chrony
+
+ -- root <jens@proknx.com>  Wed, 05 Apr 2023 14:00:00 +0100
+
+aragon-sat (1.3.4) stable; urgency=low
+
+  * Added chrony for offline time sync
+
+ -- root <jens@proknx.com>  Mon, 03 Apr 2023 16:00:00 +0100
+
+aragon-sat (1.3.3) stable; urgency=low
+
+  * Correction of '/hotword/system' used by Factory tool
+  * Monitor: Added check of online state, corerct LED state if needed
+
+ -- root <jens@proknx.com>  Tue, 21 Mar 2023 17:00:00 +0100
+
+aragon-sat (1.3.2) stable; urgency=low
+
+  * Reenable aragon-button service, but don't use LED
+  * Restart rhasspy service on short press (to stop long audio)
+
+ -- root <jens@proknx.com>  Thu, 09 Mar 2023 13:00:00 +0100
+
+aragon-sat (1.3.1) stable; urgency=low
+
+  * Set Mic volume to 100% on start-up
+  * Removed wakeword activation lock
+  * added poweroff
+
+ -- root <jens@proknx.com>  Thu, 09 Mar 2023 13:00:00 +0100
+
+aragon-sat (1.3.0) stable; urgency=low
+
+  * Lock UI at port 12101
+  * added endpoit to unlock
+  * added '/util/forgetMaster' for production
+
+ -- root <jens@proknx.com>  Mon, 13 Feb 2023 15:00:00 +0100
+
+aragon-sat (1.2.10) stable; urgency=low
+
+  * Disable aragon-button service, conflicts with online/offline wakeword LED
+
+ -- root <jens@proknx.com>  Tue, 30 Jan 2023 15:00:00 +0100
+
+aragon-sat (1.2.9) stable; urgency=low
+
+  * Bug fix volume
+  * Set volume to 80% during microphone speaker test
+
+ -- root <jens@proknx.com>  Fri, 30 Dec 2022 10:00:00 +0100
+
+aragon-sat (1.2.8) stable; urgency=low
+
+  * DELETE /wlan endpoint call new forget-all-wifi.sh
+
+ -- root <jens@proknx.com>  Wed, 22 Dec 2022 09:00:00 +0100
+
+aragon-sat (1.2.6) stable; urgency=low
+
+  * Actively turn off green LED during night from condition.sh
+  * Show Disabled/Enabled for wakeword system in settings
+  * Added wakeword (-w parameter)
+
+ -- root <jens@proknx.com>  Tue, 06 Dec 2022 10:00:00 +0100
+
+aragon-sat (1.2.5) stable; urgency=low
+
+  * Start aragon-led and aragon-button services after network available. If started to early, the green LED is not flashing and never turned off.
+
+ -- root <jens@proknx.com>  Mon, 05 Dec 2022 12:00:00 +0100
+
+aragon-sat (1.2.4) stable; urgency=low
+
+  * Removed import of google font from css
+
+ -- root <jens@proknx.com>  Sat, 03 Dec 2022 12:00:00 +0100
+
+aragon-sat (1.2.3) stable; urgency=low
+
+  * Install button-service on WL. Uninstall on PoE
+
+ -- root <jens@proknx.com>  Mon, 21 Nov 2022 16:00:00 +0100
+
+aragon-sat (1.2.2) stable; urgency=low
+
+  * Added API's: GET '/wlan/status', '/eth/status', '/wlan' (retruns none or string with wifi)
+
+ -- root <jens@proknx.com>  Fri, 18 Nov 2022 16:00:00 +0100
+
+aragon-sat (1.2.1) stable; urgency=low
+
+  * apt-get update -o Acquire::Pdiffs=false
+
+ -- root <jens@proknx.com>  Tue, 15 Nov 2022 17:00:00 +0100
+
+aragon-sat (1.2.0) stable; urgency=low
+
+  * New version 1.2.0 (no changes)
+
+ -- root <jens@proknx.com>  Thu, 04 Nov 2022 17:00:00 +0100
+
+aragon-sat (1.1.8) stable; urgency=low
+
+  * Added possibility to disable automatic wakeword activation, create lockfile "/opt/aragon-sat/wwlock";
+  * API: HTTP GET '/util/wakeword/acivation/lock', '/util/wakeword/acivation/unlock' and '/util/wakeword/acivation/isLocked'
+
+ -- root <jens@proknx.com>  Thu, 03 Nov 2022 15:00:00 +0100
+
+aragon-sat (1.1.7) stable; urgency=low
+
+  * Added handling of wakeword systems: dummy(=disabled) and commmand(=OK Aragon)
+  *   show system in Satellite UI
+  *   in GET PORT /config
+  *   added new API GET POST '/hotword/system'
+  * Sanity check volume values before applying (fix? bug 0%)
+  * Updated and changed API '/util/testmicrophone' and '/util/wavfile'
+
+ -- root <jens@proknx.com>  Thu, 03 Nov 2022 11:00:00 +0100
+
+aragon-sat (1.1.6) stable; urgency=low
+
+  * g_mqttFailCounterLimit = 5; // 5 minutes, as rhasspy will cause CPU 100%
+
+ -- root <jens@proknx.com>  Mon, 31 Oct 2022 11:00:00 +0100
+
+aragon-sat (1.1.5) stable; urgency=low
+
+  * Added API support to set wake word language (all, en, de, fr)
+
+ -- root <jens@proknx.com>  Tue, 20 Oct 2022 11:00:00 +0100
+
+aragon-sat (1.1.4) stable; urgency=low
+
+  * Count failed MQTT connection attempts to master, only remove lock file after 60 minutes
+  * if :12101/api/restart fails, wait 5 sec and run sudo systemctl restart rhasspy.service
+
+ -- root <jens@proknx.com>  Tue, 10 Oct 2022 17:00:00 +0100
+
+aragon-sat (1.1.3) stable; urgency=low
+
+  * Added API POST siteid
+
+ -- root <jens@proknx.com>  Tue, 20 Sep 2022 10:00:00 +0100
+
+aragon-sat (1.1.2) stable; urgency=low
+
+  * removed isLock link in UI
+  * reload UI on lock/unlock
+  * show 'Core' version instead of 'Rhasspy'
+
+ -- root <jens@proknx.com>  Wed, 02 Sep 2022 16:00:00 +0100
+
+aragon-sat (1.1.1) stable; urgency=low
+
+  * Remove masterlock on long button press (=reboot)
+  * Monitor, added one more error case: existing IP but no MQTT host => disable mqtt host
+
+ -- root <jens@proknx.com>  Wed, 01 Sep 2022 17:00:00 +0100
+
+aragon-sat (1.1.0) stable; urgency=low
+
+  * Distibuted via repo https://s3.eu-central-1.amazonaws.com/aragon-bullseye-armhf-beta
+
+ -- root <jens@proknx.com>  Wed, 23 Aug 2022 16:00:00 +0100
+
+aragon-sat (1.0.10) stable; urgency=low
+
+  * Map volume in % to audio levels (a.k.a fake/real volume)
+
+ -- root <jens@proknx.com>  Wed, 10 aug 2022 12:00:00 +0100
+
+aragon-sat (1.0.9) stable; urgency=low
+
+  * Prevent multple restart of rhasspy.
+  * More logging in Monitor.
+  * Check valid IPv4 mqtt host address.
+  * Remove masterlockfile if invalid mqtt host address
+
+ -- root <jens@proknx.com>  Wed, 13 jul 2022 15:00:00 +0100
+
+aragon-sat (1.0.8) stable; urgency=low
+
+  * Added API /watchupgrade to follow upgrade in gotty win
+
+ -- root <jens@proknx.com>  Wed, 25 jun 2022 15:00:00 +0100
+
+aragon-sat (1.0.7) stable; urgency=low
+
+  * Improved 1.0.5 changes - Monitor, lock and UI
+
+ -- root <jens@proknx.com>  Wed, 26 may 2022 14:00:00 +0100
+
+aragon-sat (1.0.5) stable; urgency=low
+
+  * Improved /util/lock, Added aragon-rhasspy-sat version to log & UI,
+  * Added Rhasspy Monitor: every minute check if master mqtt is connectable, if not disable mqtt in Rhasspy
+
+ -- root <jens@proknx.com>  Wed, 25 may 2022 17:00:00 +0100
+
+aragon-sat (1.0.4) stable; urgency=low
+
+  * Worked on sensitivity and volume setting
+
+ -- root <jens@proknx.com>  Wed, 11 may 2022 09:00:00 +0100
+
+aragon-sat (1.0.3) stable; urgency=low
+
+  * Added GET /util/lock and /util/unlock. If locked, the device will not change master IP and ill not reply to "FIND_ARAGON_SATELLITE"
+
+ -- root <jens@proknx.com>  Tue, 05 may 2022 11:30:00 +0100
+
+aragon-sat (1.0.2) stable; urgency=low
+
+  * Added configuration API
+
+ -- root <jens@proknx.com>  Tue, 15 apr 2022 17:30:00 +0100
+
+aragon-sat (1.0.1) stable; urgency=low
+
+  * First version
+
+ -- root <jens@proknx.com>  Tue, 12 apr 2022 15:00:00 +0100
+
+aragon-sat (1.0.0) stable; urgency=low
+
+  * Initial Release.
+
+ -- root <jens@proknx.com>  Tue, 22 mar 2022 10:00:00 +0100

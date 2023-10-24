@@ -1,0 +1,645 @@
+* 2023-10-13
+ - Added the first version of the VOICE DIALOG CONFIGURATOR
+
+* 2023-10-10
+ - Visual edit and update of explaning text of the Generic Gateway
+ 
+ * 2023-10-05
+ - Sonos speakers can have a trailing number in their name, but they will work as if the trailing number is not there. 
+ - This means that any command given to a Sonos speaker with a trailing number in its name will target the speaker without the trailing number.
+ - For example, if a Sonos speaker is named "Living Room 1," any command given to it will target the speaker named "Living Room"
+ 
+* 2023-10-04
+ - Fix: "What's your IP" with enhanced wakeword
+ - Fix: "Set the room to XX" restart LED service
+
+* 2023-10-02
+ - Fix: Theben Blinds relative 
+ - Fix: KNX IoT Blinds relative commands
+
+* 2023-09-30
+ - Minor fix previous/next (song) didn't work with trailing number in siteId
+
+* 2023-09-22
+ - Bug fix french and German "CHATGPT_Tail_Command" wrong.
+ - Set back minumum length before OpenAI to 10 characters
+ 
+* 2023-09-21
+ - Changed OpenAI to use "gpt-3.5-turbo-instruct" with 50 word prompt
+ - Added "CHATGPT_Tail_Command": ". Summarize this message in max 50 words.",
+ - Added punctuations to weather forecast message
+
+* 2023-09-20
+ - Blacklisted devices: will not be part of training.
+ 
+* 2023-09-18
+ - Added PoC of Theben LuxorLiving Gateway integration. It can read config, get/set Lights & Blinds
+ - Added a method to get a template list for 'Blacklisted Devices'
+
+* 2023-09-12
+ -  allowParallellWakeup adapted to enhanced wakeword integration. Requires Sat v 1.4.2+
+ 
+* 2023-09-06
+ -  Pushover messages on HelpCalls: Added clientName and clientLocation. 
+ -  Fixed "what is your ip" response with new enhanced Satellite integration
+
+* 2023-09-01
+ - Modified the 'proknx/aal/queryuser' flow to speak out a custom text
+
+* 2023-08-31
+ - Custom Devices: reject http if no url (to allow multiple CD non-http)
+
+* 2023-08-30
+ - Fix: Devices not operetad due to minify issue
+ - Added setting 'ALLOW/DISALLOW GLOBAL CMD': if set to false, '<cmd>.. everywhere' wil be executed as '<cmd>.. in here'.
+ - Added possibility to disable search for named device outside the current room, see 'ALLOW SEARCH FOR NAMED LIGHT GLOBALLY'.
+ - Updated visual presentation of groups and contexts
+
+* 2023-08-07
+  - Youvi changes
+
+* 2023-08-04
+  - Added possibiity to block commands and queries to named devices. See 'Blacklisted devices' for details.
+
+* 2023-07-20
+  - Adjusted Helpcall wake word filter
+
+* 2023-07-19
+  - Support HelpCall from wakeword (requires Satellite update) 
+  - LogView integration of proServ: if #L in title, mark for logging
+  - 
+* 2023-07-17
+  - LogView integration of proServ: if #l in title, mark for logging
+
+* 2023-06-29
+  - Youvi untested changes
+
+* 2023-06-28
+  - Handle ProKNX:start intent (ok aragon, ok aragon -> I'm here to help you)
+
+* 2023-06-26
+  - Delay restart of Satellites on "Start Trubleshooting/Restart" Voice to allow spoken ffedback to finish
+
+* 2023-06-23
+  - Fork to Aragon V2
+  - Supress trailing number in SiteId ('Living room 2' -> 'Living room')
+  - Updates related to new TTS (remove misspronounced words)
+
+* 2023-06-20
+  - Don't enforce LowerCase before TTS (=better punctuation in future TTS)
+
+* 2023-06-01
+  - Online mode: use new deepgram.com model 'nova' faster, better
+  - Nova is only available in English for the moment, hopefully German and French soon.
+  - Suppress 'working on it..' spoken feedback while transcribing
+  - Cancel/abort online voice query with 'cancel cancel', 'abbrechen abbrechen', 'annuler annuler'. It must be said as part of the query, before Sat stops listening.
+  - German speaker hook: replace 'km/h' with ' kilometer pro stunde ' and 'sage' with 'saage'
+ 
+* 2023-05-12
+  - Removed 'Mobile' siteId from the whitelist, it triggers 'Room list update every min' (added 9/5)
+
+* 2023-05-10
+  - Changed previous TTS, to NLU query 'What time is it', it will keep both awake
+
+* 2023-05-09
+  - Attempt to avoid sleeping TTS server daytime, added TTS requests
+  - Added 'Mobile' siteId to whitelist
+
+* 2023-05-03
+  - Replace unicode characters in Favourite duplicate
+
+* 2023-04-26
+  - Replace some unicode characters from Favourite names
+  - TvFavorites variables moved to module setting
+
+* 2023-04-14
+  - Bugfix all-KNX Shift up/down thermostat
+
+* 2023-04-13
+  - Added "SUPRESS TRAILING NUMBER IN SITEID", when acivated (default:false) commands on siteId 'living room n' will be equvialent to 'living room'
+  
+* 2023-04-06
+  - Reverted "findRoomByKeyIgnoreTrailingNumber() in HA" from 2023-03-29, needs more testing
+  
+* 2023-03-30
+  - Added sv-SE
+
+* 2023-03-29
+  - Removed unused tabs
+  - Added findRoomByKeyIgnoreTrailingNumber() in HA, to operate devices in 'Living room' from 'Living room 3' without saying location
+  - Removed Noisy chat ISE 2023 fix
+  - Check isOnline, Skip delayed 'enter online mode'translations
+
+* 2023-03-24
+  - Added offline stt endpoint
+ 
+* 2023-03-22
+  - Added German words to replace in speaker hook
+  - SONOS volume/next/shazam to support siteId with postfix number 'Living room 2' etc
+
+* 2023-03-20
+  - Allow multiple wake up is default
+  - More Sonos fix for siteId with postfix number 'Living room 2' etc
+  - fix incorrect status response for shutter position
+  - french incorrect pronouniation of 'plaît', replaced 'excusez-moi' with 'désolé'
+
+* 2023-03-17
+  - Spoken feedback and speaker hook mods
+
+* 2023-03-13
+  - German feedback Herue->uhr
+  - Sonos mute unmute also siteId with trailing number (eg. wake-up 'Living room 2'mutes Sonos 'Living room')
+
+* 2023-03-12
+  - Replaced Heizung/Heating in spoken feedback with device name/thermostat depending on context
+
+* 2023-03-09
+  - Minor fix for weather forecast spoken feedback
+  - Bug fix in OpenAI request
+
+* 2023-03-08
+  - Added Pushover sample code
+  - Added devices with specialcharacters to GET /specialcharacters
+  - Weather forecast in SuperScene spoken on wrong siteId
+ 
+* 2023-03-07
+  - German spoken feedback: OK replaced by Okay
+  - No named all-KNX thermostat named
+  - Fine tuning 'GrooveSalad'
+
+* 2023-03-06
+  - all-KNX gateway: added gateway description editor
+  - Thank you toto Joël Rang, the author o the editor !
+  - The editoris now the recommended tool for editing.
+
+* 2023-03-04
+  - Use wake word energy instead of score for simultaneous Sat wake selection
+
+* 2023-03-03
+  - Added a first version of 'GrooveSalad'
+  - Added delay between multiple cmds in all-KNX and proServ gateways
+
+* 2023-03-02
+  - Added wakeword energy, score is still selective
+
+* 2023-03-01
+  - Speed up ProServ GW reading of data (2sec)
+
+* 2023-02-28
+  - Update of SONOS speaker commands
+
+* 2023-02-26
+  - Added ikea GW msgGatewayOverride: "ikea" (hack)
+
+* 2023-02-24
+  - Test & reapir of all-KNX gateway
+  - multiple Satelites wake up:  Don't take into account 'Default' siteId
+  - Updated German spoken feedback strings
+
+* 2023-02-16
+  - Improvments on enter/Leave online mode, in particular french lang
+
+* 2023-02-14
+  - ProServ Gateway read 10 times max
+  - Block read requests while loading data from GW
+  - Added deepgram language parameter
+
+* 2023-02-14
+  - Added control of multiple Satelites waking up simultaneously.
+  - When "allowParallelWakeup" is active, each satellites will 'execute' whatever was understood in parallel.
+  - When "disallowParallelWakeup" is active (default) only the Satellite which woke up with the highest wake word energy / score (probably the nearest) within 1 sec will acitve, the other will not listen,  the blue LED goes off
+
+* 2023-02-09
+  - deepfilter output files per siteId
+  - Add stopListening from ISE2023
+
+* 2023-01-27
+  - 'Replace words' before online search
+
+* 2023-01-25
+  - KNX IoT GW: Replaced hhtps node with curl -k due to self signed cert
+
+* 2023-01-24
+  - Added possibility to set default search api
+  - Remove pre-fixed 'ask google' etc prior call to api
+  - added MQTT proknx/enterOnlineMode and proknx/leaveOnlineMode to set the LED wake word color on Satellites
+
+* 2023-01-19
+  - Online mode, added possibility to select search api: Ask google, ask serpapi, ask chatgpt, ask open ai
+
+* 2023-01-18
+  - Online mode, first version
+
+* 2023-01-16
+  - Location slots Country and city names translated
+
+* 2023-01-13
+  - Added mixed OpenAI/SerpApi search (disabled)
+  - Added STT via Deepgram (disabled)
+
+* 2023-01-10
+  - French article le/la/les changed to be optional in slots
+  - Added french articles to thermostats
+  - Informative message while searching internet spoken
+  - Modified SerpAPI/google parameter to have metric units in replies
+  - SPEAKER HOOK replace some mispronounced words in english
+
+* 2023-01-08
+  - Added Weather and Traffic info via SerpApi
+
+* 2023-01-06
+  - Added POC Zigbee with SkyConnect (disabled)
+  - Added POC OpenAI / ChatGpt (disabled)
+
+* 2022-12-30
+  - SPEAKER HOOK replace some mispronounced numbers in french
+
+* 2022-12-29
+  - Redesign Help call
+  - Alarm, WiFi and User Guide Disabled
+
+* 2022-12-27
+  - Changed format of Satellite IP in hotword detected message topic using ¤ separator instead of JSON
+
+* 2022-12-20
+  - Add SonosZones to rooms before training
+  - Add SomeFM to favorite special words
+  - LowerCase TTS strings to avoid spelled characters
+  - Change from 'entety' to 'slotName' for 'SpeakerType'
+
+* 2022-12-15
+  - Added 'scenes' type to CUSTOM DEVICES
+  - Added sample scenes Cold and Warm scnes for Shelly Duo bulb
+
+* 2022-12-14
+  - Removed dependency of node-red-node-discovery for Wiser/KNXIoT, Jung SVS and Hue bridge. Replaced discovery with avahi commandline.
+
+* 2022-12-12
+  - Supress 'can not find the device', 'OK' etc when superscenes moved to the 'source (away from SPEAKER HOOK)
+
+* 2022-12-09
+  - Change SONOS to sonos in text
+  - Shorter delay 1 instead of 2s) between SuperScene commands
+  - Supress 'can not find the device' when superscenes
+
+* 2022-12-04
+  - Shazam fix when only sonos rooms
+  - More variations in En texts
+
+* 2022-11-15
+  - Breaking change: Reanamed main flow to 'Aragon 1.0'
+  - Some modifications in 'Try audio again', 
+
+* 2022-11-10
+  - Work on feedbacks, removed  demo mode and sonosmirror
+  - ProServ GW, increase and decrease temperature failed
+
+* 2022-11-09
+  - Work on useSonosFavorites
+
+* 2022-11-09
+  - Handle self signed certificates HTTPS node Add msg.rejectUnauthorized = false; in all request in Gira and Jung GW
+
+* 2022-11-08
+  - Added code changes from PeaKNX 2022-09-27 ( code for filtering name)
+  - Add default rooms if no rooms from gateway
+
+* 2022-11-07
+  - Changed hardcoded 'Okay' response to variable language string variable 'affirmation'
+  - Added some string variations, more todo En and De
+  - Exported a copy of the flows file strings to subfolder Feedbacks
+  
+* 2022-10-20
+  - Fixed some errors in HomeAutomation when rooms not availble
+
+* 2022-10-18
+  - Fix for dummy slots before real slots avail
+  - Refuse training if already running
+  - Longer httpRequest timeout
+
+* 2022-10-06
+  - Improvements in systemIP handler
+  - handle masterIp for R4SE (eth1)
+  - run a dummy training if nothing was injected
+  - add some standard room names for dummy training to make setRoom run smother
+  - systemIP : notify user if no gateway has been configured
+  
+* 2022-09-30
+  - Ensure /roomlist always returnd, add try/catch
+  - Make sure non-printables characters are not saved to profile siteIds
+  - run update siteId in profile on start up +30s (ratelimit 15s) 
+  - more logging on roomlist/update reception
+
+* 2022-09-20
+  - Additional work on ProKNX:setSiteId and systemIP
+
+* 2022-09-16
+  - Jung SVS repair
+
+* 2022-09-15
+  - Added (experimental) ProKNX:setSiteId
+  - Gira GW, store IP and accessToken in settings instead of global
+  - Rework ProKNX:setSystemIP to speak master, sat IP and siteId
+
+* 2022-08-29
+  - removed unused variables pendingAudioRestart, SnipsPID
+  - Hue: return "nodered-status-invalid-ip-address" upon "Please check the URL"
+
+* 2022-08-19
+  - Added discovery of proServ, KNXIoT/Wiser,  Gira, Jung, Hue, Youvi Gateways
+  
+* 2022-08-16
+  - Moved the storage of Hui Username to Aragon
+  
+* 2022-08-13
+  - CORE added call to /injectDevices on init +60sec, it is dropped if inject already invoked from gateway (rateLimit 1/60s)
+  - Disabled TELEGRAM
+
+* 2022-08-10
+  - CORE -> fix endpoint for getting satellites
+
+* 2022-08-04
+  - CORE -> Add siteId's to all Rhasspy services
+  -   Added two triggers to update :
+  -     "Check the profile site_ids are the same as our current list of rooms"
+  -     "Check the profile site_ids are similar"
+
+* 2022-08-03
+  - Flow TRY AUDIO AGAIN (Dev) added in disabled mode
+  - Add locations slot
+
+* 2022-07-19
+  - Some fixes done for KNXIoT GW
+  - Some fixes done for feedbacks (intent: deviceStatusCheck)
+  - Added room checking function in CORE
+  
+* 2022-07-13
+  - Update management of settings file in DEV MODULE
+  - Settings are now sorted by key
+  - Added KNX IoT GW
+ 
+* 2022-07-11
+  - Added Youvi Gateway
+
+* 2022-07-11
+  - Added KNX, KNXIOT, GENERIC Gateways
+
+* 2022-07-09
+  - Some fixes, Hue GW
+
+* 2022-07-08
+  - Review of Hue GW (tested with one dimmer light)
+  
+* 2022-07-06
+  - First mod of Hue GW
+
+* 2022-06-24
+  - Add favorites without specific words
+
+* 2022-06-23
+  - isSuperScene set to false at start
+  - wasHeard feedbacks are now unique per intent
+  - Special characters removed before being added to rooms
+  
+* 2022-06-22
+  - Fixed Superscenes (first version)
+  - Moved Telegram to its own tab (-> Hamburger)
+  - Rearranged the Hooks tab
+
+* 2022-06-22
+  - Small fixes in SONOS tab
+
+* 2022-06-21
+  - Fine tuning proServ gateway status reporting
+ 
+* 2022-06-20
+  - Quick fix to avoid strings/obj problem of setting devices
+  - Added support for Training of Aragon Assistant
+  
+* 2022-06-10
+  - Global variables are now stored in settings
+
+* 2022-06-07:
+  - Added debug mode for Module functions
+  - Settings keep their type from now
+  - Removed group boxes for better compression
+
+* 2022-06-03:
+  - Adapted Gira GW to Aragon
+  - removed IKEA and realKNX
+
+* 2022-05-18:
+  - Fix for global module
+
+* 2022-05-11:
+  - Quick fix 'Add siteId's to all Rhasspy services' : don't update profile if empty room list. Add sonos and custom rooms to profile
+
+* 2022-04-29:
+  - Got rid of a bunch of :3000 references, some tuning of the training and proServ GW
+
+* 2022-04-28:
+  - Added GET /proservconnectionstatus for the Gateway config & status dialog
+
+* 2022-04-26:
+  - Add all siteId to Rhasspy services
+
+* 2022-04-25:
+  - Filter special characters before training (or it failes).
+
+* 2022-04-22:
+  - First version of training/injection with Aragon Master v1.0.4
+ 
+* 2022-04-14:
+  - Handle adapters + Get lang from Rhasspy
+ 
+* 2022-03-21:
+  - Add module log file for feedbacks function
+ 
+* 2022-03-18: Rhasspy version v1.0 -> updated <-
+ - "ProKNX:Intents" are now gotten from rhasspy api (see "CORE" Tab)
+ - Slots injections added (see "CORE" Tab)
+ - Development module added (see "DEV MODULE" Tab): feedback, settingsSetValue, settingsGetValue, settingsDelValue
+  - file nodes have been replaced with new module functions (see "DEV MODULE" tab)
+  
+* 
+* 2022-10-03: Proserv bug fix BlindsIncrease/ShiftUpShutter with no value failed
+* 
+* 2022-10-02: Rhasspy version v1.0
+* 
+* 2022-02-17: (HomeServer) When building the list of words for injection/training, ignore devices without a room. Devices without rooms are ignored when counting illegal characters and in realKNX DeviceList.
+
+* 2022-02-11: Changed KNX Scene DPT in samples to 17.001
+
+* 2022-02-09: ProServ added 50ms delay between each chunk read. Unmute SONOS speaker when spoken-feedback mirrored to SONOS. Add 2s delay before playing to avoid truncated audio file.  
+
+* 2022-01-25: Add support for "de.gira.schema.functions.Trigger" as a realKNX Scene
+
+* 2022-01-13: Gira remove anything after ';' in device name
+
+* 2021-12-30: Fix: Custom rooms/devices (from CustomDevices group) were not listed in realKNX. New: Stop the SONOS players on active HelpCall.
+
+* 2021-12-28: SuperScene accepts SAY tag. The SuperScene commnd must start with (case sensetive) SAY followed by the string that should be spoken. Example 'SAY Good morning'
+
+* 2021-12-23: Allow spoken feedback from SuperScenes (Beta) The following non-HA intents are supported: "ProKNX:play" "ProKNX:shazam" "ProKNX:searchInternet" "ProKNX:setVolume" "ProKNX:decreaseVolume" "ProKNX:increaseVolume" "ProKNX:currentDateTime" "ProKNX:wakeUp" 
+
+* 2021-12-22: Added support for traffic low to work "How's traffic to work" -> "22 min via route 19"
+
+* 2021-12-06: Gira handle unassigned datapoints
+
+* 2021-11-16: Added commented sample how to supress "Please check the configuration" to SPEAKER HOOK - MODIFY SPOKEN MSG
+ 
+* 2021-11-12: Simplified the "HEY SNIPS, WAKE UP - REPORTS" sample
+
+* * 2021-11-03: Added handler for short button press on Satellite. Requires Sat v1.4.5+
+Added handler for short button press on Base. Requires Sat v4.6.39+
+Short press: release when yellow LED
+Medium: release when red LED (action TBD)
+Long: release when green LED - will reboot !
+
+* 2021-10-25: More work on the restart of Satellites Audio&Hotword after long messages: removed restart on hotword (loss of voice commands)
+
+* 2021-10-21: Internet Search result, calculation: precision two decimals.
+
+* 2021-10-21: Added recurrent restart of Satellites Audio&Hotword. Every 15 min if no voice activity. Satellites Audio&Hotword will restart on next message following a 'long' message (>9sec). The restart takes of Sat A&H takes 5 sec: any message within a min after a 'long' will be delayed ~5 sec.
+
+* 2021-10-19: Removed some unused link nodes
+
+* 2021-10-15: Philips Hue remove sensor, better handling of exceptions during parsing. Disable output to feedback from sample HelpCall group.
+
+* 2021-10-14: Exclude Blinds with names like Door, Tür, Porte etc from general Blinds commnads. Added HA Debug switch in Hooks tab. Don't set deafultSpeaker for SuperScenes.
+
+* 2021-10-12: Minor improvements Hue GW 
+
+* 2021-10-11: KNX-all Gateway updated, it now requires node-red-contrib-knx-ultimate v1.2.49. Make sure to upgrade the KNX Ultimate node. Internet Searches require a SerpApi key to be configured realKNX menu "More | Automation UI" or <IP>:1880/ui. Angular UI theme for Automation UI (i.e. Node-RED Dashboard).
+
+* 2021-10-08: One mqtt config node for all. Minor modifications in KNX-all gw
+
+* 2021-10-06: Finilized Philips Hue GW. Restart Hotword & audio every 15 min.
+
+* 2021-10-01-1: Search improvments
+
+* 2021-10-01: Skyresponse: changed to commercial classification and url
+
+* 2021-09-30: Added first version of Philips Hue (not ready to use).
+
+* 2021-09-22: searchInternet intent enabled by default to support weather forecast queries. Remove disable of Hospitality intents on start-up (disabled by default). Support any SerpApi parameters, requires 4.6.31+. Enable SuperScenes for Generic GW. re-Activate SuperScenes on start-up, if configured to be used.
+ 
+* 2021-09-21: Allow longer strings to be spoken out. Restart the snips-audio server before speaking out (as it hangs if previous msg is longer than 9sec). 
+ 
+* 2021-09-16: Fix: Enable hospitality switch was not updated- Fix: Hospitality intents were disabled by SuperScene deactivation. Support use case: no devices in main gateway but only Custom Devices. Fix ProServ GW speak one decimal only. Handle Custom Rooms (rooms from Custom Devices). Hospitality:SearchInternet:weather quick rewrite due to changed new AnswerBox. Fix: allow SONOS speaker alone (no rooms from GW)
+
+* 2021-09-01: Fix for relative blind setting. Enable: No devices on main GW, Custom Devices only 
+
+* 2021-08-20: Trådfri blinds inverted direction
+
+* 2021-07-29: Removed AAL flow. Added comments, minor code changes in 'custom speaker' and 'Customdevices'
+
+* 2021-07-26: from 19194 bytes to 16194 bytes to adapt with proserv version 1 and 2. fixed the sensor 0x31. Fix for "open shutter in a specific room" which wrongly open "all shutters in that room". Fix for empty device names in Gira Gateway
+
+* 2021-07-15: ProServ Update of handling of Blinds, function code 11 and 13
+
+* 2021-07-08: ProServ fixed relative commands blinds and heating. Help call in assistant is changed to enabled by default (Assistant version 2021-07-08). The flow is updated accordingly.
+
+* 2021-07-06: ProServ Handling of disrupted communcation
+
+* 2021-06-30: Finilized PROSERV GW
+
+* 2021-06-21: Added PROSERV IP handling
+
+* 2021-06-18: Added PROSERV Gateway placeholder
+
+* 2021-06-16: Added support for Skyresponse
+
+* 2021-06-10: Allow 200 favorites, connect the TvFavortites GET handler, removed Unified-API
+
+* 2021-06-02: SuperScenes over blocks, longer timeout. SonosMirror disabled when Play starts (SONOS speaker blocks)
+
+* 2021-06-01: restart hotword and adio every 15min if no activity
+
+* v2021-05-31: SuperScenes fix to make it possible to launch up to 9 commands (over the blocks)
+
+* v2021-05-19: remove some logging, fix for TV & SuperScenes
+
+* v2021-05-14   Set defaultspeaker to tv if a tvFavorite was detected
+
+* v2021-05-11: modified the kitchen custom devices
+
+* v2021-05-07: more SONOS fixes for "Living room" / "Living room 2" side-by-side and exclusive
+
+* v2021-05-05
+SONOS : Check if it is a TV favorite, stop SONOS execution if it is a TV favorite
+SONOS:  skip action if no Sonos speaker in this room
+
+* If tvFavorite, dont say there's no sonos etc
+
+* 2021-05-03: Sonos Mute skip non-existing speaker
+ikea: added alarm modifications
+
+* v2021-04-15: improvments in Alarm by Ahda & Ana
+
+* v2021-04-09: Added GET usesuperscenes
+
+* 2021-04-01: Gira v2, dynamic client name for registration to avoid failing HS
+
+* v2021-03-29: Add support of SuperScenes in Telegram Chatbot
+
+* 2021-03-26: Added ratelimit on input to Home Automation to avoid lost message and ASR timeout
+DemoMode Check if lights available in the current 'demo' room
+removed old ReSpeaker DemoMode
+
+* v2021-03-24: don't auto inject CUSTOM DEVICES
+
+* v2021-03-23: Improvements on Generic Gateway
+
+* Changed implementation of Sonos PauseAll and resumeAll to enumerate all SONOS devices and Pause/resume
+
+* Aligned, Beautified the HOOKS page
+
+* Added CANCEL PENDING SHAZAM when a new Play request, or Shazam or user request
+
+* 2021-03-18: GENERIC GATEWAY API link and text fixes,
+
+* Added Demo mode for Aragon
+
+* Bug fix in GET /sonosforvirites when no sonos speaker
+
+* v2021-03-08: Added Shelly Motion sample, and some editing
+
+* v2021-03-01:
+Added Shelly motion sample,
+added (API) to all public links,
+bug fix mqtt proknx topic (started with /)
+grouped all in hooks
+CUSTOM device integration; added devicelist/rooms proknx notification for all gateways
+
+* Added Shelly relays
+Organized nodes with Grouping in Hooks tab
+
+* Added possibility to control additional custom devices (apart from the gateway devices)
+This first implementation demo Shelly switch
+Added MQTT
+/proknx/devicelist/updated
+/proknx/roomlist/updated
+/proknx/custom/query
+/proknx/custom/cmd
+
+* v2021-02-18: Added findRoomByKeyIgnoreTrailingNumber Example "Switch off" in 'Office' will also switch off in 'Office 2'
+
+* v2021-02-09: Wi-Fi password shorter without breaks
+/specialcharacters also check rooms
+delay 20 sec before inject in language change
+
+* reboot satellites on "Start Troubleshooting"
+
+* Added support for SONOS rooms without Home Automation devices
+Edit Alarm code
+
+* Perorm a global search for lights and shutters if none was found
+
+* sonos fuzzy met replaced by mets
+
+* touslesvolets
+
+* v2021-02-08: Gira X1 fix: Scenes were not having setOn values if Learning was defined
+
+* 2021-02-05 Bug fix in Sample code : control of TV set
