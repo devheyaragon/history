@@ -1,3 +1,20 @@
+* 2023-11-22
+ - Changed formatting of French slots: 
+    - Remove: general prefix (du, de la)
+    - Added: rooms starting with vouwel re-named (l'NAME):(NAME) and (d'NAME):(NAME), 
+    - lights, widows and thermostats starting with vouwel renamed (l'NAME):NAME
+ - Added possibiity to use online tts with home automation without fallback to search,
+   see ONLINE TTS & SEARCH API
+ - Disallow the following slotnames:
+   Lights = 'lumières', 'lumieres', 'éclairage', 'eclairage', 'lights', 'lighting', 'licht', 'beleuchtung'
+   Windows = 'volets', 'rolladen', 'rollladen', 'rollos', 'shutters'
+   If a device is named (case-insensitive) to one of these, they will not be trained.
+ - Removed English variations of time and date responses (cached tts faster)
+ - Changed Deepgram online tts to nova2 which supports German and French
+ - Depending on audio filter setting, use corresponding audio for online tts
+ - Fixed mangled names in spoken feedback (salleamanger -> salle a manger)
+ - Removed malpronouned trailing " and ' characters from online spoken feedback
+
 * 2023-10-13
  - Added the first version of the VOICE DIALOG CONFIGURATOR
 
