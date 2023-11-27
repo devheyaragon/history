@@ -1,3 +1,22 @@
+* 2023-11-24
+ - Changed formatting of French slots: 
+    - Remove: general prefix (du, de la)
+    - Added: rooms starting with vouwel re-named (l'NAME):(NAME) and (d'NAME):(NAME), 
+    - lights, widows and thermostats starting with vouwel renamed (l'NAME):NAME
+ - Added possibiity to use online tts with home automation without fallback to search,
+   see ONLINE TTS & SEARCH API
+ - Disallow the following slotnames:
+   Lights = 'lumières', 'lumieres', 'éclairage', 'eclairage', 'lights', 'lighting', 'licht', 'beleuchtung'
+   Windows = 'volets', 'rolladen', 'rollladen', 'rollos', 'shutters'
+   If a device is named (case-insensitive) to one of these, they will not be trained.
+ - Removed English variations of time and date responses (cached tts faster)
+ - Changed Deepgram online tts to nova2 which supports German and French
+ - Depending on audio filter setting, use corresponding audio for online tts
+ - Fixed mangled names in spoken feedback (salleamanger -> salle a manger)
+ - Removed malpronouned trailing " and ' characters from online spoken feedback
+ - malpronouned in German 'Okay'->'Okay !'
+ - English spoken blinds->shutters
+
 * 2023-10-13
  - Added the first version of the VOICE DIALOG CONFIGURATOR
 
@@ -359,7 +378,7 @@
   - CORE -> fix endpoint for getting satellites
 
 * 2022-08-04
-  - CORE -> Add siteId's to all Rhasspy services
+  - CORE -> Add siteId's to all R services
   -   Added two triggers to update :
   -     "Check the profile site_ids are the same as our current list of rooms"
   -     "Check the profile site_ids are similar"
@@ -432,7 +451,7 @@
   - Fix for global module
 
 * 2022-05-11:
-  - Quick fix 'Add siteId's to all Rhasspy services' : don't update profile if empty room list. Add sonos and custom rooms to profile
+  - Quick fix 'Add siteId's to all R services' : don't update profile if empty room list. Add sonos and custom rooms to profile
 
 * 2022-04-29:
   - Got rid of a bunch of :3000 references, some tuning of the training and proServ GW
@@ -441,7 +460,7 @@
   - Added GET /proservconnectionstatus for the Gateway config & status dialog
 
 * 2022-04-26:
-  - Add all siteId to Rhasspy services
+  - Add all siteId to R services
 
 * 2022-04-25:
   - Filter special characters before training (or it failes).
@@ -450,13 +469,13 @@
   - First version of training/injection with Aragon Master v1.0.4
  
 * 2022-04-14:
-  - Handle adapters + Get lang from Rhasspy
+  - Handle adapters + Get lang from R
  
 * 2022-03-21:
   - Add module log file for feedbacks function
  
-* 2022-03-18: Rhasspy version v1.0 -> updated <-
- - "ProKNX:Intents" are now gotten from rhasspy api (see "CORE" Tab)
+* 2022-03-18: R version v1.0 -> updated <-
+ - "ProKNX:Intents" are now gotten from R api (see "CORE" Tab)
  - Slots injections added (see "CORE" Tab)
  - Development module added (see "DEV MODULE" Tab): feedback, settingsSetValue, settingsGetValue, settingsDelValue
   - file nodes have been replaced with new module functions (see "DEV MODULE" tab)
@@ -464,7 +483,7 @@
 * 
 * 2022-10-03: Proserv bug fix BlindsIncrease/ShiftUpShutter with no value failed
 * 
-* 2022-10-02: Rhasspy version v1.0
+* 2022-10-02: R version v1.0
 * 
 * 2022-02-17: (HomeServer) When building the list of words for injection/training, ignore devices without a room. Devices without rooms are ignored when counting illegal characters and in realKNX DeviceList.
 

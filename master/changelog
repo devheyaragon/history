@@ -1,3 +1,53 @@
+aragon-master (1.5.1) stable; urgency=low
+
+  * Doc server started with current language as parameter
+  * Enable Install Doc Server even when installed
+  
+ -- root <jens@proknx.com>  Sat, 25 Nov 2023 13:00:00 +0100
+
+aragon-master (1.5.0) stable; urgency=low
+
+  * Seperate update path for flow and assistant (different from 1.4)
+  
+ -- root <jens@proknx.com>  Thu, 23 Nov 2023 13:00:00 +0100
+
+aragon-master (1.4.35) stable; urgency=low
+
+  * Language assistant model description files per language to allow different number of models
+  * Removed unfinished Swedish language
+  * disable training and voices buttons during page loading
+  * Handle incorrectly configured custom devices better in training dlg (missing mandatory name or type -> warning)
+  * Bug fix: DeepFilter checkbox not always initiated to the correct state
+  * Added open source license for Homebridge, Apache2, h5ai, Netdata and PHP
+  
+ -- root <jens@proknx.com>  Wed, 22 Nov 2023 13:00:00 +0100
+
+aragon-master (1.4.34) stable; urgency=low
+
+  * Assistant Installation: added Voice command Optimization dialog with 'Intent Filter' and 'Model' selection
+  
+ -- root <jens@proknx.com>  Wed, 08 Nov 2023 10:00:00 +0100
+
+aragon-master (1.4.33) stable; urgency=low
+
+  * Added Homebridge install to About Advanced
+  * Added Homebridge to Extras menu 
+  
+ -- root <jens@proknx.com>  Thu, 03 Nov 2023 16:00:00 +0100
+
+aragon-master (1.4.32) stable; urgency=low
+
+  * Added Doc Server install/update to About Advanced
+  * Added Doc Server to Use menu 
+  
+ -- root <jens@proknx.com>  Thu, 02 Nov 2023 14:00:00 +0100
+
+aragon-master (1.4.31) stable; urgency=low
+
+  * Added API to update documentation from github
+  
+ -- root <jens@proknx.com>  Wed, 24 Oct 2023 17:00:00 +0100
+
 aragon-master (1.4.30) stable; urgency=low
 
   * Add a link to the GDF editor in the all-KNX gateway dlg
@@ -554,7 +604,7 @@ aragon-master (1.0.15) stable; urgency=low
 
 aragon-master (1.0.14) stable; urgency=low
 
-  * Assistant is build from symlinked file, requires aragon-rhasspy-master v1.0.2
+  * Assistant is build from symlinked file, requires aragon-R-master v1.0.2
 
  -- root <jens@proknx.com>  Fri, 10 jun 2022 12:00:00 +0100
 
