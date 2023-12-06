@@ -1,3 +1,21 @@
+aragon-master (1.5.3) stable; urgency=low
+
+  * Added support for beta releases for application and assistants
+  
+ -- root <jens@proknx.com>  Wed, 29 Nov 2023 15:00:00 +0100
+
+aragon-master (1.5.3) stable; urgency=low
+
+  * Added left menu item HELP, removed under USE
+  
+ -- root <jens@proknx.com>  Tue, 28 Nov 2023 13:00:00 +0100
+
+aragon-master (1.5.2) stable; urgency=low
+
+  * Doc server update better informative message
+  
+ -- root <jens@proknx.com>  Mon, 27 Nov 2023 14:00:00 +0100
+
 aragon-master (1.5.1) stable; urgency=low
 
   * Doc server started with current language as parameter
