@@ -1,3 +1,44 @@
+aragon-master (1.5.9) stable; urgency=low
+
+  * Doc server: Donwload index.html file on GET '/util/documentation/update'
+  
+ -- root <jens@proknx.com>  Sun, 31 dec 2023 10:00:00 +0100
+
+aragon-master (1.5.8) stable; urgency=low
+
+  * Show informative message if video is not installed/available
+  * Fix: prevent video auto start on page load/back etc
+  * Add Help buttons in Gateway config dialog, Master general setup and Satellite 
+  * Changed button appearence to 'outline'. Primary general buttons, Secondary = Show/hide content, Video = black
+  
+ -- root <jens@proknx.com>  Fri, 29 dec 2023 17:00:00 +0100
+
+aragon-master (1.5.7) stable; urgency=low
+
+  * Show instructive videos under USE
+  * Update Doc files from crontab at 02h00
+  
+ -- root <jens@proknx.com>  Thu, 28 dec 2023 17:00:00 +0100
+
+aragon-master (1.5.6) stable; urgency=low
+
+  * Set exe flags piper.sh
+  * Show 'refresh page msg' on TTS install 
+  
+ -- root <jens@proknx.com>  Wed, 19 dec 2023 17:00:00 +0100
+
+aragon-master (1.5.5) stable; urgency=low
+
+  * Added Piper/TTS update to About
+  
+ -- root <jens@proknx.com>  Wed, 18 dec 2023 17:00:00 +0100
+
+aragon-master (1.5.4) stable; urgency=low
+
+  * Hue GW: show username on open
+  
+ -- root <jens@proknx.com>  Wed, 12 dec 2023 13:00:00 +0100
+
 aragon-master (1.5.3) stable; urgency=low
 
   * Added support for beta releases for application and assistants
@@ -622,7 +663,7 @@ aragon-master (1.0.15) stable; urgency=low
 
 aragon-master (1.0.14) stable; urgency=low
 
-  * Assistant is build from symlinked file, requires aragon-R-master v1.0.2
+  * Assistant is build from symlinked file, requires aragon-rhasspy-master v1.0.2
 
  -- root <jens@proknx.com>  Fri, 10 jun 2022 12:00:00 +0100
 

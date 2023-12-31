@@ -1,3 +1,20 @@
+* 2023-12-31
+ - Allow the ' character (as in `salle d'eau`) in siteIds - needs more testing
+
+* 2023-12-29
+ - SuperScenes: copy currentSuperScene[lang] to variable on start-up
+
+* 2023-12-11
+ - proServ Gateway: remove rooms with special characters
+
+* 2023-12-01
+ - Added support for LUXORLiving Dimmer device
+ - French Changed: rooms starting with vouwel re-named (lNAME):(NAME) and (dNAME):(NAME), 
+           lights, windows and thermostats starting with vouwel renamed (lNAME):NAME
+ 
+* 2023-11-29
+ - removed UseSuperScenes option. It can now be disabled during Assistant installation in the "Voice command Optimization" dlg
+ 
 * 2023-11-24
  - Changed formatting of French slots: 
     - Remove: general prefix (du, de la)
@@ -378,7 +395,7 @@
   - CORE -> fix endpoint for getting satellites
 
 * 2022-08-04
-  - CORE -> Add siteId's to all R services
+  - CORE -> Add siteId's to all Rhasspy services
   -   Added two triggers to update :
   -     "Check the profile site_ids are the same as our current list of rooms"
   -     "Check the profile site_ids are similar"
@@ -451,7 +468,7 @@
   - Fix for global module
 
 * 2022-05-11:
-  - Quick fix 'Add siteId's to all R services' : don't update profile if empty room list. Add sonos and custom rooms to profile
+  - Quick fix 'Add siteId's to all Rhasspy services' : don't update profile if empty room list. Add sonos and custom rooms to profile
 
 * 2022-04-29:
   - Got rid of a bunch of :3000 references, some tuning of the training and proServ GW
@@ -460,7 +477,7 @@
   - Added GET /proservconnectionstatus for the Gateway config & status dialog
 
 * 2022-04-26:
-  - Add all siteId to R services
+  - Add all siteId to Rhasspy services
 
 * 2022-04-25:
   - Filter special characters before training (or it failes).
@@ -469,13 +486,13 @@
   - First version of training/injection with Aragon Master v1.0.4
  
 * 2022-04-14:
-  - Handle adapters + Get lang from R
+  - Handle adapters + Get lang from Rhasspy
  
 * 2022-03-21:
   - Add module log file for feedbacks function
  
-* 2022-03-18: R version v1.0 -> updated <-
- - "ProKNX:Intents" are now gotten from R api (see "CORE" Tab)
+* 2022-03-18: Rhasspy version v1.0 -> updated <-
+ - "ProKNX:Intents" are now gotten from rhasspy api (see "CORE" Tab)
  - Slots injections added (see "CORE" Tab)
  - Development module added (see "DEV MODULE" Tab): feedback, settingsSetValue, settingsGetValue, settingsDelValue
   - file nodes have been replaced with new module functions (see "DEV MODULE" tab)
@@ -483,7 +500,7 @@
 * 
 * 2022-10-03: Proserv bug fix BlindsIncrease/ShiftUpShutter with no value failed
 * 
-* 2022-10-02: R version v1.0
+* 2022-10-02: Rhasspy version v1.0
 * 
 * 2022-02-17: (HomeServer) When building the list of words for injection/training, ignore devices without a room. Devices without rooms are ignored when counting illegal characters and in realKNX DeviceList.
 
