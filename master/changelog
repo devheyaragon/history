@@ -1,3 +1,31 @@
+aragon-master (1.5.14) stable; urgency=low
+
+  * Added suppport for environment variables via node-red settings.js file
+  * Added link to Software history in About
+  
+ -- root <jens@proknx.com>  Mon, 29 jan 2024 13:00:00 +0100
+
+aragon-master (1.5.13) stable; urgency=low
+
+  * Added SuperScenes video
+  
+ -- root <jens@proknx.com>  Fri, 26 jan 2024 13:00:00 +0100
+
+aragon-master (1.5.12) stable; urgency=low
+
+  * Rephrased Power off message: Wait for red LED before unplug power cable
+  * Added version 'reference' numbers to About page
+  * Call 'sync' after piper language file download to force RAM to Flash write
+  * Fix: About menu 'Help' was incorrect language param
+  
+ -- root <jens@proknx.com>  Tue, 09 jan 2024 12:00:00 +0100
+
+aragon-master (1.5.11) stable; urgency=low
+
+  * Added French and English 'Shutter voice command' video
+  
+ -- root <jens@proknx.com>  Fri, 05 jan 2024 18:00:00 +0100
+
 aragon-master (1.5.9) stable; urgency=low
 
   * Doc server: Donwload index.html file on GET '/util/documentation/update'

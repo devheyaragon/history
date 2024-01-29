@@ -1,3 +1,16 @@
+aragon-sat (1.5.1) stable; urgency=low
+
+  * Test Wi-Fi connection speed regularly (download Master Doc mp4 file required). If speed < 500KB/s reset WiFi driver
+
+ -- root <jens@proknx.com>  Fri, 12 Jan 2024 12:00:00 +0100
+
+aragon-sat (1.5.0) stable; urgency=low
+
+  * Force write through (sync cmd) on updated config data, new siteId, changed hotword engine, lock/unlock master
+  * Restart voice service after 1h and then every 6h
+
+ -- root <jens@proknx.com>  Mon, 08 Jan 2024 15:00:00 +0100
+
 aragon-sat (1.4.4) stable; urgency=low
 
   * Restart LED service after changing siteID
@@ -37,7 +50,7 @@ aragon-sat (1.3.8) stable; urgency=low
 
 aragon-sat (1.3.7) stable; urgency=low
 
-  * Added R Monitor restarts it after 3 min fail
+  * Added Rhasspy Monitor restarts it after 3 min fail
 
  -- root <jens@proknx.com>  Mon, 17 Apr 2023 10:00:00 +0100
 
@@ -71,7 +84,7 @@ aragon-sat (1.3.3) stable; urgency=low
 aragon-sat (1.3.2) stable; urgency=low
 
   * Reenable aragon-button service, but don't use LED
-  * Restart R service on short press (to stop long audio)
+  * Restart rhasspy service on short press (to stop long audio)
 
  -- root <jens@proknx.com>  Thu, 09 Mar 2023 13:00:00 +0100
 
@@ -174,7 +187,7 @@ aragon-sat (1.1.7) stable; urgency=low
 
 aragon-sat (1.1.6) stable; urgency=low
 
-  * g_mqttFailCounterLimit = 5; // 5 minutes, as R will cause CPU 100%
+  * g_mqttFailCounterLimit = 5; // 5 minutes, as rhasspy will cause CPU 100%
 
  -- root <jens@proknx.com>  Mon, 31 Oct 2022 11:00:00 +0100
 
@@ -187,7 +200,7 @@ aragon-sat (1.1.5) stable; urgency=low
 aragon-sat (1.1.4) stable; urgency=low
 
   * Count failed MQTT connection attempts to master, only remove lock file after 60 minutes
-  * if :12101/api/restart fails, wait 5 sec and run sudo systemctl restart R.service
+  * if :12101/api/restart fails, wait 5 sec and run sudo systemctl restart rhasspy.service
 
  -- root <jens@proknx.com>  Tue, 10 Oct 2022 17:00:00 +0100
 
@@ -201,7 +214,7 @@ aragon-sat (1.1.2) stable; urgency=low
 
   * removed isLock link in UI
   * reload UI on lock/unlock
-  * show 'Core' version instead of 'R'
+  * show 'Core' version instead of 'Rhasspy'
 
  -- root <jens@proknx.com>  Wed, 02 Sep 2022 16:00:00 +0100
 
@@ -226,7 +239,7 @@ aragon-sat (1.0.10) stable; urgency=low
 
 aragon-sat (1.0.9) stable; urgency=low
 
-  * Prevent multple restart of R.
+  * Prevent multple restart of rhasspy.
   * More logging in Monitor.
   * Check valid IPv4 mqtt host address.
   * Remove masterlockfile if invalid mqtt host address
@@ -247,8 +260,8 @@ aragon-sat (1.0.7) stable; urgency=low
 
 aragon-sat (1.0.5) stable; urgency=low
 
-  * Improved /util/lock, Added aragon-R-sat version to log & UI,
-  * Added R Monitor: every minute check if master mqtt is connectable, if not disable mqtt in R
+  * Improved /util/lock, Added aragon-rhasspy-sat version to log & UI,
+  * Added Rhasspy Monitor: every minute check if master mqtt is connectable, if not disable mqtt in Rhasspy
 
  -- root <jens@proknx.com>  Wed, 25 may 2022 17:00:00 +0100
 
