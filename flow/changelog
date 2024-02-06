@@ -1,3 +1,6 @@
+* 2024-02-06
+ - Handle insufficient Deepgram credits  
+
 * 2024-01-19
  - Acknowledge cancelled helpcall with spoken message.
 

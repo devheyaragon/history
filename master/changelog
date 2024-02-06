@@ -1,3 +1,9 @@
+aragon-master (1.5.15) stable; urgency=low
+
+  * Disable update buttons for Flow and Assistant when in online mode (training not possible)
+  
+ -- root <jens@proknx.com>  Tue, 06 feb 2024 16:00:00 +0100
+
 aragon-master (1.5.14) stable; urgency=low
 
   * Added suppport for environment variables via node-red settings.js file
