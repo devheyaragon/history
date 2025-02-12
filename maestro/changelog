@@ -1,3 +1,166 @@
+aragon-maestro (2.1.8) stable; urgency=low
+
+  * Removed EnOcean
+  * Bug fix in intentfilter
+  * Show/Hide of Voice commands more
+  * Tailscale version info
+
+ -- root <jens@proknx.com>  Tue, 11 Feb 2025 13:00:00 +0100
+
+aragon-maestro (2.1.6) stable; urgency=low
+
+  * Added a Tailscale DNS monitor, it will (try to) fix the DNS settings if in the wrong state
+  * Fix the Enable/Disable remote button texts
+  * Fix for the alert Lost conenction to Aragom server
+
+ -- root <jens@proknx.com>  Fri, 07 Feb 2025 15:00:00 +0100
+
+aragon-maestro (2.1.5) stable; urgency=low
+
+  * Rewrite of the Tailscale backend. Do not use the tailscale web (not reliable)
+
+ -- root <jens@proknx.com>  Thu, 06 Feb 2025 16:00:00 +0100
+
+aragon-maestro (2.1.4) stable; urgency=low
+
+  * Bug fix in platform detect callback
+  * Temporairly limit the number of SED rooms to one (if apt beta 3 rooms)
+
+ -- root <jens@proknx.com>  Wed, 24 Jan 2025 17:00:00 +0100
+
+aragon-maestro (2.1.3) stable; urgency=low
+
+  * Init() procedure more robust
+  * Sound Event dlg: Show informative message if no Sat is configured with Centralized wakeword
+
+ -- root <jens@proknx.com>  Wed, 20 Jan 2025 12:00:00 +0100
+
+aragon-maestro (2.1.2) stable; urgency=low
+
+  * Remove upgrade notification file also after system upgrade
+  * Fix: Delay consecutive calls to /post/soundevent (or it fails)
+  * Updated German introduction-voice-control-more
+  * Install Node-RED Dashboard2 before installing flow
+
+ -- root <jens@proknx.com>  Wed, 16 Jan 2025 15:00:00 +0100
+
+aragon-maestro (2.1.1) stable; urgency=low
+
+  * Added links to Sound Event Charts
+  * Fix: hostname fails to detect at start-up resulting in missing maestro image in UI
+  * Delay Hello sound from SAtellite on Save when Central WW
+
+ -- root <jens@proknx.com>  Wed, 15 jan 2025 16:00:00 +0100
+
+aragon-maestro (2.1.0) stable; urgency=low
+
+  * Added support for Sound Event config
+
+ -- root <jens@proknx.com>  Wed, 05 jan 2025 08:00:00 +0100
+
+aragon-maestro (2.0.16) stable; urgency=low
+
+  * Added Sattelie UI - select Centralized Wake word (OK Aragon, Hey Aragon and OK Aragon french)
+
+ -- root <jens@proknx.com>  Wed, 27 Nov 2024 15:00:00 +0100
+
+aragon-maestro (2.0.15) stable; urgency=low
+
+  * Added 'Kaldi Accuracy Threshold' UI and logic to control the speech_to_text.kaldi.min_confidence
+  * Added dialog for Time zone and NTP
+
+ -- root <jens@proknx.com>  Wed, 20 Nov 2024 12:00:00 +0100
+
+aragon-maestro (2.0.14) stable; urgency=low
+
+  * Added 'Play sound when activated' checkbox and logic
+  * Added 'Single Device Response' checkbox and logic
+
+ -- root <jens@proknx.com>  Tue, 29 Oct 2024 16:00:00 +0100
+
+aragon-maestro (2.0.13) stable; urgency=low
+
+  * Updated text in UI French end German "connect-the-ethernet-cable": 
+
+ -- root <jens@proknx.com>  Tue, 24 Sep 2024 17:00:00 +0100
+
+aragon-maestro (2.0.12) stable; urgency=low
+
+  * Rewrite loading of language files
+  * Added swedish lang, hidden
+  
+ -- root <jens@proknx.com>  Wed, 11 Sep 2024 15:00:00 +0100
+
+aragon-maestro (2.0.11) stable; urgency=low
+
+  * Add UI for "Secure Assistant for Questions, Tasks, and Reminders"
+  * Tuned the THOUGHFULNESS settings
+  
+ -- root <jens@proknx.com>  Wed, 21 Aug 2024 12:00:00 +0100
+
+aragon-maestro (2.0.10) stable; urgency=low
+
+  * removed ProKNX:enterOnlineMode // leaveOnlineMode intents
+  * Added "Vikunja To-Do App" menu item
+  * Hide Ass models in VoiceCommandOptimization
+  * Added "Large Language Models" and Vikunja to licenses 
+  
+ -- root <jens@proknx.com>  Sun, 18 Aug 2024 18:00:00 +0100
+
+aragon-maestro (2.0.9) stable; urgency=low
+
+  * Added OWW sensitivity to Satellite settings dialog
+  * Changed the poweroff message to 'wait for red LED'
+  
+ -- root <jens@proknx.com>  Thu, 11 jul 2024 18:00:00 +0100
+
+aragon-maestro (2.0.8) stable; urgency=low
+
+  * Maestro service restart set to 10 sec to support better restartall via process exit
+  * Added owwman, whisper, llama to restartall
+  * Added HTTP GET '/journalctl' to follow debug megs in browser
+  * supress server not running warnming when restarting
+  
+ -- root <jens@proknx.com>  Tue, 09 jul 2024 17:00:00 +0100
+
+aragon-maestro (2.0.7) stable; urgency=low
+
+  * Replaced app1 and ass2 download folders with app/ass
+  * Added owwman and aragon-ai to upgrade script
+  * Improved version info code
+  * Added owwman version to About
+  * Added licences for llama.cpp, whisper.cpp and openwakeword
+  * Download app & ass and help from v3 folder
+  
+ -- root <jens@proknx.com>  Fri, 08 jul 2024 10:00:00 +0100
+
+aragon-maestro (2.0.3) stable; urgency=low
+
+  * get('/satellites/find' Added check to prevent frequent calls find/broadcasts within 15 seconds
+  * Added optional 'force' parameter to bypass the time check
+  * Save knownSatellitesFile when completed search
+  
+ -- root <jens@proknx.com>  Tue, 02 jul 2024 10:00:00 +0100
+
+aragon-maestro (2.0.2) stable; urgency=low
+
+  * Added Centralized wakeword
+  * Removed Classic wakeword
+  
+ -- root <jens@proknx.com>  Thu, 22 jun 2024 10:00:00 +0100
+
+aragon-maestro (2.0.1) stable; urgency=low
+
+  * Remove doc server and piper2 install files (all pre-installed)
+  
+ -- root <jens@proknx.com>  Wed, 21 jun 2024 17:00:00 +0100
+
+aragon-maestro (2.0.0) stable; urgency=low
+
+  * First Maestro version
+  
+ -- root <jens@proknx.com>  Wed, 19 jun 2024 10:00:00 +0100
+
 aragon-master (1.5.16) stable; urgency=low
 
   * Added BAOS WebSocket proxy service

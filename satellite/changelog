@@ -1,3 +1,39 @@
+aragon-sat (1.6.2) stable; urgency=low
+
+  * Check network connectivity every 15 minutes. Count consecutive disconnected states. Reboot the system only after 1 hour (4 checks) of continuous disconnection. Reset the counter if connection is restored at any point. Continue with the speed test functionality when connected via WiFi
+
+ -- root <jens@proknx.com>  Mon, 11 Nov 2024 15:00:00 +0100
+
+aragon-sat (1.6.1) stable; urgency=low
+
+  * Bugfix: Disabled wakeword didn't work
+
+ -- root <jens@proknx.com>  Tue, 02 Jul 2024 08:00:00 +0100
+
+aragon-sat (1.6.0) stable; urgency=low
+
+  * Added support for OWW aka Centralized wake word
+
+ -- root <jens@proknx.com>  Tue, 25 Jun 2024 17:00:00 +0100
+
+aragon-sat (1.5.6) stable; urgency=low
+
+  * Improvements of "Restart voice service after 1h if no wakeword"
+
+ -- root <jens@proknx.com>  Mon, 06 Mar 2024 15:00:00 +0100
+
+aragon-sat (1.5.3) stable; urgency=low
+
+  * After reset of the wifi due to low speed (500 KB/s), check the checkNetworkStateAndConnectivity 1 minute later. Reboot if no connection local or global
+
+ -- root <jens@proknx.com>  Mon, 26 Feb 2024 17:00:00 +0100
+
+aragon-sat (1.5.2) stable; urgency=low
+
+  * Montor of application network connectivity issues: Reboot after 1h of continues failures
+
+ -- root <jens@proknx.com>  Mon, 12 Feb 2024 15:00:00 +0100
+
 aragon-sat (1.5.1) stable; urgency=low
 
   * Test Wi-Fi connection speed regularly (download Master Doc mp4 file required). If speed < 500KB/s reset WiFi driver
