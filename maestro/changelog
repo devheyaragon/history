@@ -1,3 +1,12 @@
+aragon-maestro (2.1.9) stable; urgency=low
+
+  * Rewrite the method getTailScaleStatus to use more reliable status.BackendState in status --json response
+  * Added /remote/ipv4 endpoint : the local machine tailscale IPv4 
+  * Added "tailscaleIpv4Info" to Remote Connection section
+  * Added link to the Remote Connection section in the top section 'Installation of Aragon Maestro'
+
+ -- root <jens@proknx.com>  Tue, 04 Mar 2025 15:00:00 +0100
+
 aragon-maestro (2.1.8) stable; urgency=low
 
   * Removed EnOcean
