@@ -1,3 +1,12 @@
+* 2025-03-12
+ - Use LLM model microsoft_Phi-4-mini-instruct-Q4_K_S.gguf
+ 
+ * 2025-02-24
+ - Fine tuning SED thresholds
+
+* 2025-02-12
+ - Added download of SED anomaly training.log 
+
 * 2025-02-10
  - Updated Sound Event Detection 
  

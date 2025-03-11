@@ -1,0 +1,101 @@
+aragon-ai (1.0.20) stable; urgency=low
+
+  * llama-service: added cmdline option 'xparameter' to support " --single-turn" for Phi-4
+  * llama-service: download Phi-4 model, delete mistral if succesful Phi4
+  
+ -- root <jens@proknx.com>  Mon, 10 Mar 2024 12:00:00 +0100
+
+aragon-ai (1.0.16) stable; urgency=low
+
+  * Whisper.cpp v1.7.3: Reduce hallucinations during silence; Implement no_speech_thold
+  * Llama.cpp release b4360
+  * llama-service: removed cmdline option '--log-disable' and added  '2>/dev/null'. Remove trailing '[end of text]' from result
+  
+ -- root <jens@proknx.com>  Mon, 19 Dec 2024 12:00:00 +0100
+
+aragon-ai (1.0.15) stable; urgency=low
+
+  * Added Whisper parameters beamsize (default:3 was:5) and splitOnWord (default: active was:deactive)
+  
+ -- root <jens@proknx.com>  Mon, 09 Dec 2024 15:00:00 +0100
+
+aragon-ai (1.0.14) stable; urgency=low
+
+  * Added Whisper audio context parameter
+  
+ -- root <jens@proknx.com>  Wed, 16 Oct 2024 16:00:00 +0100
+
+aragon-ai (1.0.13) stable; urgency=low
+
+  * Whisper.cpp v1.7 https://github.com/ggerganov/whisper.cpp/releases/tag/v1.7.0
+  
+ -- root <jens@proknx.com>  Mon, 07 Oct 2024 17:00:00 +0100
+
+aragon-ai (1.0.12) stable; urgency=low
+
+  * Added Lllama-cli threads 7 parameter
+  
+ -- root <jens@proknx.com>  Wed, 02 Sep 2024 13:00:00 +0100
+
+aragon-ai (1.0.11) stable; urgency=low
+
+  * Added Whisper prompt parameter
+  
+ -- root <jens@proknx.com>  Wed, 25 aug 2024 17:00:00 +0100
+
+aragon-ai (1.0.10) stable; urgency=low
+
+  * Changed Whisper.cpp main parameters thread 8
+  
+ -- root <jens@proknx.com>  Tue, 24 aug 2024 15:00:00 +0100
+
+aragon-ai (1.0.9) stable; urgency=low
+
+  * Rebuild Whisper main with dynamically loaded libraries in /libs
+  
+ -- root <jens@proknx.com>  Thu, 19 aug 2024 15:00:00 +0100
+
+aragon-ai (1.0.8) stable; urgency=low
+
+  * llama-cli // llama.service Added dynamically loaded libraries in libs
+  
+ -- root <jens@proknx.com>  Thu, 22 aug 2024 10:00:00 +0100
+
+aragon-ai (1.0.6) stable; urgency=low
+
+  * Llama.cpp added prompt cache (significant performance gain)
+  
+ -- root <jens@proknx.com>  Tue, 13 aug 2024 09:00:00 +0100
+
+aragon-ai (1.0.5) stable; urgency=low
+
+  * Llama.cpp update and rebuild with BLAS.
+  
+ -- root <jens@proknx.com>  Sat, 10 aug 2024 10:00:00 +0100
+
+aragon-ai (1.0.3) stable; urgency=low
+
+  * Whisper: Bugfix French NumberToText
+  
+ -- root <jens@proknx.com>  Wed, 07 jul 2024 15:00:00 +0100
+
+aragon-ai (1.0.2) stable; urgency=low
+
+  * Whisper: Download ggml-small-q5_1.bin and ggml-small.en-q5_1.bin from huggingfaces if not already present
+  * Added API parameter modelName
+  
+ -- root <jens@proknx.com>  Wed, 05 jul 2024 15:00:00 +0100
+
+aragon-ai (1.0.1) stable; urgency=low
+
+  * Fixed wrong path in llama and whisper service file
+  * Whisper exec kill timeout 30 sec
+  * Llama.spp exec kill timeout 60 sec
+  
+ -- root <jens@proknx.com>  Wed, 24 jun 2024 15:00:00 +0100
+
+aragon-ai (1.0.0) stable; urgency=low
+
+  * First version
+  
+ -- root <jens@proknx.com>  Wed, 20 jun 2024 10:00:00 +0100

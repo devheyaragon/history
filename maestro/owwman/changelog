@@ -1,0 +1,154 @@
+owwman (1.2.8) stable; urgency=low
+
+  * OWW high sensitivity: lowered thresholds = > increased sensitivity
+
+ -- root <jens@proknx.com>  Wed, 28 Feb 2024 16:00:00 +0100
+
+owwman (1.2.7) stable; urgency=low
+
+  * SED Whistle threshold: 0.95, Glass threshold: 0.7
+
+ -- root <jens@proknx.com>  Wed, 24 Feb 2024 12:00:00 +0100
+
+owwman (1.2.6) stable; urgency=low
+
+  * Bug fix in SED file download
+
+ -- root <jens@proknx.com>  Wed, 13 Feb 2024 12:00:00 +0100
+
+owwman (1.2.5) stable; urgency=low
+
+  * Added download of SED anomaly training .log
+  * Added wake word 'OK Watson'
+
+ -- root <jens@proknx.com>  Wed, 12 Feb 2024 15:00:00 +0100
+ 
+owwman (1.2.4) stable; urgency=low
+
+  * handle the case where the sound_events.json file is empty or does not contain the expected "events"
+  * sound_analyser_ lowered contamination to 0.08, less sensitive
+
+ -- root <jens@proknx.com>  Mon, 10 Feb 2024 17:00:00 +0100
+ 
+owwman (1.2.3) stable; urgency=low
+
+  * Category thresholds increased to 0.5
+  * Take into account Category thresholds (apply the highest of call and cat thresholds)
+  * sound_analyser MIN_CONFIDENCE = 0.80  # Minimum confidence to generate an alert
+  
+ -- root <jens@proknx.com>  Fri, 07 Feb 2024 11:00:00 +0100
+ 
+owwman (1.2.1) stable; urgency=low
+
+  * Added Sound Event Analyzer
+  
+ -- root <jens@proknx.com>  Tue, 04 Feb 2024 10:00:00 +0100
+ 
+owwman (1.1.3) stable; urgency=low
+
+  * Added new OWW models: Hey Kitt v3, Hey Snips v3
+  * Removed old versions
+  
+ -- root <jens@proknx.com>  Wed, 15 Jan 2024 11:00:00 +0100
+ 
+owwman (1.1.2) stable; urgency=low
+
+  * Save all sound events to json file
+  * added end poibnt for download the json: /soundevents/download
+  * Increased threashold for water to 0.95
+  
+ -- root <jens@proknx.com>  Tue, 14 Jan 2024 17:00:00 +0100
+ 
+owwman (1.1.1) stable; urgency=low
+
+  * Easier wake up: Lower vad_threshold for low and medium oww profile
+  * Added update code of current oww yaml, triggered from postinst via file flag
+  * Increased threashold for most sound events
+  
+ -- root <jens@proknx.com>  Fri, 03 Jan 2024 18:00:00 +0100
+ 
+owwman (1.1.0) stable; urgency=low
+
+  * Sound detection 
+  
+ -- root <jens@proknx.com>  Tue, 31 Dec 2024 17:00:00 +0100
+ 
+owwman (1.0.13) stable; urgency=low
+
+  * New build with Hey Jarvis (v3)
+  
+ -- root <jens@proknx.com>  Tue, 24 Dec 2024 08:00:00 +0100
+ 
+owwman (1.0.12) stable; urgency=low
+
+  * New build of Hey Snips
+  
+ -- root <jens@proknx.com>  Tue, 03 Dec 2024 11:00:00 +0100
+ 
+owwman (1.0.10) stable; urgency=low
+
+  * Added Hey Snips, Kitt & Jarvis
+  
+ -- root <jens@proknx.com>  Thu, 28 Nov 2024 11:00:00 +0100
+ 
+owwman (1.0.9) stable; urgency=low
+
+  * Added support for changing wake word from Maestro
+  
+ -- root <jens@proknx.com>  Wed, 27 Nov 2024 16:00:00 +0100
+ 
+owwman (1.0.7) stable; urgency=low
+
+  * Always Enable_speex_noise_suppression
+
+ -- root <jens@proknx.com>  Tue, 05 Nov 2024 11:00:00 +0100
+ 
+owwman (1.0.6) stable; urgency=low
+
+  * Only 'OK Aragon' model to avoid double wake up
+  * Added wake word lock feature
+
+ -- root <jens@proknx.com>  Tue, 29 Oct 2024 15:00:00 +0100
+ 
+owwman (1.0.5) stable; urgency=low
+
+  * Set high sensitivity to activation_samples: 1, activation_threshold: 0.2, deactivation_threshold: 0.1, vad_threshold: 0, enable_speex_noise_suppression: false
+
+ -- root <jens@proknx.com>  Mon, 28 Oct 2024 14:00:00 +0100
+ 
+owwman (1.0.4) stable; urgency=low
+
+  * Check if ip_list is not empty and current config 'siteid_port' has more items than ip_list
+  * Remove existing rooms with the same port as in the new config
+  
+ -- root <jens@proknx.com>  Wed, 28 Aug 2024 14:00:00 +0100
+ 
+owwman (1.0.3) stable; urgency=low
+
+  * Changed the do_POST '/oww' to  save the 'sensitivity' value in the owwman.config_data.
+  * Changed the do_GET  '/oww'  to return only the sensitivity value
+  * Load the actual sensitivity settings from oww.yaml file. If the oww.yaml doesn't exist use the oww-default.yaml
+  * Restart the owwman service on changed settings
+  
+ -- root <jens@proknx.com>  Wed, 10 jul 2024 17:00:00 +0100
+ 
+owwman (1.0.2) stable; urgency=low
+
+  * added kill_existing_processes, it cleans up any instances of detect.py that may have been left behind
+  * Load oww section from owwman.yaml if it exists, otherwise use default values
+  * remove the configuration for a Satellite if not using centrakl oww
+  * Added HTTP GET & POST /oww to maintain oww settings remotely (sensitivity and active wakewords)
+  
+ -- root <jens@proknx.com>  Tue, 09 jul 2024 09:00:00 +0100
+ 
+owwman (1.0.1) stable; urgency=low
+
+  * Added 'Hey Aragon' and rebuild 'OK Aragon' wakeword 30000 examples
+  
+ -- root <jens@proknx.com>  Wed, 04 jul 2024 17:00:00 +0100
+ 
+owwman (1.0.0) stable; urgency=low
+
+  * First version
+  
+ -- root <jens@proknx.com>  Wed, 02 jul 2024 16:00:00 +0100

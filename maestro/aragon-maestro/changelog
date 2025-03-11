@@ -1,3 +1,16 @@
+aragon-maestro (2.2.1) stable; urgency=low
+
+  * Added MIT lic for Phi-4
+  * Modified power off warning text
+
+ -- root <jens@proknx.com>  Tue, 11 Mar 2025 17:00:00 +0100
+
+aragon-maestro (2.2.0) stable; urgency=low
+
+  * Added Talk to Home
+
+ -- root <jens@proknx.com>  Tue, 06 Mar 2025 17:00:00 +0100
+
 aragon-maestro (2.1.9) stable; urgency=low
 
   * Rewrite the method getTailScaleStatus to use more reliable status.BackendState in status --json response
