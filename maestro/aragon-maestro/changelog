@@ -1,3 +1,21 @@
+aragon-maestro (2.2.4) stable; urgency=low
+
+  * Bypass the "Start Screen" in Netdata and directly access the dashboard
+
+ -- root <jens@proknx.com>  Wed, 19 Mar 2025 11:00:00 +0100
+
+aragon-maestro (2.2.3) stable; urgency=low
+
+  * Changed nightly reboot (crontab) to use kill_and_reboot.sh
+
+ -- root <jens@proknx.com>  Tue, 18 Mar 2025 13:00:00 +0100
+
+aragon-maestro (2.2.2) stable; urgency=low
+
+  * Slow (3min) poweroff and reboot: kill stubborn owwman detect processes 
+
+ -- root <jens@proknx.com>  Mon, 17 Mar 2025 14:00:00 +0100
+
 aragon-maestro (2.2.1) stable; urgency=low
 
   * Added MIT lic for Phi-4
