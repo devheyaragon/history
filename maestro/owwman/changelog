@@ -1,3 +1,9 @@
+owwman (1.2.10) stable; urgency=low
+
+  * Handle zombie detect processes
+
+ -- root <jens@proknx.com>  Fri, 21 Mar 2024 14:00:00 +0100
+
 owwman (1.2.8) stable; urgency=low
 
   * OWW high sensitivity: lowered thresholds = > increased sensitivity

@@ -1,3 +1,21 @@
+aragon-maestro (2.2.9) stable; urgency=low
+
+  * Internationalize all zram strings, added zram statistics
+
+ -- root <jens@proknx.com>  Mon, 24 Mar 2025 08:00:00 +0100
+
+aragon-maestro (2.2.8) stable; urgency=low
+
+  * Added EXPERIMENTAL support for zram. Enable/disable from About page
+
+ -- root <jens@proknx.com>  Sat, 22 Mar 2025 16:00:00 +0100
+
+aragon-maestro (2.2.5) stable; urgency=low
+
+  * Tailscale DNS monitor: only check for 100.100.100.100.
+
+ -- root <jens@proknx.com>  Thu, 20 Mar 2025 11:00:00 +0100
+
 aragon-maestro (2.2.4) stable; urgency=low
 
   * Bypass the "Start Screen" in Netdata and directly access the dashboard
