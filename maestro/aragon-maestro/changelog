@@ -1,3 +1,17 @@
+aragon-maestro (2.2.11) stable; urgency=low
+
+  * Added Spotify command info to Use section.
+  * Bootstrap 4.6
+  * Fixed scrolling issue on mobile
+
+ -- root <jens@proknx.com>  Sun, 08 Jun 2025 09:00:00 +0100
+
+aragon-maestro (2.2.10) stable; urgency=low
+
+  * Internationalize Wakeword and SED version string
+
+ -- root <jens@proknx.com>  Tue, 25 Mar 2025 15:00:00 +0100
+
 aragon-maestro (2.2.9) stable; urgency=low
 
   * Internationalize all zram strings, added zram statistics
