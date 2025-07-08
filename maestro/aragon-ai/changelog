@@ -1,9 +1,118 @@
+aragon-ai (1.2.19) stable; urgency=low
+
+  * Download media/spotify cache files
+
+ -- root <jens@proknx.com>  Wed, 25 Jun 2025 15:00:00 +0100
+ 
+aragon-ai (1.2.17) stable; urgency=low
+
+  * Home Automation rules:
+  *  - trim of trailing punctuation and whitespace.
+  *  - Remove "repeat forever" and similar
+  *  - Pre-check for unsupported features to avoid LLM call
+  *  - Generalizes repetition detection
+  *  - Added detect_unsupported_features UNSUPPORTED_RELATIVE_TIME and UNSUPPORTED_REPEAT_LIMIT
+
+ -- root <jens@proknx.com>  Tue, 24 Jun 2025 15:00:00 +0100
+ 
+aragon-ai (1.2.14) stable; urgency=low
+
+  * Download HA rules cache files
+  * Restart thermal-manager from depends
+  
+ -- root <jens@proknx.com>  Sat, 21 Jun 2025 15:00:00 +0100
+ 
+aragon-ai (1.2.11) stable; urgency=low
+
+  * Added background dependency installer
+
+ -- root <jens@proknx.com>  Sat, 21 Jun 2025 15:00:00 +0100
+ 
+aragon-ai (1.2.3) stable; urgency=low
+
+  * missing psutil in requirement
+
+ -- root <jens@proknx.com>  Sat, 21 Jun 2025 09:00:00 +0100
+ 
+aragon-ai (1.2.2) stable; urgency=low
+
+  * Revert depencies in control file: time, linux-cpupower, sqlite3, mosquitto, mosquitto-clients
+
+ -- root <jens@proknx.com>  Sat, 21 Jun 2025 08:00:00 +0100
+ 
+aragon-ai (1.2.1) stable; urgency=low
+
+  * Home Automation rules added
+
+ -- root <jens@proknx.com>  Fri, 20 Jun 2025 17:00:00 +0100
+ 
+aragon-ai (1.1.14) stable; urgency=low
+
+  * Spotify: Fixes Sonos timeouts for large playlists by conditionally clearing the queue before adding. This method is transactional, restoring state on failure, and robustly handles different API and search responses.
+
+ -- root <jens@proknx.com>  Tue, 10 Jun 2025 16:00:00 +0100
+ 
+aragon-ai (1.1.13) stable; urgency=low
+
+  * Spotify_keywords_to_remove en, de and fr
+
+ -- root <jens@proknx.com>  Wed, 29 May 2025 08:00:00 +0100
+ 
+aragon-ai (1.1.12) stable; urgency=low
+
+  * Spotify: bug fix, lang parameter to LLM
+  *          support en, de and fr
+  *          delete cache file and retry logic
+
+ -- root <jens@proknx.com>  Wed, 29 May 2025 08:00:00 +0100
+
+aragon-ai (1.1.11) stable; urgency=low
+
+  * Spotify: retry failed sonos playback
+  * Return info on Success (track/album etc)
+  
+ -- root <jens@proknx.com>  Wed, 28 May 2025 11:00:00 +0100
+
+aragon-ai (1.1.10) stable; urgency=low
+
+  * LLM Integration: The LLM prompt was replaced to support a "playlist" media_type and to extract a "room" parameter from user queries.
+
+  * Playlist Functionality: Full support for "playlist" media type was added, including schema updates, output cleaning, and a new Spotify playlist search function with fuzzy matching and error handling.
+
+  * Query Preprocessing: User queries are now cleaned by removing "spotify" and "on spotify" (case-insensitive) before LLM processing.
+
+  * Room Handling: Room detection was enhanced. The system now prioritizes a "room" from the LLM response. If not present, it uses the siteId from the request. Room validation uses fuzzy matching against actual Sonos rooms for robustness.
+
+  * Artist Search: The Spotify artist search was significantly improved by fetching more candidates, trying exact matches first, then using more reliable fuzzy matching, and increasing the matching threshold.
+
+ -- root <jens@proknx.com>  Wed, 27 May 2025 12:00:00 +0100
+
+aragon-ai (1.1.8) stable; urgency=low
+
+  * Spotify Improved error handling and harmonizing API responses.
+  
+ -- root <jens@proknx.com>  Wed, 21 May 2025 17:00:00 +0100
+
+aragon-ai (1.1.7) stable; urgency=low
+
+  * Added media-streaming Spotify
+  
+ -- root <jens@proknx.com>  Tue, 20 May 2025 14:00:00 +0100
+
+aragon-ai (1.1.2) stable; urgency=low
+
+  * whisper-service: rebuild whisper-cli, optimize CPU Affinity (taskset 4 big) and threads 4, set max-len 0 (+faster +accurate) 
+  * set-cpu-performance.service: set 4 big cores to performance
+  * llama-service: added grammars
+  
+ -- root <jens@proknx.com>  Mon, 19 May 2025 10:00:00 +0100
+
 aragon-ai (1.0.20) stable; urgency=low
 
   * llama-service: added cmdline option 'xparameter' to support " --single-turn" for Phi-4
   * llama-service: download Phi-4 model, delete mistral if succesful Phi4
   
- -- root <jens@proknx.com>  Mon, 10 Mar 2024 12:00:00 +0100
+ -- root <jens@proknx.com>  Mon, 10 Mar 2025 12:00:00 +0100
 
 aragon-ai (1.0.16) stable; urgency=low
 

@@ -1,3 +1,22 @@
+* 2025-06-19
+ - Spotify to fail on empty request (after removing spotify, play etc)
+
+* 2025-06-18
+ - Fix in Theben parser to avoid foreach exception
+ - Theben GW: Added more logging
+
+* 2025-05-28
+ - Spotify on SONOS added success/fail info to watch and NR dbg
+
+* 2025-05-21
+ - Spotify on SONOS added spoken feedback
+
+* 2025-05-16
+ - Added Spotify on SONOS POC English
+ 
+* 2025-04-25
+ - Remove sensors.html from Netdata charts
+ 
 * 2025-03-12
  - Use LLM model microsoft_Phi-4-mini-instruct-Q4_K_S.gguf
  
