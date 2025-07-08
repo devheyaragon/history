@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 aragon-maestro (2.3.4) stable; urgency=low
 
   * Home automation rules - Improved Save rules handlig, multi-action rule Generate a Test Button for Each Command
@@ -26,8 +25,6 @@ aragon-maestro (2.3.0) stable; urgency=low
 
  -- root <jens@proknx.com>  Fri, 20 Jun 2025 16:00:00 +0100
 
-=======
->>>>>>> d24dec149c9447018be592e7bb2dc0512a6c079b
 aragon-maestro (2.2.11) stable; urgency=low
 
   * Added Spotify command info to Use section.
