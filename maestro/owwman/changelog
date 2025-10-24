@@ -1,3 +1,9 @@
+owwman (1.2.12) stable; urgency=low
+
+  * Changed nof activation samples (2 -> 1) and lowered activation_threshold: 0.2
+
+ -- root <jens@proknx.com>  Fri, 25 Apr 2024 15:00:00 +0100
+
 owwman (1.2.10) stable; urgency=low
 
   * Handle zombie detect processes

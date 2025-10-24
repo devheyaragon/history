@@ -1,3 +1,38 @@
+aragon-maestro (2.3.12) stable; urgency=low
+
+  * updated EisBär branding
+
+ -- root <jens@proknx.com>  Fri, 17 Oct 2025 10:00:00 +0100
+
+aragon-maestro (2.3.11) stable; urgency=low
+
+  * Configure gai.conf for IPv4 preference
+  * Configure APT to prefer IPv4 
+  * Configure APT for non-interactive upgrades (prevents config prompts)
+
+ -- root <jens@proknx.com>  Tue, 14 Oct 2025 17:00:00 +0100
+
+aragon-maestro (2.3.8) stable; urgency=low
+
+  * Fix Talk-to-Home command edit box can be edited
+  * Update APT sources to use archive.debian.org for EOL Bullseye repositories
+
+ -- root <jens@proknx.com>  Fri, 10 Oct 2025 15:00:00 +0100
+
+aragon-maestro (2.3.6) stable; urgency=low
+
+  * Added support for Eisbaer GW
+  * Install flow: Fixed confirmation dlg 
+
+ -- root <jens@proknx.com>  Wed, 08 Oct 2025 14:00:00 +0100
+
+aragon-maestro (2.3.5) stable; urgency=low
+
+  * Added 'new' badge for Home automation rules 
+  * Fixed scrolling to HA rules for mobiles
+
+ -- root <jens@proknx.com>  Wed, 25 Jun 2025 11:00:00 +0100
+
 aragon-maestro (2.3.4) stable; urgency=low
 
   * Home automation rules - Improved Save rules handlig, multi-action rule Generate a Test Button for Each Command

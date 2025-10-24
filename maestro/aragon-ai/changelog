@@ -1,3 +1,9 @@
+aragon-ai (1.2.20) stable; urgency=low
+
+  * Remove old llm models: not only mistral-7b-instruct-v0.2.Q4_K_M but also Llama-3.2-3B-Instruct-Q6_K upon succesful donwload of microsoft_Phi-4-mini-instruct-Q4_K_S 
+
+ -- root <jens@proknx.com>  Tue, 14 Oct 2025 15:00:00 +0100
+ 
 aragon-ai (1.2.19) stable; urgency=low
 
   * Download media/spotify cache files
