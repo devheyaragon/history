@@ -1,3 +1,15 @@
+aragon-ai (1.3.1) stable; urgency=low
+
+  * Added Aragon AI-Chat llama-server integration with LFM2.5-1.2B-Instruct model for local AI inference
+
+ -- root <jens@proknx.com>  Mon, 09 Feb 2026 09:00:00 +0100
+ 
+aragon-ai (1.2.21) stable; urgency=low
+
+  * Added  libnss-mdns to depends installer
+
+ -- root <jens@proknx.com>  Fri, 10 Nov 2025 14:00:00 +0100
+ 
 aragon-ai (1.2.20) stable; urgency=low
 
   * Remove old llm models: not only mistral-7b-instruct-v0.2.Q4_K_M but also Llama-3.2-3B-Instruct-Q6_K upon succesful donwload of microsoft_Phi-4-mini-instruct-Q4_K_S 

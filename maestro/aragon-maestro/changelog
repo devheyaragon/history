@@ -1,3 +1,61 @@
+aragon-maestro (2.4.1) stable; urgency=low
+
+   * (fix): Tailscale cold start blocking with daemon readiness check
+   * Responsive banner design with new image and fluid text scaling
+
+ -- root <jens@proknx.com>  Wed, 11 Feb 2026 14:00:00 +0100
+
+aragon-maestro (2.4.0) stable; urgency=low
+
+   * Navigation menu reorganization: 11→6 menus with unified Voice Control section, new features (Presence Monitoring, AI Chat), and Spotify commands support
+
+ -- root <jens@proknx.com>  Tue, 10 Feb 2026 12:00:00 +0100
+
+aragon-maestro (2.3.22) stable; urgency=low
+
+   * Configure Netdata to use 768MB disk space (down from 2.5GB) with automatic tier limits and 5-second update interval
+
+ -- root <jens@proknx.com>  Wed, 28 Jan 2026 15:00:00 +0100
+
+aragon-maestro (2.3.19) stable; urgency=low
+
+  * Removed some incorrect usage of are-you-sure strings in dialogs
+  * Configure Mosquitto autosave_interval for ESPHome devices
+
+ -- root <jens@proknx.com>  Tue, 15 Jan 2026 15:00:00 +0100
+
+aragon-maestro (2.3.18) stable; urgency=low
+
+  * Use Tailscale's Built-in SNAT (--snat-subnet-routes=true)
+
+ -- root <jens@proknx.com>  Tue, 30 Dec 2025 09:00:00 +0100
+
+aragon-maestro (2.3.17) stable; urgency=low
+
+  * fix avahi-daemon service to wait until the network is fully online before it starts. This prevents the race condition on boot.
+
+ -- root <jens@proknx.com>  Wed, 19 Nov 2025 16:00:00 +0100
+
+aragon-maestro (2.3.15) stable; urgency=low
+
+  * Quick fix: Satellite UDP broadcast address can be set via end-point: GET /satellites/broadcastaddress/set?q=255.255.255.255
+  * Get current value GET /satellites/broadcastaddress
+
+ -- root <jens@proknx.com>  Tue, 18 Nov 2025 17:00:00 +0100
+
+aragon-maestro (2.3.14) stable; urgency=low
+
+  * Disable LightDM autologin
+
+ -- root <jens@proknx.com>  Tue, 18 Nov 2025 12:00:00 +0100
+
+aragon-maestro (2.3.13) stable; urgency=low
+
+  * Enable mDNS Configuration for MQTT (mmWave presence sensors)
+  * Added aragon-companion to upgrade script
+
+ -- root <jens@proknx.com>  Thu, 10 Nov 2025 14:00:00 +0100
+
 aragon-maestro (2.3.12) stable; urgency=low
 
   * updated EisBär branding
