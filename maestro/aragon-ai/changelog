@@ -1,3 +1,15 @@
+aragon-ai (1.3.3) stable; urgency=low
+
+  * Fixed LLM markdown stripping (_* → space) in clean_llm_output(), added per-language stop_words (EN/FR/DE) for album artist inference, replaced _ with space in lang-safe regex sanitisation, switched album title scoring to fuzz.partial_ratio, added multilingual soundtrack suffix fallback stripping, and introduced Spotify search position bonus to break score ties without requiring a privileged batch API call.
+
+ -- root <jens@proknx.com>  Thu, 05 Mar 2026 16:00:00 +0100
+ 
+aragon-ai (1.3.2) stable; urgency=low
+
+  * Migrated Spotify artist playback from the removed top-tracks endpoint to a search-based approach, improved album matching to prefer original artists, and updated credentials to a Premium developer account ahead of the March 9, 2026 API restrictions.
+
+ -- root <jens@proknx.com>  Thu, 05 Mar 2026 12:00:00 +0100
+ 
 aragon-ai (1.3.1) stable; urgency=low
 
   * Added Aragon AI-Chat llama-server integration with LFM2.5-1.2B-Instruct model for local AI inference

@@ -1,3 +1,81 @@
+aragon-companion (1.6.9) stable; urgency=low
+
+  * Sensors: Added protocol to device_info (wifi|zigbee|knx)
+  * Added Monitor Protocol-aware Zigbee configuration panel with adaptive status block (`healthy` | `degraded` | `not_installed`), gotty-based Z2M installer endpoint with `--force` reinstall support, collapsible FP300 pairing guide, and colour-coded protocol badges (WiFi / Zigbee / KNX) in both sensor tables.
+  * Fixed Monitor Broken "Open Zigbee2MQTT Interface" button (`getZigbee2MQTTUrl()` fallback to type inference), misleading "no sensors" empty state, `NameError` for `sensorinfocache` in `get_zigbee_status`, and Discovered Sensors section now collapses to zero height when empty.
+  * The dashboard now remembers the last active tab (Prediction Analysis / Assisted Living / System Events / Training History / Configuration) and the last active protocol sub-tab (WiFi / Zigbee / KNX) between page reloads.
+
+ -- root <jens@proknx.com>  Wed, 04 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.8) stable; urgency=low
+
+  * Fixed Zigbee2MQTT installation: resolved panId commissioning timeout on reinstall, YAML config corruption (indentation, duplicate version key, frontend port overwrite), network key extraction, and replaced fixed-sleep startup check with adaptive polling.
+  
+ -- root <jens@proknx.com>  Tue, 03 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.7) stable; urgency=low
+
+  * FP300 adapter now reliably publishes sensor info on every cold start without requiring physical interaction, and reports the Zigbee2MQTT dashboard URL as its web UI.
+  * FP300 adapter now included in package
+  
+ -- root <jens@proknx.com>  Tue, 03 Mar 2026 14:00:00 +0100
+ 
+aragon-companion (1.6.6) stable; urgency=low
+
+  * Aqara FP300 adapter identifies devices by Zigbee model via bridge/devices, keeping raw_identifier stable regardless of Z2M friendly_name changes.
+  * FP300 adapter now emits separate presence and environmental event types, enabling clients to subscribe by business intent consistently across all sensor types.
+  * Training now uses the full 7-day dataset instead of only the last 24 hours, significantly improving model quality
+  * Training no longer triggers a hardware watchdog reset
+  * Holiday detection and monitored-room persistence now work correctly from first boot
+  * Reduced log noise from unrelated cross-system sensors
+  
+ -- root <jens@proknx.com>  Tue, 03 Mar 2026 12:00:00 +0100
+ 
+aragon-companion (1.6.5) stable; urgency=low
+
+  * Added Aqara FP300 Zigbee presence sensor adapter with sensor-info publishing, startup state polling, and 60-second keepalive watchdog.
+  * FP300 adapter now identifies devices by Zigbee IEEE address instead of Z2M friendly_name, eliminating dependency on device naming conventions.
+  
+ -- root <jens@proknx.com>  Thu, 26 Feb 2026 16:00:00 +0100
+ 
+aragon-companion (1.6.4) stable; urgency=low
+
+  * Room removal hardening — Removing a sensor room now correctly updates all configuration contexts and automatically purges stale data from monitoring.db on the next service restart, preventing orphaned room data from accumulating across sites.
+
+ -- root <jens@proknx.com>  Thu, 26 Feb 2026 09:00:00 +0100
+ 
+aragon-companion (1.6.3) stable; urgency=low
+
+  * Monitor WebUI: removed redundant "Show +60 min Forecast" checkbox; chart legend visibility settings now persist in browser storage across room switches and page reloads.
+
+ -- root <jens@proknx.com>  Thu, 19 Feb 2026 11:00:00 +0100
+ 
+aragon-companion (1.6.2) stable; urgency=low
+
+  * fix: "Sensor Overview" section renamed to "Room Overview" in all languages
+
+ -- root <jens@proknx.com>  Wed, 18 Feb 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.1) stable; urgency=low
+
+  * fix: absence anomaly alerts now correctly received, stored, and displayed in the web UI
+
+ -- root <jens@proknx.com>  Wed, 18 Feb 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.0) stable; urgency=low
+
+  * Added escalation service with seven.io, first version
+  * Todo: add webUI Monitor 
+
+ -- root <jens@proknx.com>  Tue, 17 Feb 2026 11:00:00 +0100
+ 
+aragon-companion (1.5.4) stable; urgency=low
+
+  * Adaptive holiday detection cold-start deadlock - training now proceeds freely while building initial baselines (first 3 days with 50%+ density required)
+  * Training temporarily stops llama-server to free 1.3GB memory and reduced prediction logging by 83% (INFO→DEBUG for non-state-changes)
+
+ -- root <jens@proknx.com>  Mon, 16 Feb 2026 11:00:00 +0100
+ 
 aragon-companion (1.5.3) stable; urgency=low
 
   * Monitor backend: move migration after table creation, remove exc_info from print()
