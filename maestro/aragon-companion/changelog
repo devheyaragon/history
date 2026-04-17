@@ -1,29 +1,227 @@
+aragon-companion (1.6.34) stable; urgency=low
+
+  * Fixed repeated startup log spam caused by presence service returning a list instead of a dict for rooms when unconfigured.
+  
+ -- root <jens@proknx.com>  Thu, 09 Apr 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.33) stable; urgency=low
+
+  * Added orphaned checkpoint directory cleanup to startup self-healing: removes stale _temp_checkpoints on service 
+    start unless training is actively running, with filesystem error handling so a failed removal cannot abort startup.
+  
+ -- root <jens@proknx.com>  Thu, 02 Apr 2026 18:00:00 +0100
+ 
+aragon-companion (1.6.32) stable; urgency=low
+
+  * Fixed should_skip_training rejecting min_baseline_density keyword argument passed by PhaseAwareTrainingValidator,
+    causing adaptive holiday detection to fall back to static thresholds on every training run.
+  
+ -- root <jens@proknx.com>  Thu, 26 Mar 2026 09:00:00 +0100
+ 
+aragon-companion (1.6.31) stable; urgency=low
+
+  * presence_service.py: Fix _persist_holiday_baselines() reading wrong event key (roomname → room_name) 
+    and passing spurious arg to get_data(); 
+  * fix /debug/events/ endpoint returning zero events due to missing room name denormalization.
+  
+ -- root <jens@proknx.com>  Tue, 24 Mar 2026 10:00:00 +0100
+ 
+aragon-companion (1.6.30) stable; urgency=low
+
+  * adaptive_anomaly_detector: Add maturity latch to ContinuousAnomalyDetector to prevent false COLD-START 
+    loops caused by transient buffer dips after periodic cleanup or worker startup.
+
+  * presence_service: Replace fragile post-deploy baseline update guard with _persist_holiday_baselines(), 
+    ensuring day-of-week baselines are reliably persisted to the holiday detector after every validated 
+    Phase 2/3 training run.
+  
+ -- root <jens@proknx.com>  Mon, 23 Mar 2026 16:00:00 +0100
+ 
+aragon-companion (1.6.29) stable; urgency=low
+
+  * Fix: Serialize all torch inference calls via a global semaphore to prevent concurrent ML thread storms 
+    causing kernel watchdog reboot (presence_service.py, adaptive_anomaly_detector.py, assisted_living_monitor.py)
+  * Fix: Limit PyTorch internal thread pool to 2 threads (OMP/MKL/OpenBLAS env vars + torch.set_num_threads) 
+    to prevent CPU saturation on RK3588S
+  
+ -- root <jens@proknx.com>  Fri, 20 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.28) stable; urgency=low
+
+  * Added knx_sensors.json to factory reset restore, backup export, and backup import; fixed factory reset to 
+    stop monitor's own DB connections safely before deletion.
+  
+ -- root <jens@proknx.com>  Thu, 19 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.27) stable; urgency=low
+
+  * Fix again _manage_llama_service set start timeout=60s; plain systemctl start is synchronous, no --wait needed
+  
+ -- root <jens@proknx.com>  Thu, 19 Mar 2026 10:00:00 +0100
+ 
+
+aragon-companion (1.6.26) stable; urgency=low
+
+  * Fix health monitoring alerts: add per-condition cooldown (5 min) and consecutive-readings gate (3 readings) to eliminate alert storm; lower breathing/heart-rate thresholds to reduce false positives on resting adults; clear condition counters on bed-empty events.
+  
+ -- root <jens@proknx.com>  Wed, 18 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.25) stable; urgency=low
+
+  * Fix NOVA-C adapter: correctly clear vitals/sleep state when bed is empty; prevent fall severity downgrade 
+    with multiple occupants; guard trajectory loop against empty-room NameError; fix sensor_data presence 
+    fields missing from published messages
+  
+ -- root <jens@proknx.com>  Wed, 18 Mar 2026 16:00:00 +0100
+ 
+aragon-companion (1.6.24) stable; urgency=low
+
+  * Fix _manage_llama_service stopping llama-server before training to prevent OOM kill — --wait flag 
+    removed from stop command (invalid for stop, caused silent failure leaving llama-server in memory)
+  
+ -- root <jens@proknx.com>  Wed, 18 Mar 2026 11:00:00 +0100
+ 
+aragon-companion (1.6.23) stable; urgency=low
+
+  * Fixed KNX binary presence sensors not reporting absence: replaced BinarySensor
+    device abstraction with raw telegram queue callback to correctly receive
+    GroupValueWrite telegrams from physical KNX sensors
+  
+ -- root <jens@proknx.com>  Tue, 17 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.22) stable; urgency=low
+
+  * [AAL] Add anomaly/emergency detection toggles with runtime API proxy, language-aware user
+    guide link, and enable AAL info box; temporarily disable health/vitals alert logic pending fix/review
+  
+ -- root <jens@proknx.com>  Tue, 17 Mar 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.21) stable; urgency=low
+
+  * Added runtime enable/disable for anomaly detection and the emergency alert path, both persisted to config.json 
+    and controllable via API without a service restart. Fixed a bug where absence-state heartbeats were resetting 
+    the silence counter, preventing standard anomaly alerts from ever firing.
+  
+ -- root <jens@proknx.com>  Tue, 17 Mar 2026 09:00:00 +0100
+ 
+aragon-companion (1.6.20) stable; urgency=low
+
+  * Fixed room confidence always reporting fallback=True for multi-word room names (e.g. "Living Room") 
+    in FORECAST and STATUS API endpoints by passing config to calculate_room_confidence() and
+    is_sensor_alive() so room name denormalization is applied correctly before database queries.
+  * Fixed an issue with restart of llama-service after completed training
+  
+ -- root <jens@proknx.com>  Mon, 16 Mar 2026 17:00:00 +0100
+ 
+aragon-companion (1.6.19) stable; urgency=low
+
+  * Assisted Living — Critical bug fix: The anomaly detector silently discarded all absence alerts 
+    whenever a room had been quiet for more than 2 hours, mistaking extended absence — the very 
+    condition it exists to detect — for a sensor being offline.
+  * Assisted Living — Bug fix: ML forecast probability drops below threshold during holidays as the
+    model adapts to recent quiet data; threshold and alert-after delay are now runtime-configurable
+    to compensate.
+  * Assisted Living: Added collapsible Detection Settings card (threshold & alert-after, inline
+    defaults, three-layer validation, i18n EN/FR/DE); fixed undefined min field name mismatch, 
+    404 on API calls, and fragile button selector.
+  
+ -- root <jens@proknx.com>  Fri, 13 Mar 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.18) stable; urgency=low
+
+  * Added KNX/IP gateway configuration UI with group address registry, status monitoring, and commissioning write-test panel.
+  
+ -- root <jens@proknx.com>  Thu, 12 Mar 2026 12:00:00 +0100
+ 
+aragon-companion (1.6.17) stable; urgency=low
+
+  * USS: Fixed ghost sensors persisting in Discovered Sensors after MR60FDA2 devices go offline, caused by stale MQTT retained messages refreshing last_seen on every service restart.
+  
+ -- root <jens@proknx.com>  Thu, 11 Mar 2026 18:00:00 +0100
+ 
+aragon-companion (1.6.16) stable; urgency=low
+
+  * Monitor / Dashboard fixes: training history now shows an empty state message instead of a blank table; sensor discovery panel includes a note on progressive appearance; export backup no longer lists model backups dirs.
+  
+ -- root <jens@proknx.com>  Wed, 11 Mar 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.15) stable; urgency=low
+
+  * Monitor / Zigbee2MQTT: Graceful USB stick removal — service now silently pauses when the stick is absent (no log flooding), recovers automatically on reconnect, and surfaces actionable status banners (paused / crash-loop / disabled) with Restart and Remove controls in the UI (EN/DE/FR)
+  
+ -- root <jens@proknx.com>  Wed, 11 Mar 2026 12:00:00 +0100
+ 
+aragon-companion (1.6.14) stable; urgency=low
+
+  * monitor: add Maintenance tab with restart, export, import and factory reset.
+    New API endpoints: /api/maintenance/{restart-services,export,import,
+    factory-reset}. WAL-safe sqlite3.backup() for export. Full EN/DE/FR i18n.
+    Adds python-multipart==0.0.12 dependency. NOTE: UNTESTED.
+  
+ -- root <jens@proknx.com>  Tue, 10 Mar 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.13) stable; urgency=low
+
+  * fp300: Fix presence aggregated state to respect presence_detection_options 
+    (mmwave/pir/both) instead of always ORing both sensors.
+  * fix: sync assisted_living.monitored_rooms with configured sensors on every sensor add/delete
+  
+ -- root <jens@proknx.com>  Mon, 09 Mar 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.11) stable; urgency=low
+
+  * Added KNX/IP adapter: ingest presence and sensor telegrams from the KNX bus
+    and forward MQTT write commands to KNX group addresses (Phase 1 & 2)
+  * Introduced service.env runtime configuration file, decoupling MQTT broker,
+    KNX gateway, and service binding settings from the systemd unit
+  * fix: restore database.db on reinstall to preserve paired Zigbee devices
+  
+ -- root <jens@proknx.com>  Sun, 08 Mar 2026 15:00:00 +0100
+ 
+aragon-companion (1.6.10) stable; urgency=low
+
+  * Overhauled the Zigbee configuration tab: fixed get_zigbee_status() reliability on 
+    embedded systems (loopback probe, LAN IP fallback, cache key typo, port always resolved), 
+    added auto-refresh after install and language-matched Z2M UI / doc links, and cleaned up 
+    the UI (button alignment, collapsed pre-requisite notes, consistent styling, i18n keys for all Zigbee strings).
+  
+ -- root <jens@proknx.com>  Sat, 07 Mar 2026 10:00:00 +0100
+ 
 aragon-companion (1.6.9) stable; urgency=low
 
   * Sensors: Added protocol to device_info (wifi|zigbee|knx)
-  * Added Monitor Protocol-aware Zigbee configuration panel with adaptive status block (`healthy` | `degraded` | `not_installed`), gotty-based Z2M installer endpoint with `--force` reinstall support, collapsible FP300 pairing guide, and colour-coded protocol badges (WiFi / Zigbee / KNX) in both sensor tables.
-  * Fixed Monitor Broken "Open Zigbee2MQTT Interface" button (`getZigbee2MQTTUrl()` fallback to type inference), misleading "no sensors" empty state, `NameError` for `sensorinfocache` in `get_zigbee_status`, and Discovered Sensors section now collapses to zero height when empty.
-  * The dashboard now remembers the last active tab (Prediction Analysis / Assisted Living / System Events / Training History / Configuration) and the last active protocol sub-tab (WiFi / Zigbee / KNX) between page reloads.
+  * Added Monitor Protocol-aware Zigbee configuration panel with adaptive status block (`healthy` | `degraded` | `not_installed`), 
+    gotty-based Z2M installer endpoint with `--force` reinstall support, collapsible FP300 pairing guide, and colour-coded 
+    protocol badges (WiFi / Zigbee / KNX) in both sensor tables.
+  * Fixed Monitor Broken "Open Zigbee2MQTT Interface" button (`getZigbee2MQTTUrl()` fallback to type inference),
+    misleading "no sensors" empty state, `NameError` for `sensorinfocache` in `get_zigbee_status`, and Discovered Sensors 
+    section now collapses to zero height when empty.
+  * The dashboard now remembers the last active tab (Prediction Analysis / Assisted Living / System Events / Training History / Configuration) 
+    and the last active protocol sub-tab (WiFi / Zigbee / KNX) between page reloads.
 
  -- root <jens@proknx.com>  Wed, 04 Mar 2026 17:00:00 +0100
  
 aragon-companion (1.6.8) stable; urgency=low
 
-  * Fixed Zigbee2MQTT installation: resolved panId commissioning timeout on reinstall, YAML config corruption (indentation, duplicate version key, frontend port overwrite), network key extraction, and replaced fixed-sleep startup check with adaptive polling.
+  * Fixed Zigbee2MQTT installation: resolved panId commissioning timeout on reinstall, YAML config corruption 
+    (indentation, duplicate version key, frontend port overwrite), network key extraction, and replaced fixed-sleep startup check with adaptive polling.
   
  -- root <jens@proknx.com>  Tue, 03 Mar 2026 17:00:00 +0100
  
 aragon-companion (1.6.7) stable; urgency=low
 
-  * FP300 adapter now reliably publishes sensor info on every cold start without requiring physical interaction, and reports the Zigbee2MQTT dashboard URL as its web UI.
+  * FP300 adapter now reliably publishes sensor info on every cold start without requiring physical interaction, 
+    and reports the Zigbee2MQTT dashboard URL as its web UI.
   * FP300 adapter now included in package
   
  -- root <jens@proknx.com>  Tue, 03 Mar 2026 14:00:00 +0100
  
 aragon-companion (1.6.6) stable; urgency=low
 
-  * Aqara FP300 adapter identifies devices by Zigbee model via bridge/devices, keeping raw_identifier stable regardless of Z2M friendly_name changes.
-  * FP300 adapter now emits separate presence and environmental event types, enabling clients to subscribe by business intent consistently across all sensor types.
+  * Aqara FP300 adapter identifies devices by Zigbee model via bridge/devices, keeping raw_identifier stable 
+    regardless of Z2M friendly_name changes.
+  * FP300 adapter now emits separate presence and environmental event types, enabling clients to subscribe by 
+    business intent consistently across all sensor types.
   * Training now uses the full 7-day dataset instead of only the last 24 hours, significantly improving model quality
   * Training no longer triggers a hardware watchdog reset
   * Holiday detection and monitored-room persistence now work correctly from first boot
@@ -40,13 +238,15 @@ aragon-companion (1.6.5) stable; urgency=low
  
 aragon-companion (1.6.4) stable; urgency=low
 
-  * Room removal hardening — Removing a sensor room now correctly updates all configuration contexts and automatically purges stale data from monitoring.db on the next service restart, preventing orphaned room data from accumulating across sites.
+  * Room removal hardening — Removing a sensor room now correctly updates all configuration contexts and automatically purges 
+    stale data from monitoring.db on the next service restart, preventing orphaned room data from accumulating across sites.
 
  -- root <jens@proknx.com>  Thu, 26 Feb 2026 09:00:00 +0100
  
 aragon-companion (1.6.3) stable; urgency=low
 
-  * Monitor WebUI: removed redundant "Show +60 min Forecast" checkbox; chart legend visibility settings now persist in browser storage across room switches and page reloads.
+  * Monitor WebUI: removed redundant "Show +60 min Forecast" checkbox; chart legend visibility settings now persist in 
+    browser storage across room switches and page reloads.
 
  -- root <jens@proknx.com>  Thu, 19 Feb 2026 11:00:00 +0100
  
@@ -71,7 +271,8 @@ aragon-companion (1.6.0) stable; urgency=low
  
 aragon-companion (1.5.4) stable; urgency=low
 
-  * Adaptive holiday detection cold-start deadlock - training now proceeds freely while building initial baselines (first 3 days with 50%+ density required)
+  * Adaptive holiday detection cold-start deadlock - training now proceeds freely while building initial baselines 
+    (first 3 days with 50%+ density required)
   * Training temporarily stops llama-server to free 1.3GB memory and reduced prediction logging by 83% (INFO→DEBUG for non-state-changes)
 
  -- root <jens@proknx.com>  Mon, 16 Feb 2026 11:00:00 +0100
@@ -87,7 +288,8 @@ aragon-companion (1.5.3) stable; urgency=low
 aragon-companion (1.5.2) stable; urgency=low
 
   * Add configuration tab UI for sensor setup to Monitor webUI
-  * Introduce a new Configuration tab with WiFi provisioning (ESPHome and Nova-c), discovered/configured sensor lists, and a sensor configuration modal including satellite selection and rename data-loss warnings.
+  * Introduce a new Configuration tab with WiFi provisioning (ESPHome and Nova-c), discovered/configured sensor lists, 
+  and a sensor configuration modal including satellite selection and rename data-loss warnings.
 
  -- root <jens@proknx.com>  Fri, 06 Feb 2026 16:00:00 +0100
  
@@ -109,21 +311,25 @@ aragon-companion (1.5.0) stable; urgency=low
  
 aragon-companion (1.4.6) stable; urgency=low
 
-  * Added per-sensor configurable presence debouncing to suppress flapping detection from poorly-mounted NovaC sensors (disabled by default, configure via sensor_mappings.json)
+  * Added per-sensor configurable presence debouncing to suppress flapping detection from poorly-mounted NovaC sensors (disabled by default, 
+    configure via sensor_mappings.json)
 
  -- root <jens@proknx.com>  Thu, 28 Jan 2026 15:00:00 +0100
  
 aragon-companion (1.4.5) stable; urgency=low
 
   * Publish critical disk space failures to System Events dashboard and Log to Training History once per hour
-  * Config Management: Eliminated race conditions in config.json writes by centralizing all file access through ConfigManager with proper file locking, preventing data corruption from concurrent worker access
+  * Config Management: Eliminated race conditions in config.json writes by centralizing all file access through 
+    ConfigManager with proper file locking, preventing data corruption from concurrent worker access
 
  -- root <jens@proknx.com>  Wed, 28 Jan 2026 10:00:00 +0100
  
 aragon-companion (1.4.4) stable; urgency=low
 
-  * Monitor - System Events: Added expandable details view, event type icons, color-coded status badges, and client-side filtering for improved monitoring visibility
-  * Monitor - Enhanced Assisted Living dashboard with expandable alert details, event type filtering, and professional icons; added MQTT publishing for holiday detection events
+  * Monitor - System Events: Added expandable details view, event type icons, color-coded status badges, and client-side filtering for 
+    improved monitoring visibility
+  * Monitor - Enhanced Assisted Living dashboard with expandable alert details, event type filtering, and professional icons; 
+    added MQTT publishing for holiday detection events
 
  -- root <jens@proknx.com>  Sat, 24 Jan 2026 10:00:00 +0100
  
@@ -136,7 +342,8 @@ aragon-companion (1.4.3) stable; urgency=low
  
 aragon-companion (1.4.2) stable; urgency=low
 
-  * Removed unused Home Status Feature: home status management, intrusion detection, and alarm integration (~421 lines). Core ML predictions, forecasting, and assisted living features remain fully operational.
+  * Removed unused Home Status Feature: home status management, intrusion detection, and alarm integration (~421 lines). Core ML predictions, 
+    forecasting, and assisted living features remain fully operational.
 
  -- root <jens@proknx.com>  Wed, 21 Jan 2026 17:00:00 +0100
  
@@ -148,7 +355,8 @@ aragon-companion (1.4.1) stable; urgency=low
  
 aragon-companion (1.4.0) stable; urgency=low
 
-  * Fixed: Chart timeline no longer incorrectly extends presence/absence data to current time when device has been offline, now shows clear red "No Data" gap instead
+  * Fixed: Chart timeline no longer incorrectly extends presence/absence data to current time when device has been offline, 
+    now shows clear red "No Data" gap instead
   * Added MR60FDA2 sensor device info publishing to aragon/sensor/{sensor_id}/info MQTT topics, including IP address and WebUI URL
   * Monitor dashboard now displays clickable links to sensor WebUI interfaces, allowing direct access to ESPHome configuration pages from room cards
   * Fixed device offline detection - now updates heartbeat from forecast and environmental messages instead of only presence status changes
@@ -157,7 +365,8 @@ aragon-companion (1.4.0) stable; urgency=low
  
 aragon-companion (1.3.7) stable; urgency=low
 
-  * Add intelligent room filtering for holiday detection - excludes sporadic rooms and offline sensors from baseline calculations, improving vacation detection accuracy
+  * Add intelligent room filtering for holiday detection - excludes sporadic rooms and offline sensors from baseline calculations, 
+    improving vacation detection accuracy
 
  -- root <jens@proknx.com>  Sun, 18 Jan 2026 15:00:00 +0100
  
@@ -170,7 +379,8 @@ aragon-companion (1.3.6) stable; urgency=low
  
 aragon-companion (1.3.5) stable; urgency=low
 
-  * Monitor now detects offline devices and displays warning banner when no data received for 30+ minutes, preventing false presence/absence reporting from stale sensor data
+  * Monitor now detects offline devices and displays warning banner when no data received for 30+ minutes, 
+    preventing false presence/absence reporting from stale sensor data
 
  -- root <jens@proknx.com>  Fri, 16 Jan 2026 15:00:00 +0100
  
@@ -188,7 +398,8 @@ aragon-companion (1.3.3) stable; urgency=low
 
 aragon-companion (1.3.2) stable; urgency=low
 
-  * Fix: Forecast endpoint now correctly resolves room names with spaces/Unicode characters (living_room → Living room) via denormalization layer. Adds startup collision detection and improves database query consistency.
+  * Fix: Forecast endpoint now correctly resolves room names with spaces/Unicode characters (living_room → Living room) 
+    via denormalization layer. Adds startup collision detection and improves database query consistency.
 
  -- root <jens@proknx.com>  Thu, 15 Jan 2026 11:00:00 +0100
 
@@ -247,9 +458,13 @@ aragon-companion (1.0.8) stable; urgency=low
 
 aragon-companion (1.0.7) stable; urgency=low
 
-   * Training Logic Improvements: Reduced the minimum training samples requirement from 15 to 5 pairs. This allows the system to successfully train models in light-occupancy environments, such as bedrooms or guest offices, where data is sparse.
-   * Critical Bug Fixes: Resolved a data consumption race condition by separating the "processed" flags for realtime and training data. This prevents background threads from incorrectly consuming data meant for nightly training.
-   * Validation & Reliability: Implemented automatic data rollback logic; if training validation fails, the data is preserved rather than discarded. Additionally, presence rate validation thresholds were relaxed (minimum lowered to 5%, maximum raised to 80%) and made configurable to better accommodate varied occupancy patterns.
+   * Training Logic Improvements: Reduced the minimum training samples requirement from 15 to 5 pairs. This allows the system to 
+     successfully train models in light-occupancy environments, such as bedrooms or guest offices, where data is sparse.
+   * Critical Bug Fixes: Resolved a data consumption race condition by separating the "processed" flags for realtime and training 
+     data. This prevents background threads from incorrectly consuming data meant for nightly training.
+   * Validation & Reliability: Implemented automatic data rollback logic; if training validation fails, the data is preserved rather than discarded.
+     Additionally, presence rate validation thresholds were relaxed (minimum lowered to 5%, maximum raised to 80%) and made configurable to 
+     better accommodate varied occupancy patterns.
    * General Fixes: Restored event publishing functionality and corrected the days tracking logic used for model maturity transitions.
 
  -- root <jens@proknx.com>  Mon, 01 Dec 2025 12:00:00 +0100
@@ -257,7 +472,8 @@ aragon-companion (1.0.7) stable; urgency=low
 aragon-companion (1.0.6) stable; urgency=low
 
   * This build focuses on making the presence model training more robust, adaptable, and bug-free. Key changes include:
-  * Training Hardening: A multi-stage validation pipeline was added to detect faulty sensor data, with automatic rollback to the previous model if training fails.
+  * Training Hardening: A multi-stage validation pipeline was added to detect faulty sensor data, with automatic rollback to the 
+    previous model if training fails.
   * Data Integrity: Fixed a critical bug that prevented training data from being used by separating data consumption flags for real-time and training processes.
   * Improved Adaptability: The minimum training sample requirement was lowered from 15 to 5 to better support low-occupancy environments.
   * Validation Tuning: Presence rate validation thresholds were relaxed to accommodate more varied real-world occupancy patterns while still rejecting anomalous sensor data.

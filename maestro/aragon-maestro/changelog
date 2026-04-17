@@ -1,3 +1,33 @@
+aragon-maestro (2.4.6) stable; urgency=low
+
+   * Added and updated open-source license notices
+
+ -- root <jens@proknx.com>  Tue, 12 Apr 2026 18:00:00 +0100
+
+aragon-maestro (2.4.4) stable; urgency=low
+
+   * upgrade.sh: pass DEBIAN_FRONTEND=noninteractive inline to all sudo apt calls to prevent debconf 
+     Dialog prompt on unattended upgrades; add missing --assume-yes to aragon-companion install
+   * postinst: fix logrotate rsyslog config (weekly+maxsize+maxage replaces broken size+daily); remove 
+     backup creation  inside logrotate.d that caused duplicate-entry errors; clean up stray v2.4.2 backup 
+     files; fix avahi systemctl calls missing || true under set -e
+
+ -- root <jens@proknx.com>  Wed, 08 Apr 2026 17:00:00 +0100
+
+aragon-maestro (2.4.3) stable; urgency=low
+
+   * Fixed Aragon Finder not detecting Maestro when launched from aragon.proknx.xyz (Chrome 147+ Private
+     Network Access support).
+
+ -- root <jens@proknx.com>  Tue, 03 Apr 2026 19:00:00 +0100
+
+aragon-maestro (2.4.2) stable; urgency=low
+
+   * postinst: add size-bounded daily logrotate rotation (syslog 10M/7d, misc 5M/3w) and rsyslog filter 
+     to suppress dwhdmi-rockchip i2c noise on headless devices
+
+ -- root <jens@proknx.com>  Tue, 10 Mar 2026 17:00:00 +0100
+
 aragon-maestro (2.4.1) stable; urgency=low
 
    * (fix): Tailscale cold start blocking with daemon readiness check

@@ -1,3 +1,27 @@
+* 2026-04-05
+ - Fix: Move llama.cpp cache dir to /var
+
+* 2026-03-26
+ - Fix: added Whisper prompt words 'lamelles', 'vingt', 'quatre-vingts'
+ - Moved 'Data collection and presentation with Netdata' to Node-RED library
+
+* 2026-03-25
+ - Fix Shutter cmds: Avoid controlling doors with room-only commmands: Ex "Open bedroom" will open Bedroom blinds but not Bedroom door.
+
+* 2025-12-18
+ - Whisper transcribed text to NLU: replace ß  with 'ss'
+
+* 2025-12-12
+ - Improved french whsiper prompt (monte l'ascenseur. éteins l'applique.)
+ - Change special french vowel slot naming: e.g. remove 'lentrée', 'dentrée' and add. Requires Voice Assistant v2026+
+
+* 2025-12-10
+ - FIX: Changed to use full path to settings.json (was: relative)
+ 
+ * 2025-12-02
+ - Added some German Whisper word corrections (see 'SPEECH-TO-TASK ROUTING')
+ - Added German and French Whisper prompt (see 'WHISPER STT SETTINGS')
+ 
 * 2025-10-24
  - Finalized EisBaer integration
  
