@@ -1,3 +1,18 @@
+* 2026-05-25
+ - Changed Whisper default model to 'base' (typical transcription time 'base': 2s; 'small': 5s )
+ - HelpCall ConfirmAction reacts on Whisper transcripts
+ 
+ * 2026-05-19
+ - Added Whisper Normalizer - Post-processes raw Whisper ASR output into clean(er), intent-parseable text for the 
+   home-automation pipeline, with BM25 corpus matching and multi-language support (DE/FR/EN).
+ - Switch between Whisper models 'base' (3 faster) and 'small' (default, more accurate)
+
+* 2026-05-05
+ - Jung SVS Fix open/close shutter
+
+* 2026-04-29
+ - Updated the Jung SVS integration to v3-1.2.1875
+
 * 2026-04-05
  - Fix: Move llama.cpp cache dir to /var
 

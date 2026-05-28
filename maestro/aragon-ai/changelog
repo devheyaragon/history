@@ -1,3 +1,36 @@
+aragon-ai (1.3.19) stable; urgency=low
+
+  * llama-server upgraded to b9245 (was:7966) for WebUI and MCP/web-search support via --webui-mcp-proxy
+  * llama-cli (b4848) retained for all task engines (ha_rules etc.) as --prompt-cache was removed from llama-cli 
+    at b4848→b5000 boundary (PR#16391, merged 2025-10-09).
+
+ -- root <jens@proknx.com>  Wed, 20 May 2026 13:00:00 +0100
+
+aragon-ai (1.3.18) stable; urgency=low
+
+  * Added whisper-normalizer service: Added Gunicorn-backed Flask microservice (port 4002) 
+  that post-processes raw Whisper ASR output into clean, intent-parseable text for the 
+  KNX home-automation pipeline (ProKNX/Rhasspy), with BM25 corpus matching and 
+  multi-language support (DE/FR/EN).
+
+ -- root <jens@proknx.com>  Mon, 18 May 2026 17:00:00 +0100
+
+aragon-ai (1.3.15) stable; urgency=low
+
+  * Lower xz compression level to speed up build
+
+ -- root <jens@proknx.com>  Mon, 04 May 2026 16:00:00 +0100
+
+aragon-ai (1.3.12) stable; urgency=low
+
+  * HomeAutomation rules: Engine: remove dead code, fix FR/DE solar-range split + command
+    inference word-boundary, move _correct_solar_type before command cleaning, expand solar
+    translation tables, replaced MS Phi-4 with Qwen2.5-1.5B, 2x faster
+  * Prompts (EN/FR/DE): enforce verbatim extraction, block duration→range miscalculation, 
+    strengthen month/days constraints, expand few-shot coverage
+
+ -- root <jens@proknx.com>  Mon, 04 May 2026 15:00:00 +0100
+
 aragon-ai (1.3.11) stable; urgency=low
 
   * dependency installer: fix per-package install error logging (dead else branch), add
