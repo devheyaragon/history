@@ -1,3 +1,17 @@
+* 2026-07-02
+ - Fix: Weather forecast from SuperScene spoken twice 
+ 
+ * 2026-07-01
+ - Change: SuperScene now supports implicit room. If a SuperScene command does not 
+   include a room name, the room of the Satellite where the scene was triggered is 
+   used. Example: if 'Good morning' is set to 'Turn on the lights' and triggered 
+   from the Kitchen Satellite, the lights in the Kitchen are switched on.
+
+* 2026-06-30
+ - Fix: Whisper transribed commands like "What's playing" and similar were not routed correctly.
+ - Change: "Do not allowParallellWakeup" is active by default
+ - Change: Allow the German window slotnames: 'rolladen', 'rollladen' (was: reserved general words)
+ 
 * 2026-05-25
  - Changed Whisper default model to 'base' (typical transcription time 'base': 2s; 'small': 5s )
  - HelpCall ConfirmAction reacts on Whisper transcripts

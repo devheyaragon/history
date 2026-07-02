@@ -1,8 +1,126 @@
+aragon-ai (1.5.16) stable; urgency=low
+
+  * Aragon Agent now monitors your system in real time. Ask about CPU, RAM, disk, network, 
+    active alerts, or anomalous metrics — the agent queries NetData directly and answers in 
+    plain language, with no repeated or duplicate results.
+
+  * Smarter report pipeline. OpenClaw system reports now have up to 5 tool calls per query,
+    enabling multi-metric summaries in a single pass without truncation.
+
+  * New service: netdata-mcp.service. The NetData MCP proxy runs as a dedicated systemd 
+    service on port 8098; the agent starts only after it is ready.
+
+ -- root <jens@proknx.com>  Thu, 24 Jun 2026 18:00:00 +0100
+ 
+aragon-ai (1.5.14) stable; urgency=low
+
+  * Weather reliability: get_weather now retries once on timeout (2 s pause) and MCP_TIMEOUT 
+    raised to 45 s — eliminates the transient first-request failure seen after upgrades.
+
+ -- root <jens@proknx.com>  Mon, 22 Jun 2026 15:00:00 +0100
+ 
+aragon-ai (1.5.13) stable; urgency=low
+
+  * The /init loading screen now waits for the model cache to be fully ready before redirecting to 
+    the chat — no more landing on a cold model after reboot. Status message updates every 2 s; shows an 
+    error and Retry button if warmup fails.
+
+  * Fixed: the loading screen was stuck spinning after a manual service restart because the warmup health check 
+    was returning 404. Resolved by routing /health/warmup through nginx.
+
+ -- root <jens@proknx.com>  Mon, 22 Jun 2026 12:00:00 +0100
+ 
+aragon-ai (1.5.10) stable; urgency=low
+
+  * Aragon AI Chat: Context nudge: a banner now appears automatically when a chat is using too much 
+    device memory or belongs to a previous session — with a one-click "New chat" button to restore full speed.
+
+ -- root <jens@proknx.com>  Wed, 18 Jun 2026 15:00:00 +0100
+ 
+aragon-ai (1.5.9) stable; urgency=low
+
+  * prompt v9 — Aragon AI now reliably answers date, time and currency questions via voice without 
+   leaking raw data or stalling. The assistant starts up more robustly when services take a moment 
+   to become available after a reboot.
+
+ -- root <jens@proknx.com>  Wed, 17 Jun 2026 17:00:00 +0100
+ 
+aragon-ai (1.5.8) stable; urgency=low
+
+  * prompt v8 — reduce unnecessary tool calls for questions the model can answer from knowledge (en/fr/de)
+
+ -- root <jens@proknx.com>  Wed, 17 Jun 2026 09:00:00 +0100
+ 
+aragon-ai (1.5.7) stable; urgency=low
+
+  * Add aragon-agent: Python 3.11 agentic loop proxy on :8088, replicating
+    the WebUI tool-call loop server-side for scripts, voice and automation
+    clients. Endpoints: POST /chat, POST /v1/chat/completions, GET /health.
+
+ -- root <jens@proknx.com>  Tue, 16 Jun 2026 17:00:00 +0100
+ 
+aragon-ai (1.5.5) stable; urgency=low
+
+  * Aragon AI Chat updated:
+    - calculator-mcp: add currency conversion to convert_units (Frankfurter ECB
+      live rates, 31 ISO 4217 codes); fix urllib User-Agent blocked by Cloudflare;
+    - prompts EN/FR/DE: add currency routing bullet with supported code list
+    
+ -- root <jens@proknx.com>  Tue, 16 Jun 2026 12:00:00 +0100
+
+aragon-ai (1.5.4) stable; urgency=low
+
+  * Aragon AI Chat updated:
+    - searxng-mcp-proxy: fix streamable-http transport (inject Accept header, strip SSE 
+      framing, fix double-encoded JSON truncation to 5 results × 200 chars); 
+    - prompts EN/FR/DE: ban wikipedia_search and wikipedia_summary for commercial
+      products/brands, add concrete examples, add irrelevant- result escape rule (switch 
+      to search_web immediately on bad Wikipedia hit)
+
+ -- root <jens@proknx.com>  Mon, 15 Jun 2026 17:00:00 +0100
+
+aragon-ai (1.5.3) stable; urgency=low
+
+  * Aragon AI Chat updated:
+    - to download and use model Qwen2.5-3B-Instruct.Q4_K_M.gguf
+    - Prompts rewrite and tested in En, De, Fr
+    - Speed: On boot, prefills the llama-server KV cache so the first browser request skips the 125-second cold start.
+    - The init page writes Aragon's system prompt and tools into localStorage, then redirects to the llama-server UI. 
+    - nginx injects js into every page, translating hardcoded English UI strings into French or German.
+    
+ -- root <jens@proknx.com>  Mon, 15 Jun 2026 12:00:00 +0100
+
+aragon-ai (1.4.6) stable; urgency=low
+
+  * Whisper-normalizer:
+    - Fix DE umlaut vocab gate: tok_raw.lower() checked against vocab.all_vocab in
+      addition to tok_cmp (accent-stripped form). Prevents Ã¶ffne/Ã¶ffnen/etc. from
+      falling through the exact-match gate and being fuzz-corrected.
+    - Fix WINDOW_CONTEXT_WORDS_DE: "oeffne" (ASCII) replaced with "Ã¶ffne" (correct
+      Ã¶ form). ASCII form was entering all_vocab and becoming a spurious fuzzy target.
+
+ -- root <jens@proknx.com>  Thu, 04 Jun 2026 12:00:00 +0100
+
+aragon-ai (1.4.5) stable; urgency=low
+
+  * Fix aragon-ai-depends.service default TimeoutStartSec too short (new: 300s) 
+    The service times out and kills depends.sh mid-execution.
+  * Fix: weather-mcp: add forecast_start parameter to get_weather tool, enabling correct
+    today/tomorrow disambiguation (fixes tomorrow query returning today's forecast
+
+ -- root <jens@proknx.com>  Tue, 02 Jun 2026 15:00:00 +0100
+
+aragon-ai (1.4.4) stable; urgency=low
+
+  * Added MCP servers to llama-server web UI (wiki, weather, search, calc, datetime) 
+
+ -- root <jens@proknx.com>  Mon, 01 Jun 2026 15:00:00 +0100
+
 aragon-ai (1.3.19) stable; urgency=low
 
   * llama-server upgraded to b9245 (was:7966) for WebUI and MCP/web-search support via --webui-mcp-proxy
-  * llama-cli (b4848) retained for all task engines (ha_rules etc.) as --prompt-cache was removed from llama-cli 
-    at b4848→b5000 boundary (PR#16391, merged 2025-10-09).
+  * llama-cli (b4848) retained for all task engines (ha_rules etc.) as --prompt-cache was 
+    removed from llama-cli at b4848→b5000 boundary (PR#16391, merged 2025-10-09).
 
  -- root <jens@proknx.com>  Wed, 20 May 2026 13:00:00 +0100
 
