@@ -1,3 +1,39 @@
+aragon-maestro (2.5.4) stable; urgency=low
+
+   * Fixed Node-RED 5.0 CORS regression when changing Gatewau — added httpAdminCors and httpNodeCors 
+     to settings.js restoring Maestro app communication with Node-RED after changing gateway.
+
+ -- root <jens@proknx.com>  Thu, 02 Jul 2026 14:00:00 +0100
+
+aragon-maestro (2.5.3) stable; urgency=low
+
+   * Aragon AI Chat Language change : installing a new assistant in a different language automatically 
+     rebuilds the chat UI, reloads nginx, and restarts the inference engine — the web interface reflects 
+     the new language within ~90 seconds, with no manual intervention required.
+
+ -- root <jens@proknx.com>  Mon, 22 Jun 2026 12:00:00 +0100
+
+aragon-maestro (2.5.2) stable; urgency=low
+
+   * Node-RED update script to install NodeJs v22 - Work-around to fix bug in official Node-RED v5 installer script
+       - Root Cause: --node18 flag caused a silent downgrade trap
+         The installer recognized the node_18.x nodesource repo already configured, removed Node.js v18.20.8, 
+         then reinstalled the exact same v18.20.8 from the existing repo. It did not upgrade Node.js. However, 
+         it then went ahead and installed Node-RED 5.0.0 anyway — which requires Node.js v22.9 or later. This 
+         left the system with a broken Node-RED that crash-loops every 20 seconds.
+   * Fixed Node-RED 5.0 CORS regression — added httpAdminCors and httpNodeCors to settings.js via postinst, 
+     restoring Maestro app communication with Node-RED after upgrade.
+   * Added Node-RED upgrade warning modal — alerts users when upgrading from v4 to v5 pending full Node.js v22 
+     validation; upgrade button remains enabled but strongly advises waiting for a future validated release.
+
+ -- root <jens@proknx.com>  Mon, 15 Jun 2026 09:00:00 +0100
+
+aragon-maestro (2.4.7) stable; urgency=low
+
+   * Updated link to Aragon AI chat (init MCP servers)
+
+ -- root <jens@proknx.com>  Sun, 07 Jun 2026 18:00:00 +0100
+
 aragon-maestro (2.4.6) stable; urgency=low
 
    * Added and updated open-source license notices
