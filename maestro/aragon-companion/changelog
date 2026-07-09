@@ -1,3 +1,15 @@
+aragon-companion (1.7.1) stable; urgency=low
+
+  * Fixed an issue where nights with extra backlog data (after failed builds) could push forecast training past the nightly
+    cutoff, silently losing all progress when the system restarted. Forecast training now saves progress after each step
+    and checks remaining time before starting new work, so partial progress is never lost and unfinished work resumes
+    automatically the next night.
+  * Fixed manual and API-triggered fine-tuning runs being incorrectly blocked by the nightly time-budget check outside the
+    23:00-02:30 training window. Forecast head training now accepts a force flag that bypasses the window check for
+    manual/API-triggered runs, while scheduled overnight runs continue to respect the budget guard as before.
+  
+ -- root <jens@proknx.com>  Thu, 09 Jul 2026 07:00:00 +0100
+ 
 aragon-companion (1.6.34) stable; urgency=low
 
   * Fixed repeated startup log spam caused by presence service returning a list instead of a dict for rooms when unconfigured.
