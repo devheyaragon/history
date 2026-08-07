@@ -1,3 +1,97 @@
+aragon-companion (1.8.8) stable; urgency=low
+
+  * The nightly training window's safety margin now adapts to each
+    night's actual measured training speed instead of using one fixed
+    estimate, reducing the chance of a head being skipped unnecessarily
+    on a slower night.
+  * Fixed a rare timing issue where manually triggering training via
+    the dashboard could, depending on system timing, use slightly stale
+    sensor data instead of the most recent readings.
+
+ -- root <jens@proknx.com>  Wed, 05 Aug 2026 12:00:00 +0100
+ 
+aragon-companion (1.8.7) stable; urgency=low
+
+  * Fixed a training-validation gap where a duty-cycle sensor (e.g. a
+    pump) could distort the model quality check that guards against
+    over-confident predictions, potentially causing a healthy model to
+    be rejected unnecessarily. Mirrors an existing, already-deployed
+    fix to a related check.
+  * Training History now shows directly, in plain language, when a
+    room was excluded from a training run's quality checks (and why),
+    instead of requiring the raw technical details to be expanded.
+
+ -- root <jens@proknx.com>  Wed, 05 Aug 2026 08:00:00 +0100
+ 
+aragon-companion (1.8.6) stable; urgency=low
+
+  * Assisted-living alerts: an extended absence in one room (e.g. a
+    room lit only by a switch, quiet during long daylight hours) is no
+    longer treated as an emergency if another monitored sensor shows
+    the person is genuinely active elsewhere in the home. Reduces
+    false alarms without weakening detection of genuine, home-wide
+    absence. New setting cross_room_activity_window_minutes, tunable
+    via the existing detection-settings API.
+  * Suppressed absence alerts (holiday mode or cross-room activity)
+    are now visible in the Recent Alerts dashboard as low-severity
+    informational entries, instead of only appearing in server logs.
+
+ -- root <jens@proknx.com>  Mon, 03 Aug 2026 14:00:00 +0100
+ 
+aragon-companion (1.8.5) stable; urgency=low
+
+  * Fixed intermittent, incorrect presence flickering on KNX-connected
+    sensors (e.g. Pompe active) during genuine continuous "occupancy".
+    The issue was an unintended side effect of an earlier reliability
+    improvement to KNX sensor health reporting; presence detection for
+    these sensors is now stable and accurate.
+  
+ -- root <jens@proknx.com>  Mon, 03 Aug 2026 09:00:00 +0100
+ 
+aragon-companion (1.8.4) stable; urgency=low
+
+  * Fixed a crash that could stop overnight model training partway through (out-of-memory during validation).
+  * Presence predictions for "today" are now based on actual real-time activity instead of a diluted historical average.
+  ' Rooms with frequent mechanical on/off switching (e.g. pumps) no longer cause valid trained models to be incorrectly rejected.
+  * Nightly training window extended slightly (now runs until ~03:45) to allow more time for training to complete.
+  
+ -- root <jens@proknx.com>  Thu, 30 Jul 2026 17:00:00 +0100
+ 
+aragon-companion (1.8.3) stable; urgency=low
+
+  * Fixed a bug where the training status was marked "complete" too early, letting a second automatic training 
+    run start concurrently and crash the service.
+  
+ -- root <jens@proknx.com>  Fri, 17 Jul 2026 12:00:00 +0100
+ 
+aragon-companion (1.8.2) stable; urgency=low
+
+  * Fixed a gap where the nightly auto-scheduler ignored the new 30-day data retention, still training on only 7 days.
+  
+ -- root <jens@proknx.com>  Thu, 16 Jul 2026 15:00:00 +0100
+ 
+aragon-companion (1.8.1) stable; urgency=low
+
+  * Nightly training now finishes in ~3.5-4 hours (down from 10+), and forecast quality is now automatically checked 
+    before deployment — a bad night's training can no longer silently degrade predictions. 
+  * The system also remembers up to 30 days of activity instead of 7.
+  
+ -- root <jens@proknx.com>  Tue, 14 Jul 2026 12:00:00 +0100
+ 
+aragon-companion (1.8.0) stable; urgency=low
+
+  * Reduced nightly training time by capping training data per room and dropping the 2-hour forecast; instant, 15-min, 
+    and 1-hour predictions are unaffected, so nightly updates reliably finish within the scheduled window.
+  
+ -- root <jens@proknx.com>  Mon, 13 Jul 2026 12:00:00 +0100
+ 
+aragon-companion (1.7.2) stable; urgency=low
+
+  * Added a manual "Start Manual Training" control in the Advanced panel for recovering from missed overnight runs, 
+  * Fixed KNX sensors to send periodic heartbeats so prolonged "no activity" isn't mistaken for a dead sensor.
+  
+ -- root <jens@proknx.com>  Sun, 12 Jul 2026 09:00:00 +0100
+ 
 aragon-companion (1.7.1) stable; urgency=low
 
   * Fixed an issue where nights with extra backlog data (after failed builds) could push forecast training past the nightly
