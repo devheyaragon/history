@@ -1,3 +1,73 @@
+aragon-ai (1.5.21) stable; urgency=low
+
+  * The installer now frees up disk space from old, no-longer-used
+    language models before downloading new ones, instead of after —
+    reduces the chance of a download failing on devices with little
+    free disk space.
+
+  * Spotify voice control now pre-warms its language caches shortly
+    after install/upgrade, so the first "play X on Spotify" request
+    after a fresh install or reboot responds as fast as later ones
+    instead of paying a one-time cold-start delay.
+
+ -- root <jens@proknx.com>  Mon, 17 Aug 2026 14:00:00 +0100
+
+aragon-ai (1.5.19) stable; urgency=low
+
+  * Fixed a bug where "play music by <artist>" could play a completely
+    unrelated track. The Spotify lookup used to trust the top text-match
+    result for the artist's name without checking it was actually
+    credited to that artist; it now verifies the artist credit before
+    accepting a track, falling back to an album-based lookup if no
+    verified match is found.
+
+  * Fixed a bug where "play the album <name>" requests with no artist
+    named (e.g. "play the album the dark side of the moon") could fail
+    to find the album. The word "album" itself was being mistaken for
+    part of the artist name during a fallback lookup.
+
+ -- root <jens@proknx.com>  Mon, 17 Aug 2026 12:00:00 +0100
+
+aragon-ai (1.5.18) stable; urgency=low
+
+  * Spotify voice control is now noticeably faster. The Phi-4-mini model
+    used to understand "play X on Spotify" requests has been replaced
+    with Qwen2.5-1.5B — typical response time dropped from around
+    26 seconds to 3-9 seconds.
+
+  * Fixed a bug where song, album, and playlist names containing an
+    apostrophe (e.g. "Today's Top Hits") had it stripped to a blank
+    space, hurting Spotify search accuracy.
+
+  * Fixed a bug where some artist-only requests could be misidentified
+    as an album or track, with the artist name incorrectly duplicated
+    into another field.
+
+  * Phi-4-mini has been retired and is no longer downloaded during
+    install or upgrade, reducing install size and upgrade time.
+
+ -- root <jens@proknx.com>  Mon, 17 Aug 2026 11:00:00 +0100
+
+aragon-ai (1.5.17) stable; urgency=low
+
+  * Fixed long wait for the first chat after a reboot. Cache warmup
+    timeouts were too short for this hardware under sustained load and
+    have been extended to match observed real-world warmup time
+    (~12 min). The model now also runs on a single cache slot so
+    warmup and chat share the same prefix.
+
+  * Fixed a bug where the chat interface could show the wrong language
+    (or trigger a slow first response) if the system language was
+    changed after installation. The browser UI now stays in sync with
+    the current language on every reboot instead of only at install
+    time.
+
+  * Improved thermal management: the CPU governor no longer oscillates
+    between performance and power-saving modes near the thermal
+    threshold.
+
+ -- root <jens@proknx.com>  Tue, 11 Aug 2026 08:00:00 +0100
+ 
 aragon-ai (1.5.16) stable; urgency=low
 
   * Aragon Agent now monitors your system in real time. Ask about CPU, RAM, disk, network, 
