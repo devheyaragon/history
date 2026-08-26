@@ -1,3 +1,23 @@
+* 2026-08-18
+ - LLM tab: replaced the local llama.cpp /v1/completions exec/curl call with the 
+   Aragon AI agent's /chat API (message/lang/voice); removed the now-unused exec, 
+   json-parse and debug nodes; added "POST Aragon Agent /chat" http request node
+ - Added request-cancellation handling (llmRequestCancelled flag) in "Spoken msg"/"pendingCompletion?", 
+   since the new http request node (unlike the old exec node) can't be killed mid-flight
+ - Weather forecast (searchInternet, no SerpApi key configured): route to the AI agent instead 
+   of just saying search is deactivated -- the agent already has get_weather as a tool and understands
+   relative dates ("tomorrow", "in two days") and messy location text ("for cannes") better than 
+   this flow's own slot parsing
+ - Fix: TTS spoke numeric ranges (e.g. "18-22.8") as the word "dash"; now spoken as "to"
+ - Cleaned dead temperature/prompt fields (jokes/stories) and unconditional French llm_max_tokens 
+   from ROUTING, since the agent's /chat API doesn't accept them
+
+* 2026-08-10
+ - Fix: JSON format for PushOver alert
+ 
+ * 2026-08-08
+ - Added handler for presence anomaly alerts
+ 
 * 2026-07-02
  - Fix: Weather forecast from SuperScene spoken twice 
  

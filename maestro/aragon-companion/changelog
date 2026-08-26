@@ -1,3 +1,30 @@
+aragon-companion (1.8.10) stable; urgency=low
+
+  * Presence dashboard: AI confidence line no longer draws a
+    smoothed diagonal interpolation across real data gaps; gaps over 2 hours
+    now break the line instead of connecting through it.
+  * KNX adapter: sensor non-response (previously log-only) now publishes an
+    `assisted_living` alert (sensor_unresponsive / sensor_recovered) with
+    room, group address, and outage duration, so a silent KNX sensor
+    surfaces on the dashboard instead of only appearing in logs.
+
+ -- root <jens@proknx.com>  Wed, 26 Aug 2026 12:00:00 +0100
+
+aragon-companion (1.8.9) stable; urgency=low
+
+  * The KNX sensor adapter now actively checks each configured sensor
+    (dining room, kitchen, pool pump) every 60 seconds, instead of
+    depending on a separate, undocumented process to do this. This was
+    the underlying cause of a recent multi-hour gap in pool pump activity
+    data — a currently-idle device has nothing to report on its own
+    unless something asks it directly, unlike a light switch, which
+    reports real changes regardless. If a sensor now goes quiet due to a
+    genuine transmission problem, it will be logged clearly and
+    distinctly rather than silently looking like the device was never
+    active.
+
+ -- root <jens@proknx.com>  Tue, 15 Aug 2026 12:00:00 +0100
+ 
 aragon-companion (1.8.8) stable; urgency=low
 
   * The nightly training window's safety margin now adapts to each
