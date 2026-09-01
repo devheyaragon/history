@@ -1,3 +1,11 @@
+aragon-maestro (2.5.5) stable; urgency=low
+
+   * Fixed: the update/upgrade UI could hang indefinitely on "Working, please wait..." after a long update, 
+     instead of refreshing with the new version info. The server now guarantees a response once the upgrade 
+     process exits, even if it missed its usual completion signal.
+
+ -- root <jens@proknx.com>  Thu, 01 Sep 2026 19:00:00 +0100
+
 aragon-maestro (2.5.4) stable; urgency=low
 
    * Fixed Node-RED 5.0 CORS regression when changing Gatewau — added httpAdminCors and httpNodeCors 

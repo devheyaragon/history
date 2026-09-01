@@ -1,3 +1,119 @@
+aragon-ai (1.5.26) stable; urgency=medium
+
+  * Fix (installer): Resolve UVX_PATH by checking known install locations directly, before
+    falling back to `command -v`.
+
+ -- root <jens@proknx.com>  Tue, 01 Sep 2026 16:00:00 +0100
+
+aragon-ai (1.5.25) stable; urgency=medium
+
+  * Fixed web search (and news/images/videos/page-fetch) going down after a
+    routine restart: the search bridge depended on a third-party package
+    with no upper version limit, so picking up that package's latest
+    release could silently break it. It's now pinned to a known-good range,
+    and a separate port mix-up that could only surface once that crash was
+    fixed is also corrected.
+
+  * Fixed "how many nautical miles" style unit conversions being rejected
+    ("nmi" was not recognized as a unit).
+
+  * Hardened every other place in the installer that downloads a dependency
+    without a fixed version — Home Assistant rules, the Spotify voice
+    module, the search engine itself, the Sonos integration, and the core
+    agent and voice-tool services. All of these now install the exact,
+    tested version every time, including on a routine update to an
+    already-running device, so a change on the internet can no longer
+    silently break something that worked yesterday.
+
+ -- root <jens@proknx.com>  Tue, 01 Sep 2026 14:20:00 +0100
+
+aragon-ai (1.5.24) stable; urgency=low
+
+  * Fixed "how many days until X" questions failing or giving a wrong
+    answer when X was a holiday name ("Christmas", "Halloween", "New
+    Year's Day") or a phrase like "next Friday" instead of a specific
+    date — these are now understood directly, in English, French, and
+    German.
+
+  * Fixed date and time answers occasionally being reformatted or
+    miscalculated after the assistant had already looked them up
+    correctly — the looked-up value is now used exactly as given.
+
+  * Fixed a rare case where a short voice answer to "what date is it"
+    could cite a made-up source name instead of just answering the
+    question.
+
+ -- root <jens@proknx.com>  Mon, 31 Aug 2026 16:30:00 +0100
+
+aragon-ai (1.5.23) stable; urgency=low
+
+  * Fixed the KV-cache warm-up so the chat/voice assistant is actually ready
+    when the web UI says it is. Two separate bugs could leave the very
+    first request after a reboot or restart taking 1-2 minutes instead of
+    being instant: an unused, unbuilt "/report" feature was silently
+    evicting the just-warmed chat cache right after warm-up finished, and
+    a stray trailing newline in the prompt file made the warm-up's cached
+    prompt not match what the browser/voice pipeline actually sends.
+
+  * Fixed unit conversion rejecting spoken unit names it should have
+    understood — e.g. "convert fifty centilitres into millilitres" or
+    "convert 100 yards into centimeters" — because only abbreviations
+    (cm, mm, mg, cl, ml, hPa) were recognized, not the full spoken words.
+
+  * Fixed a misleading "the request timed out" answer for some unit
+    conversions and other multi-step requests. The assistant now clearly
+    logs when it genuinely ran out of attempts instead of hitting an
+    actual timeout, and the calculator's supported units are now fully
+    documented so it converges in fewer attempts to begin with.
+
+  * Fixed the assistant sometimes calculating math itself instead of
+    using the calculator tool, which could produce a wrong answer for
+    anything beyond simple arithmetic (e.g. expressions combining square
+    roots and pi).
+
+  * Fixed "how many days until X" questions sometimes returning a wrong
+    number of days — the assistant no longer needs to guess today's date
+    itself.
+
+  * Fixed currency conversion answers reading currency codes as letters
+    ("E U R") instead of names ("Euros").
+
+  * Fixed weather answers giving an inconsistent or misspelled
+    temperature unit, and vague weather questions ("what's the weather",
+    "this week") sometimes answering for the wrong city instead of the
+    device's home location.
+
+  * Fixed voice answers sometimes including raw web links or markdown
+    formatting, which don't make sense read aloud.
+
+  * News search ("top news", "what's happening in X") no longer has a
+    single point of failure: Google News was added alongside Bing News,
+    so a Bing page-layout change can no longer take news search down
+    entirely. Search results were also trimmed to reduce voice response
+    time.
+
+ -- root <jens@proknx.com>  Fri, 28 Aug 2026 09:00:00 +0100
+
+aragon-ai (1.5.22) stable; urgency=low
+
+  * Fixed a bug where Spotify voice control could reject a valid request
+    because the AI misheard/invented a room name that wasn't in the
+    original request (e.g. "play music by talking heads" failing because
+    it guessed a room called "studio"). It now falls back to the room
+    associated with the speaker that heard the request instead of
+    failing outright.
+
+  * Fixed a reliability issue in the background setup step that runs
+    after install/upgrade (dependency installation, KV-cache warm-up):
+    it could be killed before finishing — sometimes before the Spotify
+    voice cache was warmed, and before some routine end-of-setup
+    maintenance ran — due to two unrelated timing issues. The two
+    cache warm-ups (chat and Spotify) now run one after the other
+    instead of racing each other for the same CPU, and the step no
+    longer terminates itself while finishing up.
+
+ -- root <jens@proknx.com>  Mon, 17 Aug 2026 16:00:00 +0100
+
 aragon-ai (1.5.21) stable; urgency=low
 
   * The installer now frees up disk space from old, no-longer-used

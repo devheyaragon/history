@@ -1,3 +1,6 @@
+* 2026-08-26
+ - Weather forecast fallback (no SerpApi key): when no location is spoken, or the spoken location is "here"/"hier"/"ici", look up the Home location from the ha_rules service (GET 127.0.0.1:5101/settings/location) instead of the static searchTown setting, and fold the city name into the text sent to the AI agent
+
 * 2026-08-18
  - LLM tab: replaced the local llama.cpp /v1/completions exec/curl call with the 
    Aragon AI agent's /chat API (message/lang/voice); removed the now-unused exec, 
