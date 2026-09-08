@@ -1,4 +1,25 @@
-aragon-maestro (2.5.5) stable; urgency=low
+aragon-maestro (2.5.7) stable; urgency=low
+
+  * Added disk-cleanup.sh: weekly (Sun 03:30, before daily reboot) cleanup of
+    uv/pip caches, journald logs, and Piper TTS cache (1yr age limit + 100MB
+    cap). postinst installs the cron job and logrotate config, and runs it
+    once in the background right after install/upgrade.
+
+ -- root <jens@proknx.com>  Tue, 08 Sep 2026 15:00:00 +0200
+
+aragon-maestro (2.5.6) stable; urgency=low
+
+  * Fixed install_searxng()'s... [n/a — fixed the sources.list migration
+    check instead]: the grep detecting an active security.debian.org line
+    required a literal space before "security.debian.org" that a real
+    line never has ("http://security.debian.org", not "http:// security...").
+    It only ever worked as a side effect of the ftp.de.debian.org OR-clause
+    also matching. Devices without that clause would silently never get
+    security.debian.org re-disabled if it were ever re-enabled.
+
+ -- root <jens@proknx.com>  Tue, 08 Sep 2026 11:00:00 +0200
+ 
+ aragon-maestro (2.5.5) stable; urgency=low
 
    * Fixed: the update/upgrade UI could hang indefinitely on "Working, please wait..." after a long update, 
      instead of refreshing with the new version info. The server now guarantees a response once the upgrade 

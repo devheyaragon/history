@@ -1,3 +1,114 @@
+aragon-ai (1.5.33) stable; urgency=low
+
+  * Suppressed the harmless "`/root/.local/bin` is not on your PATH" warning
+    from `uv tool install` in install_searxng() by exporting PATH first.
+    Purely cosmetic: searxng-mcp.service's ExecStart already uses the
+    resolved binary's absolute path, not a bare `searxng-mcp-server`
+    lookup, so nothing ever depended on that directory being on PATH.
+
+ -- root <jens@proknx.com>  Tue, 08 Sep 2026 10:30:00 +0200
+
+aragon-ai (1.5.32) stable; urgency=low
+
+  * Removed the libxslt1-dev pre-flight check in install_searxng(): it
+    was a false alarm (lxml installs from a prebuilt wheel, no C build
+    needed) and satisfying it would fail apt outright on devices with
+    bullseye-security disabled. Re-enabling that repo was rejected —
+    Debian stopped serving Bullseye security updates in September 2026.
+
+ -- root <jens@proknx.com>  Mon, 07 Sep 2026 18:00:00 +0200
+
+aragon-ai (1.5.31) stable; urgency=medium
+
+  * Fixed searxng-mcp.service using a resident `uvx` wrapper, which held
+    a permanent lock on ~/.cache/uv/.lock and blocked `uv cache clean`
+    in monthly-disk-cleanup.sh (0 MB freed every run, traced via
+    uv-lock-diagnose.sh). install_searxng() now runs `uv tool install`
+    at install time; ExecStart points directly at the pinned binary.
+
+ -- root <jens@proknx.com>  Mon, 07 Sep 2026 15:00:00 +0200
+
+aragon-ai (1.5.30) stable; urgency=medium
+
+  * Fixed chat UI serving a cold KV-cache while the voice path serves the
+    same request warm. Root cause: searxng-mcp-proxy.py (port 8092) used
+    the stock single-threaded http.server.HTTPServer, so it can only
+    handle one request at a time; any request arriving while a prior one
+    is still in flight (e.g. blocked on the upstream urlopen(...,
+    timeout=30) call to searxng-mcp-server) just queues with no response.
+    llama-server's --ui-mcp-proxy live per-turn MCP fetch enforces a much
+    shorter client-side timeout than that, so a queued request gets
+    cancelled ("MCP error -32001: Request timed out") well before the
+    proxy would ever reply. That silently dropped all 5 SearXNG tools
+    from that turn's tools array, which changed the rendered prompt just
+    enough to invalidate the entire cached KV prefix (170s cold vs 21s
+    warm for an otherwise identical request). aragon_agent.py's
+    curl/voice path never hit this because it fetches tools once at
+    startup and caches them, so it was never exposed to a busy proxy.
+    Fixed by switching searxng-mcp-proxy.py to
+    http.server.ThreadingHTTPServer so concurrent requests no longer
+    serialize.
+
+ -- root <jens@proknx.com>  Fri, 04 Sep 2026 09:45:00 +0200
+
+aragon-ai (1.5.29) stable; urgency=high
+
+  * Fixed 1.5.28's git-prompt fix not actually taking effect for the
+    SearXNG source clone/re-pin: those git calls run via
+    `sudo -H -u searxng git ...`, and sudo resets the environment by
+    default, dropping GIT_TERMINAL_PROMPT/GIT_ASKPASS before they reach
+    git even though the script exports them. A fresh install on
+    2026-09-03 still hung on "Username for 'https://github.com':" during
+    the initial SearXNG clone, confirming this. The two SearXNG git
+    calls that touch the network (clone, fetch) now set
+    GIT_TERMINAL_PROMPT=0 and GIT_ASKPASS=/bin/true explicitly via `env`
+    on the sudo'd command itself, which isn't subject to sudo's
+    environment filtering. The node-sonos-http-api re-pin step already
+    worked correctly since it doesn't go through sudo.
+
+ -- root <jens@proknx.com>  Thu, 03 Sep 2026 08:59:00 +0200
+
+aragon-ai (1.5.28) stable; urgency=high
+
+  * Fixed installer (postinst) hanging indefinitely during upgrade/install:
+    the SearXNG source re-pin step (and the node-sonos-http-api re-pin step)
+    run `git fetch`/`git clone` over the network, and git's own credential
+    prompt writes straight to the controlling terminal, bypassing the
+    script's stdout/stderr redirection. Under the unattended gotty install
+    terminal, that prompt has nobody to answer it, so the install hung
+    forever on "Username for 'https://github.com':" instead of failing into
+    the warn-and-continue / rollback handling already written for these
+    steps. Fixed by disabling git's interactive credential prompt for the
+    whole script (`GIT_TERMINAL_PROMPT=0`, `GIT_ASKPASS=/bin/true`), so a
+    git step that can't authenticate now fails fast and visibly instead of
+    blocking the install.
+
+ -- root <jens@proknx.com>  Wed, 02 Sep 2026 16:49:00 +0200
+
+aragon-ai (1.5.27) stable; urgency=medium
+
+  * Fixed weather answers using a hardcoded home city ("Valbonne") baked
+    into the prompt instead of the device's actual configured location —
+    weather requests with no city named now resolve the home location
+    dynamically from the device's own settings at answer time.
+
+  * Fixed a specific case where a vague weather question ("what's the
+    weather") could return an unrelated city's weather — the model would
+    occasionally echo back the tool's own parameter name ("location") as
+    if it were a real city, which then geocoded to a random, wrong place.
+    This is now treated the same as no city being given.
+
+  * Voice weather answers are shorter and more focused: the default
+    forecast length for vague requests ("what's the weather forecast")
+    dropped from two days to one, and the assistant no longer pads the
+    answer with an extra unrequested day or fact to fill out its
+    2-sentence voice limit.
+
+  * Weather answers no longer state the country name, trimming response
+    length slightly with no loss of useful information.
+
+ -- root <jens@proknx.com>  Wed, 02 Sep 2026 16:20:00 +0100
+
 aragon-ai (1.5.26) stable; urgency=medium
 
   * Fix (installer): Resolve UVX_PATH by checking known install locations directly, before

@@ -1,3 +1,20 @@
+* 2026-09-04
+ - Weather forecast (no SerpApi key): now calls the weather MCP directly
+   when theweather intent is recognized, skipping the LLM for
+   speed; falls back to the agent/LLM path otherwise
+
+* 2026-09-02
+ - Spoken feedback LLM agent: Speak the "Answer:"/"Réponse:"/"Antwort:" prefix first
+   (cached, instant), then the rest of the answer as a 2nd TTS request.
+ - Warming-up notice: added "ARAGONAI_Warming_Up" key/string to feedback tables,
+   spoken instead of the backend's raw warming-up text
+ - SerpAPI dashboard: added a notice that SerpApi is no longer required for weather/
+   internet searches (AI agent handles these), but the integration still works
+ - Weather-to-agent routing: replaced a hidden cross-tab wire with an
+   explicit "WEATHER TO AGENT OUT/IN" link pair -- same routing, now visible
+ - Weather fallback with no SerpApi key: now also repeats the question back before
+   the AI agent answers, same as the LLM path
+   
 * 2026-08-26
  - Weather forecast fallback (no SerpApi key): when no location is spoken, or the spoken location is "here"/"hier"/"ici", look up the Home location from the ha_rules service (GET 127.0.0.1:5101/settings/location) instead of the static searchTown setting, and fold the city name into the text sent to the AI agent
 
