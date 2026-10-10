@@ -1,3 +1,270 @@
+aragon-ai (1.5.53) stable; urgency=medium
+
+  * AI service (optional): "what is the temperature?" without a room now
+    answers for the room you are in. A room without its own temperature
+    sensor is answered from its thermostat. Before, the answer could be
+    about another room, or "Sorry, I could not do that."
+  * AI service: after "make it warmer" or "lower the temperature by 5
+    degrees", the answer tells the temperature the thermostat is now set
+    to. If your home does not allow a lower or higher setting, you hear
+    the value it stays at, instead of a change that did not happen.
+  * AI service and Aragon Control MCP: "brighter", "dimmer" and "open or
+    close the shutters a bit" first check whether the lights or shutters
+    can still go further. If they are already at full brightness, off,
+    fully open or closed, nothing is sent and you are told so.
+  * Aragon Control MCP: setting the thermostat to a temperature is
+    answered about 3 seconds sooner.
+  * Aragon Control MCP: AI assistants now read shutter positions
+    correctly (the percentage is how far a shutter is closed).
+  * Answers to questions from the AI service and from AI assistants are
+    no longer turned into speech on the Maestro itself, which has no
+    loudspeaker. This saves processing power. Needs the voice flow of
+    9 October 2026; install this update before that flow.
+  * AI service: "what did you hear?" is recognised more reliably after a
+    command that the AI service handled.
+  * AI service: when part of a command fails in the same sentence as
+    "good night", the time or the date (for example a room that does
+    not exist), you are now told what could not be done; the scene or
+    the time is still handled. Needs the voice flow of 10 October 2026.
+
+ -- root <jens@proknx.com>  Sat, 10 Oct 2026 10:00:00 +0200
+
+aragon-ai (1.5.52) stable; urgency=medium
+
+  * AI service (optional): changes relative to how things are now are
+    understood in any language, for example "make it brighter", "dim
+    the lights a bit", "open the shutters a bit", "close the shutters by
+    20 percent" or "make it two degrees warmer". Without an amount the
+    change is small (20 percent, or 1 degree). A temperature change
+    without a room goes to the house's thermostat when there is only
+    one.
+  * Aragon Control MCP: AI assistants connected to your home (Claude,
+    ChatGPT and others) can now make the same relative changes to
+    lights, shutters and the temperature.
+  * AI service: commands such as "close the shutters" now act only on
+    the shutters you mean, and no longer on a room or a shutter you did
+    not name.
+  * AI service: questions about the state of the house use a little
+    less of your AI service account.
+
+ -- root <jens@proknx.com>  Thu, 08 Oct 2026 09:00:00 +0200
+
+aragon-ai (1.5.51) stable; urgency=medium
+
+  * AI service (optional): a command that names no room, such as "turn
+    off the lights", "close the shutters" or "are the lights on?", now
+    applies to the room of the satellite you speak to, as the Maestro
+    does itself. Before, it applied to the whole house. "Here" and "this
+    room" work the same way. To reach the whole house, say "everywhere",
+    "all lights" or "in the whole house".
+  * AI service: an API key that has expired or is refused is now shown
+    on the Maestro page under Cloud AI Server (needs aragon-maestro
+    2.5.14), and the Maestro handles the commands itself until a working
+    key is entered. A key is checked as soon as it is saved.
+  * AI service: the Maestro page now also shows when Aragon Control MCP
+    is not running. The AI service needs it to carry out home commands.
+  * AI service: each home command uses about a third less of your AI
+    service account.
+  * AI service: background talk that the speech recognition turned into
+    one endlessly repeated phrase is now ignored.
+
+ -- root <jens@proknx.com>  Wed, 07 Oct 2026 16:00:00 +0200
+
+aragon-ai (1.5.50) stable; urgency=medium
+
+  * AI service (optional): "good night", "good morning", leaving and
+    coming home, and questions for the time or the date are now
+    understood through the AI service too, also when spoken in another
+    language than the Maestro's. The Maestro then runs its own super
+    scene or answer, for the room you spoke in. This also works after
+    another command in the same sentence, for example "switch off the
+    office and good night". (Needs the updated voice flow.)
+  * AI service (optional): a call for help, "repeat that", "what did you
+    hear", the IP address, troubleshooting, and stop, next, previous and
+    "what is playing" for the music are now understood through the AI
+    service too, in any language.
+  * AI service (optional): general questions (weather, calculations,
+    conversions, facts, news, the time in another city) can now be asked
+    in any language and are answered in the Maestro's language. Before,
+    this only worked in the Maestro's own language.
+  * AI service (optional): the settings can now be made on the Maestro's
+    web page, in the new "Cloud AI Server" section (needs aragon-maestro
+    2.5.13): on or off, the API key and the language spoken at home.
+  * AI service (optional): each command now uses about half as much of
+    the paid AI service as before, although it can do more.
+  * AI service (optional): the Maestro sometimes said "Sorry, I could
+    not do that." to something that was not meant for it, for example a
+    question to another person in the room. It now stays silent.
+  * AI service (optional): the AI models in use are now updated together
+    with this package.
+  * Aragon AI Chat: questions for the current time could be answered
+    with a wrong time. Fixed.
+
+ -- root <jens@proknx.com>  Tue, 06 Oct 2026 10:00:00 +0200
+
+aragon-ai (1.5.49) stable; urgency=medium
+
+  * AI service (optional): a voice command that names a room the Maestro
+    does not have is no longer ignored. The Maestro now carries out the
+    rest of the command and tells you which room it does not know, for
+    example "The Office light was turned off, but Toilet is not a valid
+    room." Before, such a command got no answer when it was spoken in
+    another language than English.
+
+ -- root <jens@proknx.com>  Mon, 05 Oct 2026 10:30:00 +0200
+
+aragon-ai (1.5.48) stable; urgency=medium
+
+  * New, optional: voice commands the Maestro does not understand can be
+    handled by an AI service on the internet (Scaleway, Paris). You can
+    then speak freely instead of using fixed wording, and get a short
+    spoken answer. It is switched off by default; this update changes
+    nothing until it is switched on.
+  * With the AI service on, short commands are understood in 23
+    languages, also when you speak another language than the one the
+    Maestro is set to. Background noise and speech that is not meant
+    for the house are ignored.
+  * Without internet, or if the AI service does not answer, the Maestro
+    understands commands by itself as before.
+
+ -- root <jens@proknx.com>  Fri, 02 Oct 2026 17:30:00 +0200
+
+aragon-ai (1.5.47) stable; urgency=medium
+
+  * Aragon Control MCP: when an AI assistant sends several commands at
+    once (e.g. lights off, shutters closed and the thermostat lowered),
+    they are now sent to the Maestro one after the other with a short
+    pause.
+  * Aragon Control MCP: device and scene names are accepted in any
+    upper/lower case (e.g. "Cosy" for the "cosy" scene, "sofa" for
+    "Sofa").
+  * Aragon Control MCP: after setting the thermostat, the new set-point
+    is checked a few seconds later and the command is sent once more
+    if it did not take effect; if it still did not, the assistant is
+    told so instead of reporting success.
+
+ -- root <jens@proknx.com>  Thu, 01 Oct 2026 14:00:00 +0200
+
+aragon-ai (1.5.46) stable; urgency=medium
+
+  * Aragon Control MCP: commands for the whole house now work when an AI
+    assistant names the room as "everywhere", "all", "whole house",
+    "überall", "partout" or similar -- previously such commands and
+    questions were not understood by the Maestro and did nothing.
+  * Aragon Control MCP: a room name that does not exist on the Maestro
+    is now rejected with a clear message listing the valid rooms,
+    instead of being sent and silently ignored.
+  * Aragon Control MCP: room names are accepted in any upper/lower case
+    (e.g. "living room" for "Living Room").
+  * Aragon Control MCP: switching all lights in the house on or off is
+    now reported as done -- it already worked, but was reported as
+    uncertain.
+  * Aragon Control MCP: setting the thermostat without naming a room
+    now changes the thermostat -- previously it was reported as done
+    but nothing changed. With thermostats in several rooms, the
+    assistant is asked to name the room.
+  * Aragon Control MCP: asking for a sensor that does not exist in a
+    room (e.g. a temperature sensor) now returns a clear message with
+    the room's sensors; where the room has a thermostat, the assistant
+    is told to ask the thermostat for the current temperature.
+
+ -- root <jens@proknx.com>  Thu, 01 Oct 2026 10:00:00 +0200
+
+aragon-ai (1.5.45) stable; urgency=medium
+
+  * Web search: fixed general searches (e.g. "stock price tesla")
+    returning no results at all.
+  * News: "what are the top news" now gives real headlines instead of
+    failing or returning lifestyle articles, in English, French and
+    German.
+  * News now follows the assistant's language setting -- a device in
+    France set to English no longer answers with French news.
+  * News about a single topic (e.g. "top news in France") no longer
+    comes back empty; a second news source now fills in when the first
+    one has no answer.
+  * News questions are answered more than twice as fast (about 20s
+    instead of 50s+ on the device measured).
+  * Fixed an installer problem that would have silently prevented
+    future search engine updates from being applied.
+
+ -- root <jens@proknx.com>  Mon, 28 Sep 2026 10:00:00 +0200
+
+aragon-ai (1.5.43) stable; urgency=medium
+
+  * Aragon Control MCP: questions about the state of a light or
+    shutter no longer occasionally go unanswered.
+  * Aragon Control MCP: asking about one named light or shutter now
+    gives its brightness or position, not just on/off or open/closed.
+  * Aragon Control MCP: commands the system only partly understood
+    are no longer reported as done, and a failed command is now
+    reported within 5 seconds instead of 15.
+  * Aragon Control MCP, German: fixed switching lights on/off for a
+    room, a single light, or everywhere; setting a light to 0% now
+    turns it off; fixed asking about the shutters' state.
+  * Aragon Control MCP, French: "open the shutters to 70%" now works
+    for a room or the whole house, brightness can be set on a named
+    light, and sensor and thermostat questions for a specific room
+    are now understood.
+
+ -- root <jens@proknx.com>  Wed, 23 Sep 2026 12:00:00 +0200
+
+aragon-ai (1.5.42) stable; urgency=medium
+
+  * SECURITY: fixed a device where Remote Connect was enabled but an
+    owner password was never actually set still accepting the literal
+    placeholder "CHANGE_ME" as a valid login from the internet. If
+    Remote Connect has ever been enabled on a device without separately
+    setting a real password, set one now regardless of this update.
+  * Fixed: a device with no owner password set yet could end up with no
+    way to reach the Aragon Maestro setup page at all, short of SSH.
+  * Fixed the "Restart required" notice showing even when there was
+    nothing to restart for.
+
+ -- root <jens@proknx.com>  Tue, 22 Sep 2026 12:00:00 +0200
+
+aragon-ai (1.5.41) stable; urgency=medium
+
+  * Aragon Control MCP now detects it's unreachable from outside faster
+    (was up to 10s, now up to 5s).
+  * Removed Stop/Start from the management API -- Stop also disabled the
+    only way to start it again remotely. Restart is unaffected.
+  * Fixed the installer refusing to restart Aragon Control MCP on
+    upgrade even when it was already configured and running.
+  * Fixed upgrades changing whether Aragon Control MCP was running --
+    it now keeps whatever state (running or stopped) it had before.
+  * Fixed Republish Address failing with an unhelpful timeout when
+    Tailscale Funnel isn't enabled for the device yet -- it now shows
+    the approval link needed to fix it, and that link now reliably
+    reaches the owner instead of being lost.
+  * Fixed Republish Address needing a manual SSH config edit the very
+    first time it's used on a device.
+
+ -- root <jens@proknx.com>  Mon, 21 Sep 2026 12:00:00 +0200
+ 
+aragon-ai (1.5.37) stable; urgency=medium
+
+  * Aragon Control MCP can now be managed remotely the groundwork for
+    an upcoming Aragon Maestro html UI to check its status, restart it,
+    change the owner password, and fix its public address after a
+    device rename.
+
+ -- root <jens@proknx.com>  Thu, 17 Sep 2026 12:00:00 +0200
+
+aragon-ai (1.5.36) stable; urgency=medium
+
+  * Added Aragon Control MCP: connect Claude, ChatGPT, or another AI
+    assistant directly to your Aragon Maestro system and control your
+    home by talking to it — turn lights on/off, adjust shutters, check
+    sensors and more. See the included setup guide for how to connect
+    your assistant.
+
+  * Software updates are now more reliable: if an update to one of the
+    background services fails partway through, the device automatically
+    falls back to the previous working version instead of being left in
+    a broken state.
+
+ -- root <jens@proknx.com>  Tue, 15 Sep 2026 14:00:00 +0200
+
 aragon-ai (1.5.33) stable; urgency=low
 
   * Suppressed the harmless "`/root/.local/bin` is not on your PATH" warning

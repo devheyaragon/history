@@ -1,3 +1,81 @@
+aragon-maestro (2.5.14) stable; urgency=low
+
+  * Cloud AI Server: the page now tells you when the AI service refuses
+    your API key, for example because it has expired, and asks you to
+    enter a new one (needs aragon-ai 1.5.51). Until then the Maestro
+    handles the voice commands itself.
+  * Cloud AI Server: the page now tells you when Aragon Control MCP is
+    not running. The AI service needs it to carry out home commands; set
+    it up and start it in the Aragon Control MCP section.
+
+ -- root <jens@proknx.com>  Wed, 07 Oct 2026 16:30:00 +0200
+
+aragon-maestro (2.5.13) stable; urgency=low
+
+  * Added a new "Cloud AI Server" section under System (needs aragon-ai
+    1.5.50). There you can switch on an AI service on the internet for
+    the voice commands the Maestro does not understand, enter the API
+    key of your own account and choose the language spoken at home. The
+    page shows whether the service is ready. It is off by default.
+  * Cloud AI Server: new switch "Always use the cloud AI server". With it
+    on, every voice command goes to the AI service. Use it when the
+    household speaks another language than the Maestro; otherwise the
+    Maestro may mistake foreign words for a command. The switch is shown
+    while the cloud AI server is on.
+  * Fine-tune Recognition: the confidence threshold is shown greyed out
+    while "Always use the cloud AI server" is on, and comes back
+    unchanged when that is switched off.
+  * Cloud AI Server: added a Setup Guide button. The guide itself is
+    not on the Maestro yet and follows with a later update.
+  * About: added the credits for the voices of the short spoken
+    sentences used with the AI service.
+
+ -- root <jens@proknx.com>  Tue, 06 Oct 2026 10:00:00 +0200
+
+aragon-maestro (2.5.12) stable; urgency=low
+
+  * Aragon Control MCP: Start Service now also enables the service at
+    boot. Before, it only ran until the next (nightly) reboot, after
+    which the page showed "Not responding" again.
+  * Aragon Control MCP: added a Stop Service button (with confirmation).
+    It stops the service and keeps it off after a reboot until it is
+    started again from this page.
+  * Aragon Control MCP: when the service is not running, the log now
+    shows one line per status check instead of a full error dump.
+
+ -- root <jens@proknx.com>  Mon, 28 Sep 2026 14:00:00 +0200
+
+aragon-maestro (2.5.11) stable; urgency=low
+
+  * Added a new "Aragon Control MCP" section under System: check the
+    connector's status, restart it, set the owner password, and
+    republish its public address after reconnecting Remote Connection —
+    without SSHing into the device.
+  * Fixed Republish Address failing with "Could not reach the
+    management API" even though the service was healthy: this proxy
+    call had a fixed 10-second timeout, but the underlying operation
+    (reconfiguring Tailscale Funnel) can legitimately take up to 30
+    seconds, especially the first time it's ever run on a device.
+    Extended just this call's timeout to 40 seconds.
+  * Added a "Start Service" action for when Aragon Control MCP isn't
+    running at all (fresh install not yet started, or stopped outside
+    this page) — Restart alone couldn't reach it in that case, since it
+    goes through the connector's own API, which needs the service to
+    already be up.
+  * Fixed the Setup Guide link opening the device's internal loopback
+    address instead of one reachable from your browser.
+  * Fixed status/success messages jumping the page to the top instead of
+    showing next to the action that triggered them.
+  * Republish Address is now disabled for the few seconds its own
+    request is in flight, so clicking it again before it finishes
+    can't fire a second, overlapping reconfigure.
+  * Added a notice pointing the owner to the owner-password field
+    when it hasn't been set yet, so it's caught before they go try
+    connecting an assistant instead of showing up as a confusing
+    sign-in failure with no obvious cause.
+
+ -- root <jens@proknx.com>  Fri, 18 Sep 2026 12:00:00 +0200
+
 aragon-maestro (2.5.7) stable; urgency=low
 
   * Added disk-cleanup.sh: weekly (Sun 03:30, before daily reboot) cleanup of
