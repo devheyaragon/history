@@ -1,3 +1,54 @@
+aragon-ai (1.5.56) stable; urgency=medium
+
+  * AI service: commands with a condition now work, for example "turn on
+    the light in the living room if the shutters are closed". The AI first
+    checks the shutters, then switches the light only if they are closed, and
+    otherwise says why nothing was done. A shutter counts as closed from 97
+    percent and as open up to 3 percent.
+  * AI service: when a condition is not met, the answer now says that
+    nothing was changed, instead of sometimes saying the light was turned on.
+
+ -- root <jens@proknx.com>  Tue, 13 Oct 2026 17:00:00 +0200
+
+aragon-ai (1.5.55) stable; urgency=medium
+
+  * AI service: when Wikipedia has no article with the exact name asked
+    for, the AI is now told that the article found by search may be about
+    something else. Before, a question about a "VMA test" (a running
+    test) was answered with "I cannot explain" because Wikipedia returned
+    an article about a military squadron.
+  * AI service: when a look-up finds something unrelated to the question,
+    the AI now answers from its own knowledge when it is sure, or says that
+    it does not know, instead of talking about the search result.
+  * AI service: web searches now use a few keywords instead of the whole
+    question, so they find results more often. "Jag ska göra ett VMA-test.
+    Hur går det till?" found nothing before; "VMA test" finds results.
+
+ -- root <jens@proknx.com>  Mon, 12 Oct 2026 16:00:00 +0200
+
+aragon-ai (1.5.54) stable; urgency=medium
+
+  * Voice commands: correct words are no longer changed before the
+    command is recognised. "Good night" was changed to "good light", so
+    the night scene did not start, and "could you repeat that" became
+    "cold you repeat that". Fewer commands fail as a result, in English,
+    German and French.
+  * Questions that are not home commands now reach search and the
+    on-board AI assistant exactly as they were heard. Before, words could be
+    replaced by device or weather words ("sound" became "around").
+  * AI service: questions such as "what is the difference between
+    fusion and fission energy?" now look up each subject separately,
+    and when nothing is found the answer comes from the AI's own
+    knowledge instead of "There is no Wikipedia article".
+  * AI service: a room your home does not have is no longer replaced by
+    another room. "Turn off the light in the bedroom" in a home without
+    a bedroom could switch off the lights in a different room; now you
+    are told that the room is not known.
+  * Aragon Control MCP: test tools are no longer installed with it,
+    which makes the update a little smaller and faster.
+
+ -- root <jens@proknx.com>  Sat, 10 Oct 2026 16:00:00 +0200
+
 aragon-ai (1.5.53) stable; urgency=medium
 
   * AI service (optional): "what is the temperature?" without a room now
