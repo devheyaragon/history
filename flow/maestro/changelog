@@ -1,3 +1,39 @@
+* 2026-10-18
+ - Super scenes: a SAY text is spoken in the language spoken at home when the
+   Maestro speaks it (cloud AI on and that language's voice installed), so
+   "SAY God morgon" is said in Swedish. Needs aragon-ai 1.5.62.
+ - Cloud AI: a weather question the Maestro understood itself, also "What's
+   the weather forecast" in a super scene, is answered by cloud AI in the
+   language spoken at home. Without cloud AI it is answered as before, in the
+   Maestro's language.
+ - Fixed: a weather or search question during a super scene cleared the
+   scene's room, so its later commands could run without it.
+
+* 2026-10-16
+ - Cloud AI: music requests ("play ...", "spiele ...", "joue ...") now go to the
+   cloud AI first, and to Spotify on the Maestro only when the cloud does not
+   handle them. A Sonos favourite or playlist (for example "Groove Salad")
+   plays that favourite, as without cloud AI. Needs aragon-ai 1.5.60.
+   
+* 2026-10-15
+ - Cloud AI: the Maestro's own spoken texts (time, date, help call, yes/no
+   dialogs, cancel, music answers, help-call notifications) follow the
+   language spoken at home once aragon-ai 1.5.59 or later is installed (texts
+   for all 23 cloud languages). A text that is missing in that language is
+   said in the Maestro's language, with its voice. The time with minutes 1-9
+   is said "femton noll fem" in Swedish; Japanese and Chinese dates use their
+   own order.
+ - Cloud AI: when you change the language spoken at home, turn cloud AI on or
+   off, use the "Speak in the language spoken at home" switch, or install or
+   remove a voice, the Maestro speaks its own texts in the new language within
+   a few seconds. Before, this could take up to 5 minutes.
+
+* 2026-10-14
+ - Cloud AI server: its spoken answers can be in the language spoken at home
+   (for example Swedish on an English Maestro) once a voice for that language
+   is installed. Needs aragon-ai 1.5.57 and aragon-rhasspy-maestro 2.0.5 or
+   later; without the voice nothing changes.
+   
 * 2026-10-10
  - Cloud AI server: when a command fails in the same sentence as a super scene,
    the time or the date ("Switch off the lights in the kitchen and good night"

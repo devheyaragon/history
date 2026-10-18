@@ -1,3 +1,60 @@
+aragon-maestro (2.5.17) stable; urgency=low
+
+  * Super scenes: when cloud AI is on and the language spoken at home is not
+    the Maestro's language, the super scene dialogs now say that the commands
+    must be typed in the Maestro's language (with an example), and that only
+    a SAY sentence can be written in the language spoken at home.
+  * Online voice: for Arabic, Finnish, Romanian and Slovak the page says that
+    KugelAudio has no voice of its own and a voice of another language speaks
+    them (needs aragon-ai 1.5.62).
+  * Online voice: new "Test" button with a satellite list: it speaks the time
+    in the language and voice selected under "Voice per language", whatever
+    the language spoken at home is (needs aragon-ai 1.5.62).
+  * Cloud AI: shorter text for "Voice of the language spoken at home"; it now
+    says that this is an offline voice stored on the Maestro.
+  * Node-RED update: the warning "Node-RED Update - Read Before Proceeding"
+    no longer appears for Node-RED 5, which is tested with Aragon. It now
+    appears only before Node-RED 6 or later would be installed, and names
+    that version.
+
+ -- root <jens@proknx.com>  Sun, 18 Oct 2026 09:00:00 +0200
+
+aragon-maestro (2.5.16) stable; urgency=low
+
+  * Cloud AI: new "Online voice" part. When it is on, the Maestro speaks
+    with a natural voice from the internet service KugelAudio, in its own
+    language and in the language spoken at home; names in other languages
+    sound better. Without internet, or if KugelAudio does not answer, the
+    built-in voice is used. The page explains how to set up a KugelAudio
+    account, says which text is sent to KugelAudio, takes the API key,
+    shows whether it works, lists the languages with an online voice and
+    lets you choose a voice per language (a female voice by default). It
+    works with and without cloud AI.
+  * Needs aragon-ai 1.5.61 or later.
+
+ -- root <jens@proknx.com>  Fri, 16 Oct 2026 18:00:00 +0200
+
+aragon-maestro (2.5.15) stable; urgency=low
+
+  * Cloud AI: new "Voice of the language spoken at home" part. When a
+    language is chosen, you can see which voices exist for it, install one
+    (downloaded from the internet, about 60 MB), choose which one is used,
+    remove one, and hear it on a satellite with "Test voice". Each voice
+    links to its model card with its licence.
+  * Cloud AI: new switch "Speak in the language spoken at home". When
+    it is off, the Maestro always speaks its own language.
+  * Cloud AI: turning cloud AI off now also turns "Always use cloud AI"
+    off, so the Maestro again understands commands itself first. Before,
+    that switch could stay on while cloud AI was off.
+  * The "Cloud AI Server" section is now called "Cloud AI": it uses an AI
+    service on the internet, not a server of your own.
+  * Removed the unused Swedish translation of the web pages. The pages
+    stay in English, German and French. Swedish can still be the language
+    spoken at home with cloud AI.
+  * Needs aragon-ai 1.5.59 or later.
+
+ -- root <jens@proknx.com>  Wed, 14 Oct 2026 18:00:00 +0200
+
 aragon-maestro (2.5.14) stable; urgency=low
 
   * Cloud AI Server: the page now tells you when the AI service refuses

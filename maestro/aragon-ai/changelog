@@ -1,3 +1,134 @@
+aragon-ai (1.5.62) stable; urgency=medium
+
+  * Log of the AI server: the line with what was heard now also says what
+    the carrier sentence did (used, nothing after it, not found, off), and
+    every voice command ends with one line that names the room, also those
+    handed back to the Maestro or left unanswered. One search of the log
+    shows what was heard, how and where.
+  * Cloud AI: a radio station asked for by name ("Spela Groove Salad",
+    "Sätt på Radio Nova") is now played: your Sonos favourite of that name,
+    otherwise a Spotify search. Before, cloud AI answered that the radio
+    cannot be played yet. "Turn on the radio" without a station name is
+    still not possible.
+  * Super scenes: a SAY text can now be spoken in the language spoken at
+    home (needs the flow of 2026-10-17).
+  * Online voice: Arabic, Finnish, Romanian and Slovak are now spoken by the
+    online voice too. KugelAudio has no voice of its own for them, so a voice
+    of the closest language speaks them: Slovak a Czech one, Romanian an
+    Italian one, Finnish a Hungarian one, Arabic an English one. Another can
+    be chosen.
+  * Online voice: a sentence that ends with a number, such as the time
+    ("Klockan är 16 48"), is now read correctly; before, the last number
+    could be mispronounced or followed by a breath.
+  * Online voice: new test of the voice of any language on a satellite
+    (needs aragon-maestro 2.5.17).
+  * Cloud AI: when a look-up tool answers with an error, the Maestro now says
+    it could not do it, instead of an answer the AI made up.
+  * Cloud AI: short commands said softly ("God morgon", "Klockan",
+    "Godnatt") are understood more often. When the first transcription hears
+    nothing, the second one now uses the language spoken at home (before: it
+    guessed the language and often heard German, English or French), and a
+    single word is no longer thrown away as noise. A command in another
+    language that reaches this second step is translated into the language
+    spoken at home.
+
+ -- root <jens@proknx.com>  Sun, 18 Oct 2026 09:00:00 +0200
+
+aragon-ai (1.5.61) stable; urgency=medium
+
+  * Online voice (needs aragon-maestro 2.5.16 to switch it on): when turned on
+    with a KugelAudio key, everything the Maestro says is spoken by an online
+    voice, in every language KugelAudio has a voice for, also English, German
+    and French. It reads English names in other languages correctly ("Spelar
+    Queen i kontoret") and answered faster than the built-in voice in our
+    test. By default a female voice of the best quality is used; another can
+    be chosen per language. Without internet, without credit, for a language
+    without a KugelAudio voice, or when KugelAudio takes more than 3 seconds,
+    the built-in voice speaks as before. What is spoken is kept on the Maestro,
+    so repeated sentences cost nothing. When it is on, the texts the Maestro
+    says are sent to KugelAudio GmbH (Berlin), processed in the EU and not
+    stored there.
+
+ -- root <jens@proknx.com>  Fri, 16 Oct 2026 18:00:00 +0200
+
+aragon-ai (1.5.60) stable; urgency=medium
+
+  * Aragon Control MCP: AI assistants can now control the Sonos speaker in a
+    room: play, pause, next and previous track, set the volume, louder and
+    quieter. The room must be named; the assistant is asked to check with
+    you when you did not say which room. Next and previous track work on an
+    English Maestro only for now.
+  * Aragon Control MCP: AI assistants can now play music from Spotify on the
+    Sonos speaker in a room: a song, an artist, an album or a playlist (also
+    a genre or mood, as a playlist search). A name that is one of your Sonos
+    favourites or playlists (for example "Groove Salad") plays that
+    favourite, as the Maestro does without cloud AI; only other names are
+    searched on Spotify.
+  * Spotify: better choices. The search now uses the country of the language
+    spoken at home (for example Sweden for Swedish), so "Kent" finds the
+    Swedish band. Of several artists with the same name, the one with the most
+    albums is played. An artist now plays up to five songs instead of one. A
+    genre or mood finds playlists more reliably ("music for dinner"). A queue
+    of 40 or more songs is cleared before new music starts, for every kind of
+    request; before, only for playlists, so the queue kept growing.
+  * AI service: "play some jazz", "play Talking Heads", "set the volume to
+    20" and "louder" now work by voice in any language: the music plays on
+    the Sonos speaker of the room you are in (or the room you name). Before,
+    the AI service answered that it could not do this. The radio still
+    cannot be started this way.
+
+ -- root <jens@proknx.com>  Thu, 15 Oct 2026 14:00:00 +0200
+
+aragon-ai (1.5.59) stable; urgency=medium
+
+  * AI service: "what did you hear" is now answered by the AI service with
+    what it heard last on that satellite, in the language of the answers
+    (for example "Jag hörde: Tänd i köket.").
+  * AI service: a question for both the date and the time ("Vilket datum och
+    vilken tid är det") now gets both; before, only the time was said.
+  * The Maestro's own spoken texts (time, date, help call, yes/no questions,
+    music answers, help-call notifications to carers) can now be in the
+    language spoken at home, for each of the 23 languages of the cloud speech
+    recognition. Needs the updated main flow.
+  * Prepared for choosing the voice of the language spoken at home in the
+    Maestro's web page: the list of Piper voices, installing, choosing and
+    removing a voice. The page itself comes with a later aragon-maestro update.
+  * Fix: a scene listed for the whole house (for example a Hue scene of the
+    "SuperGroup") could not be started by voice through the AI service
+    ("Aktivera fokus" did nothing). It is now started for the whole house.
+  * When the AI service does not answer in time and the Maestro transcribes
+    the speech itself, it now listens for the language spoken at home instead
+    of the Maestro's language (Swedish speech was written down as English).
+
+ -- root <jens@proknx.com>  Wed, 14 Oct 2026 17:00:00 +0200
+
+aragon-ai (1.5.58) stable; urgency=medium
+
+  * Fix: since 1.5.57 with aragon-rhasspy-maestro 2.0.5, the Maestro's own
+    spoken answers (for example the time) were spoken with the language code
+    "en-UK", "de-DE" or "fr-FR" in front. These codes are now understood.
+  * Settings file: the update no longer copies a note about the model
+    names into the installed settings file as if it were a new setting
+    (seen in 1.5.57: "ARAGON_AI_LLM_MODEL" was listed). Harmless, as the
+    added lines are switched off.
+
+ -- root <jens@proknx.com>  Wed, 14 Oct 2026 15:00:00 +0200
+
+aragon-ai (1.5.57) stable; urgency=medium
+
+  * AI service: answers can be spoken in the language spoken at home (set
+    in the Cloud AI Server settings), for example Swedish on an English
+    Maestro. This works for each of the 23 languages the cloud speech
+    recognition supports, once a voice for that language is installed.
+    Without the voice the answers stay in the Maestro's language. The
+    installation sets up the speech output for this. Needs
+    aragon-rhasspy-maestro 2.0.5 or later and the updated main flow.
+  * Settings file: settings added by an update are now also listed in an
+    already installed settings file, at the end and switched off, with their
+    explanation. Existing settings are not changed.
+
+ -- root <jens@proknx.com>  Wed, 14 Oct 2026 13:00:00 +0200
+
 aragon-ai (1.5.56) stable; urgency=medium
 
   * AI service: commands with a condition now work, for example "turn on
