@@ -1,3 +1,55 @@
+aragon-ai (1.5.64) stable; urgency=medium
+
+  * Cloud AI: an answer made only of yes words ("Ja, ja, ja, ja.", "Yes
+    please") or only of no words ("Nej tack") is passed to the Maestro as a
+    yes or a no at once. Before, a repeated yes to "Should I call for help
+    now?" could be taken as not meant for the Maestro, and no help was
+    called.
+  * Calculator: sin, cos and tan now take degrees, unless radians are
+    given ("0.5 rad", or an angle with pi). "Sine of 90 degrees" gave a
+    wrong result before.
+  * Online voice: every text now ends with ".", "!" or "?" before it is
+    spoken, and double spaces are removed. A text without an end mark was
+    ended wrongly (for example the answer to "what is playing").
+  * The Test button of "Voice of the language spoken at home" now always
+    plays that offline voice, also when the online voice is on.
+  * Voice caches: files unused for 30 days are now removed in every language
+    folder, not only in the language just spoken, so the files of a voice or
+    language no longer used are removed too.
+  * Online voice: a number at the end of a sentence no longer gets an extra
+    " ." (added in 1.5.62); KugelAudio now reads such numbers correctly.
+  * Cloud AI: "what is playing in the living room" now reads that room's
+    Sonos speaker (new media_control action "status" in Aragon Control
+    MCP) and names the artist, title or station. Before, it could check the
+    lights instead and make up the answer. Without a room, the Maestro's
+    own "what is playing" is used as before.
+
+ -- root <jens@proknx.com>  Mon, 19 Oct 2026 09:00:00 +0200
+
+aragon-ai (1.5.63) stable; urgency=medium
+
+  * Cloud AI: when music asked for by name is not one of your Sonos
+    favourites and is found by a Spotify search instead (for example a radio
+    station such as "P3"), the answer now says it plays from Spotify, instead
+    of saying that the station plays.
+  * Cloud AI: new setting "Other languages are also spoken at home" (on the
+    Cloud AI page, needs aragon-maestro 2.5.18). Since 1.5.62 a command that
+    is not understood at first is transcribed again in the language spoken at
+    home; in a home that also gives commands in another language (for example
+    German in a French home) that turned them into the home language. With
+    this setting on, the language that was spoken is detected again, as
+    before 1.5.62.
+  * Cloud AI: "Stop the music in the living room" said in another room
+    started the music there instead of stopping it. Stop, pause, next and
+    previous with a room named now act on that room's speaker; without a
+    room they work as before.
+  * Calculator: cube roots ("cube root of 729") and angles in degrees
+    ("sin(90°)") are now calculated; before, both gave an error.
+  * Installation: removed the internet speed test before the prompt cache
+    download, which has had nothing to download since August.
+
+ -- root <jens@proknx.com>  Sun, 18 Oct 2026 12:00:00 +0200
+
 aragon-ai (1.5.62) stable; urgency=medium
 
   * Log of the AI server: the line with what was heard now also says what

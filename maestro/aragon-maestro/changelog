@@ -1,3 +1,55 @@
+aragon-maestro (2.5.20) stable; urgency=low
+
+  * Cloud AI page: shorter, clearer texts (English, German, French). The
+    switch "Speak in the language spoken at home" now comes before the voice
+    it controls.
+  * Cloud AI page: the introduction now says that with "Always use cloud
+    AI" every command goes to the AI service.
+  * Cloud AI page grouped: status and on/off at the top, the explanation
+    folds away, the API key folds away once a key is set, "Language and
+    voice" is a separate block. "Always use cloud AI" sits right under "Use
+    cloud AI"; its text names the default (off) and what it improves. The
+    offline voice folds away while the online voice is on.
+  * Online voice section in the same layout as Cloud AI: section heading,
+    the API key folds away once a key is set, "Voice per language" is a
+    separate block.
+  * Weekly disk cleanup: also cleans the cloud-AI voice caches of all
+    languages (files unused for 30 days, at most 100 MB each), also for a
+    language that is no longer spoken. Needs aragon-ai 1.5.64.
+  * Talk to Home: the typed command is shown as plain text, never as HTML.
+    The page also works in browsers without speech input (for example
+    Firefox). Speech input uses the assistant's language instead of always
+    English and no longer fails when clicked while listening. Labels are
+    translated; an empty or invalid command gets a clear error.
+  * About page: the version list always appears in the same order.
+  * About page licences: retired models Phi-4-mini and LFM2.5 removed; the
+    Qwen2.5-1.5B model, llama.cpp, SearXNG, searxng-mcp-server, espeak-ng, ONNX
+    Runtime, Node.js, runtime libraries, uv, MCP, FastMCP and the other
+    Python and Node.js packages added.
+
+ -- root <jens@proknx.com>  Mon, 19 Oct 2026 18:00:00 +0200
+
+aragon-maestro (2.5.19) stable; urgency=low
+
+  * Updates (Aragon upgrade, system update, Node-RED update) now run in the
+    background, independent of the update window. Closing the window or a
+    network drop no longer stops or freezes an update, and opening the
+    window again only shows its progress instead of starting it a second
+    time. The full output, error messages included, is kept in
+    /opt/aragon-maestro/logs/aragon-upgrade.log, aragon-sysupdate.log and
+    aragon-nrupdate.log.
+
+ -- root <jens@proknx.com>  Sun, 18 Oct 2026 16:00:00 +0200
+
+aragon-maestro (2.5.18) stable; urgency=low
+
+  * Cloud AI: new switch "Other languages are also spoken at home", under the
+    language spoken at home. Turn it on when commands are also given in
+    another language (for example German in a French home). Needs aragon-ai
+    1.5.63.
+
+ -- root <jens@proknx.com>  Sun, 18 Oct 2026 12:00:00 +0200
+
 aragon-maestro (2.5.17) stable; urgency=low
 
   * Super scenes: when cloud AI is on and the language spoken at home is not

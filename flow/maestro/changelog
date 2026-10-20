@@ -1,3 +1,8 @@
+* 2026-10-19
+ - Call for help with cloud AI: when the question "Should I call for help
+   now?" gets no yes and no no within 20 seconds (no answer, or an answer
+   that was not understood), help is called, as without cloud AI.
+
 * 2026-10-18
  - Super scenes: a SAY text is spoken in the language spoken at home when the
    Maestro speaks it (cloud AI on and that language's voice installed), so
