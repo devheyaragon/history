@@ -1,3 +1,97 @@
+aragon-ai (1.5.68) stable; urgency=medium
+
+  * Web search with Mojeek in the Aragon AI Chat: answers from Mojeek were
+    refused by the chat page ("Tool search_web has an output schema but did
+    not return structured content"), so the chat found nothing. The answer
+    now also carries the structured result the page checks. Voice answers
+    were not affected.
+  * The agent's log gives the duration and token counts of every cloud
+    model call (to find out why the first call sometimes takes 4-7 s).
+  * When the cloud speech recognition does not answer in time, the agent
+    asks the cloud once more before it falls back to the local Whisper
+    (each attempt gets half of the STT timeout, so the longest wait is
+    unchanged). A single lost cloud request no longer turns a Swedish
+    command into a wrong local transcript.
+  * When a command was carried out but the cloud did not phrase the answer
+    in time, the Maestro said "Sorry, I could not do that." although the
+    action was done. It now says "Done." ("Klart.", "Erledigt.", "C'est
+    fait.") in that case; a failed action or a question still gets the
+    failure sentence.
+
+ -- root <jens@proknx.com>  Thu, 22 Oct 2026 17:00:00 +0200
+
+aragon-ai (1.5.67) stable; urgency=medium
+
+  * "Test voice" on the Cloud AI page (offline and online voice) failed with
+    "The change could not be saved." on boxes without the MQTT command-line
+    client, which cannot be installed on every box. The test is now sent
+    with an MQTT library in the agent's own environment (paho-mqtt 2.1.0);
+    the command-line client is only used when that library is missing.
+
+ -- root <jens@proknx.com>  Wed, 21 Oct 2026 18:00:00 +0200
+
+aragon-ai (1.5.66) stable; urgency=medium
+
+  * Web search through Mojeek with the customer's own API key (set on the
+    Maestro's Cloud AI page, needs aragon-maestro 2.5.22): web searches
+    from voice and from the chat use Mojeek; without a key, or when Mojeek
+    fails or finds nothing, the built-in SearXNG as before.
+    The free engines SearXNG uses are mostly blocked from home connections
+    (5 of 16 test questions with results, Mojeek 16 of 16). News searches
+    stay with SearXNG's news engines, which work (16 of 16 current), and
+    use Mojeek only when they find nothing.
+  * The Mojeek key is never written to the log.
+  * Chat: all Aragon Control tools are enabled and always allowed by
+    default, so switching lights, shutters, heating, scenes and music no
+    longer asks for approval in the chat (chat page version 10).
+  * Cloud AI: a question how to do something ("Hur luftar man element?")
+    is answered with a web search; before, it was sometimes taken as a
+    request to the house and refused.
+  * Weather: each day is described by its daytime hours and hours of sun
+    instead of its worst hour ("Sunny, dry" instead of "Light rain" for a
+    sunny day with a drop of rain at night); rain is given as "about N
+    millimeters", "mostly at night" when it falls at night; strong gusts
+    and thunderstorms are mentioned; the place is given with its country
+    and the cloud AI names it in the answer; the home town is looked up in
+    the home country; "to" in "12 to 22 degrees" is in the answer's
+    language.
+
+ -- root <jens@proknx.com>  Wed, 21 Oct 2026 12:00:00 +0200
+
+aragon-ai (1.5.65) stable; urgency=medium
+
+  * Aragon AI Chat (port 8089): while "Use cloud AI" is on, the chat uses
+    the cloud AI model. The API key stays on the Maestro. When cloud AI is
+    off, cannot be reached or refuses the request, the local model answers
+    as before. With cloud AI on, the chat page no longer waits for the
+    local model's warm-up.
+  * Aragon AI Chat: while the chat uses cloud AI, the note "This chat is
+    using a lot of memory on this device. A fresh chat will be faster." is
+    no longer shown; a long chat does not use the Maestro's memory then.
+  * Aragon AI Chat: the model button shows whether cloud AI or the local
+    model answers ("Aragon AI Chat · Cloud AI" / "· Local AI", also in
+    French and German).
+  * Aragon AI Chat with cloud AI: answers in the language of the question
+    (a Swedish question was answered in English). The local model's
+    instructions are unchanged.
+  * Security: the chat page's MCP proxy now only reaches the chat's own
+    tool servers. Before, anyone who could open the chat page could reach
+    every local service on the Maestro through it.
+  * The old Node.js chat service (llama.service, port 4001) is removed: it
+    was only called once a day to preload a model that is no longer
+    installed, and it accepted requests from the whole network. llama-cli
+    stays (home automation rules, Spotify).
+  * Aragon AI Chat with cloud AI can control the house (lights, shutters,
+    heating, scenes, music) through Aragon Control, also remotely through
+    Tailscale. The chat asks for the room when none is named, and the page
+    asks before each switching action. With cloud AI off the chat has no
+    house tools. Open the chat from the Maestro menu once to load it.
+  * Upgrade: nginx is now reloaded when its settings change. Before, the
+    installer took nginx itself for an old chat server on port 8089 and
+    the new settings only took effect after a restart.
+
+ -- root <jens@proknx.com>  Tue, 20 Oct 2026 16:00:00 +0200
+
 aragon-ai (1.5.64) stable; urgency=medium
 
   * Cloud AI: an answer made only of yes words ("Ja, ja, ja, ja.", "Yes
