@@ -1,3 +1,53 @@
+aragon-ai (1.5.73) stable; urgency=medium
+
+  * Safety of the AI tools (review of 2026-10-28):
+    - Wikipedia look-ups only use a real language code; another value can
+      no longer send the request to a different web site.
+    - The on-board chat only runs the tools it offered for the question.
+    - Reading a web page is refused for Alibaba Cloud storage addresses and
+      the cloud metadata address, and each refusal is logged.
+
+ -- root <jens@proknx.com>  Wed, 28 Oct 2026 15:00:00 +0100
+
+aragon-ai (1.5.72) stable; urgency=medium
+
+  * Updates are lighter: the local chat model is no longer restarted on
+    every update, only when a new model was downloaded or the chat server
+    itself changed. This saves a model load and a 2-3 minute warm-up after
+    each update.
+  * The update log no longer shows the "A new release of pip is available"
+    notice.
+
+ -- root <jens@proknx.com>  Wed, 28 Oct 2026 12:00:00 +0100
+
+aragon-ai (1.5.71) stable; urgency=medium
+
+  * Aragon Control: when the Maestro was not ready yet at start-up, the
+    connector used English and kept it, so a French or German Maestro got
+    English commands it did not understand. It now asks again until the
+    Maestro answers, and checks every few minutes, so a change of the
+    Maestro's language is also followed without a restart.
+
+ -- root <jens@proknx.com>  Tue, 27 Oct 2026 18:00:00 +0100
+
+aragon-ai (1.5.70) stable; urgency=medium
+
+  * Fixed: the background build of the automation-rules cache after an
+    install did nothing (it could not load the rules engine), so the first
+    rule still took long. It now builds the cache of the Maestro's language.
+
+ -- root <jens@proknx.com>  Tue, 27 Oct 2026 17:00:00 +0100
+
+aragon-ai (1.5.69) stable; urgency=medium
+
+  * The package is about 370 MB smaller: the prompt caches of the
+    automation rules (English, German and French) are no longer included.
+    After an install or upgrade, the cache of the Maestro's own language is
+    built once in the background; until it is ready, the first rule takes
+    longer to understand.
+
+ -- root <jens@proknx.com>  Fri, 23 Oct 2026 12:00:00 +0200
+
 aragon-ai (1.5.68) stable; urgency=medium
 
   * Web search with Mojeek in the Aragon AI Chat: answers from Mojeek were
