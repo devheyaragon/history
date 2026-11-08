@@ -1,3 +1,33 @@
+* 2026-11-07
+ - The KNX gateway check (every minute, Jung SVS and Gira) now writes one
+   line to the log when the gateway becomes unreachable (4 failed checks
+   in a row, the same moment as the spoken message) and one when it
+   answers again.
+ - Fixed: with the gateway debug switch on, the Gira connection check
+   stopped when the gateway did not answer (no message, counter not
+   updated).
+
+* 2026-10-29
+ - Fixed: blacklist entries without zone or object caused a TypeError in
+   "Filter Blacklisted" and "Build list"; they are now ignored and saved
+   with "noobj"/"nozone".
+ - /devicelist and /injectdevices always answer, also after an error.
+ - Fixed startup errors: "Sound Event Thresholds" now starts after 5 s;
+   "Voice installed or removed" now watches /opt/aragon-ai/tts.
+
+* 2026-10-22
+ - Fixed: two calls for help less than 20 seconds apart (for example "Help",
+   then "No", then "Help" again) could call for help during the second
+   question, before any answer. The 20-second "no answer" wait of the first
+   call now ends with that call.
+ - Fixed: Rhasspy was restarted when the list of rooms came back in another
+   order (same rooms), which cut off an open question such as the help call.
+   Rhasspy now restarts only when a room is added or removed.
+
+* 2026-10-20
+ - Removed the "LLM GENERATIVE AI SETTINGS" group (daily 05:00 "boost LLM
+   load" call to the retired llama-service on port 4001, aragon-ai 1.5.65).
+
 * 2026-10-19
  - Call for help with cloud AI: when the question "Should I call for help
    now?" gets no yes and no no within 20 seconds (no answer, or an answer

@@ -1,3 +1,83 @@
+aragon-maestro (2.6.0) stable; urgency=low
+
+  * About page, licences: credits for the carrier sentences of aragon-ai
+    1.5.86 (Piper voices for Basque, Kazakh, Vietnamese, Urdu, Estonian, Bulgarian,
+    Greek, Persian, Latvian, Albanian and Ukrainian; Amazon Polly for the
+    others).
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 19:00:00 +0100
+
+aragon-maestro (2.5.27) stable; urgency=low
+
+  * Cloud AI page: shorter note under "Other languages are also spoken at
+    home": turn on only when commands are also given in another language
+    (answers come later and cost more); "Off" highlighted.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 17:00:00 +0100
+
+aragon-maestro (2.5.26) stable; urgency=low
+
+  * Cloud AI page: messages of the voice buttons (install, use, remove, test)
+    appear right under the buttons, and those of the other languages' voices
+    under their list, instead of at the top of the Cloud AI section.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 16:00:00 +0100
+
+aragon-maestro (2.5.25) stable; urgency=low
+
+  * Cloud AI page: voices installed for another language spoken at home are
+    listed under the voice section, with their size and a Remove button.
+    Before, they stayed on the Maestro unseen after the language changed
+    (needs aragon-ai 1.5.82).
+  * Cloud AI page: "Other languages are also spoken at home" now says what it
+    costs: a command in another language may be transcribed twice (later
+    answer, higher cloud cost), and one-word commands may be ignored.
+  * Online voice section: the languages without an online voice are counted
+    instead of named (52 Cloud AI languages with aragon-ai 1.5.82).
+  * About page, licences: the voices the owner can download for the language
+    spoken at home are not part of the software; each has its own licence,
+    shown by the "Model card and licence" link, some non-commercial only.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 12:00:00 +0100
+
+aragon-maestro (2.5.24) stable; urgency=low
+
+  * System update: Netdata is now upgraded too. Before, apt kept it back when
+    a new Netdata version needed new packages, so a box could stay on an old
+    version without the key that Aragon AI's Netdata tool needs.
+
+ -- root <jens@proknx.com>  Tue, 03 Nov 2026 12:30:00 +0100
+
+aragon-maestro (2.5.23) stable; urgency=low
+
+  * Videos on the page no longer start by themselves on a slow connection:
+    a video loads only when its "Show video" section is opened, and closing
+    the section stops it, also while it is still loading.
+  * Training dialog: "Number of used" is shown right away, not only after
+    clicking "Include SONOS favorites".
+
+ -- root <jens@proknx.com>  Thu, 29 Oct 2026 12:00:00 +0100
+
+aragon-maestro (2.5.22) stable; urgency=low
+
+  * New "Web search" section on the Cloud AI page, laid out like "Online
+    voice": on/off, Mojeek API key, status, set-up steps (Startup plan,
+    Query per Hour Limit and Balance Alert Threshold), English, German and
+    French. Needs aragon-ai 1.5.66.
+  * Rules page: the German title of the rules explanation was missing
+    ("Automatisierungsregeln verstehen").
+
+ -- root <jens@proknx.com>  Wed, 21 Oct 2026 12:00:00 +0200
+
+aragon-maestro (2.5.21) stable; urgency=low
+
+  * Cloud AI page: the explanation now says that the Aragon AI Chat also
+    uses cloud AI while it is on (needs aragon-ai 1.5.65).
+  * "Restart all" no longer restarts llama.service, the old chat service
+    removed in aragon-ai 1.5.65. About page licences updated for it.
+
+ -- root <jens@proknx.com>  Tue, 20 Oct 2026 16:00:00 +0200
+
 aragon-maestro (2.5.20) stable; urgency=low
 
   * Cloud AI page: shorter, clearer texts (English, German, French). The

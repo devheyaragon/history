@@ -1,3 +1,161 @@
+aragon-ai (2.0.0) stable; urgency=medium
+
+  * llama-server stops within 15 s (TimeoutStopSec). During the chat
+    warm-up after a Maestro language switch or a boot it does not react to
+    the stop signal; a reboot then waited 90 s for it.
+  * No local chat warm-up while the chat uses cloud AI ("Use cloud AI" on
+    and an API key set): after a Maestro language switch and after a
+    boot, llama-server no longer keeps 4 threads busy for 6-12 minutes
+    (CPU up to 80 % and heavy swapping, next to the Rhasspy training). The
+    local cache is then cold for the fallback when the cloud does not
+    answer (accepted). Turning cloud AI off on the Cloud AI page
+    starts the warm-up, so the local chat is ready as before. Each such
+    restart first clears the unit's start count, so switching cloud AI on
+    and off several times in an hour cannot block the warm-up.
+
+ -- root <jens@proknx.com>  Sun, 08 Nov 2026 11:32:08 +0100
+
+aragon-ai (1.5.86) stable; urgency=medium
+
+  * Carrier sentences for 13 more languages spoken at home, checked
+    with the cloud speech recognition (stable, OK or WEAK) and with a free
+    licence: Amazon Polly for Hindi, Korean and Russian; Piper voices for
+    Bulgarian, Greek, Ukrainian, Urdu (CC0/MIT) and Basque, Persian, Kazakh,
+    Latvian, Albanian, Vietnamese, and Estonian (speaker Mari of
+    et_EE-news-medium, new sentence "See on korraldus kodule."). 37 languages
+    have a carrier now; the other 15 run without one, as before.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 19:00:00 +0100
+
+aragon-ai (1.5.85) stable; urgency=medium
+
+  * Spoken answers after a Maestro language switch: every language
+    profile now speaks through say.sh, not only the one running when
+    aragon-ai was installed. Before, switching e.g. from English to German
+    silently turned off the online voice and the voices of the language
+    spoken at home (the German profile still used its own Piper).
+  * The same is done again whenever aragon-rhasspy-maestro is upgraded
+    (dpkg trigger on /opt/rhasspy/profiles), as it ships the profiles anew.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 18:00:00 +0100
+
+aragon-ai (1.5.84) stable; urgency=medium
+
+  * Voice install from the Maestro's page: the message no longer starts with
+    the download progress ("0K ..... 100% 14.5M=0s"); progress is shown only
+    when install-voice.sh runs in a terminal.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 16:00:00 +0100
+
+aragon-ai (1.5.83) stable; urgency=medium
+
+  * Voices for the language spoken at home: a voice the Maestro's Piper
+    (1.2.0) cannot speak is refused before its model is downloaded, with the
+    reason on the Cloud AI page. Before, such a voice was installed, Piper
+    stopped on every answer and the Maestro's own voice read the text (both
+    Lithuanian voices, made with Piper 1.5.0, phoneme type "lithuanian").
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 14:00:00 +0100
+
+aragon-ai (1.5.82) stable; urgency=medium
+
+  * Cloud AI languages: 29 more languages can be the
+    language spoken at home, every language both Whisper and Piper support:
+    bg bn cy el et eu fa he hi hy id ka kk ko lb lt lv ml mr ne ru sq sr sw
+    te th uk ur vi (52 in total; Kurmanji Kurdish has a Piper voice but is not
+    in Whisper). Each has its fixed answers, the Maestro's own texts
+    (feedback/<code>.json) and yes/no words, translated, not yet checked by
+    native speakers. The voice comes from Piper's list as before.
+  * The language list on the Cloud AI page no longer depends on the carrier
+    files: a language without a carrier runs without one. No new carrier
+    ships in this version.
+  * Yes/no replies in Hindi, Bengali, Thai and other scripts with vowel signs
+    are recognised (the signs were removed and the words cut apart).
+  * Without a carrier, "Other languages are also spoken at home" lets Whisper
+    detect the language; before, the home language was forced and a command
+    in another language came back translated.
+  * Voices installed for another language (a former language spoken at home)
+    are listed for the Maestro's page, which can remove them (aragon-maestro
+    2.5.25). Before, they stayed on disk unseen.
+
+ -- root <jens@proknx.com>  Fri, 06 Nov 2026 12:00:00 +0100
+
+aragon-ai (1.5.80) stable; urgency=medium
+
+  * Shutters, percentages (product decision 2026-11-05): a target percentage
+    is the KNX position, how far the shutter is closed (0 % open, 100 %
+    closed), whatever the verb: "open / close / set the shutter to 30 %" all
+    end at 30 %. Only "30 % open" means 70 %. Before, the number followed the
+    verb, "set to 0 %" usually opened the shutter fully, and German "open to
+    30 %" ended at 30 % closed.
+  * Shutters: a change BY an amount ("de 20 %", "um 20 %", "by 20 %") is
+    moved by that amount, also for all shutters and the whole house, instead
+    of being taken as a target.
+
+ -- root <jens@proknx.com>  Thu, 05 Nov 2026 16:00:00 +0100
+
+aragon-ai (1.5.79) stable; urgency=medium
+
+  * Aragon Control: a command is no longer reported as done when Maestro
+    understood it without the room, device or number that was asked for.
+    Maestro can drop a word it does not expect and still accept the rest
+    ("open the shutter in the living room by 10 percent" understood as "open
+    the shutter by 10 percent", which then moved nothing); the AI now hears
+    "not understood" instead of "done" (slot check).
+
+ -- root <jens@proknx.com>  Tue, 03 Nov 2026 16:00:00 +0100
+
+aragon-ai (1.5.78) stable; urgency=medium
+
+  * Netdata tool: works without the Netdata MCP key file. When the file is
+    missing, NetData is called without a key instead of the tool failing;
+    NetData 2.11.0 does not check the key on the Maestro. The install
+    log no longer shows a warning for the missing key.
+
+ -- root <jens@proknx.com>  Tue, 03 Nov 2026 14:00:00 +0100
+
+aragon-ai (1.5.77) stable; urgency=medium
+
+  * Cleaner update log: the SearXNG pip steps are skipped when SearXNG is
+    already installed at the pinned version, so the new "BuildBackendWarning:
+    Editable installation" message (shown by pip 26.3) no longer appears and
+    the update is a little faster. A first install or a new SearXNG
+    version still runs them.
+
+ -- root <jens@proknx.com>  Tue, 03 Nov 2026 12:00:00 +0100
+
+aragon-ai (1.5.76) stable; urgency=medium
+
+  * Aragon Control, French: a relative shutter change ("open the shutter in
+    the living room by 10 percent") now names the room, so the right shutter
+    moves. Needs the French assistant of 2026-11-02 on beta, or the
+    current production one; release it together with this version.
+  * Aragon Control, French and German: next/previous track for a room.
+    Needs the French assistant of 2026-11-02 and the German one of 2026-11-03.
+  * Aragon Control: brightness 0 percent switches the light off in all three
+    languages; in English it was misunderstood before.
+
+ -- root <jens@proknx.com>  Mon, 02 Nov 2026 17:00:00 +0100
+
+aragon-ai (1.5.75) stable; urgency=medium
+
+  * Cleaner update log: no more "Failed to stop llama.service" and "Failed
+    to disable unit" lines (the old service was removed in 1.5.65), and the
+    speech service is no longer disabled and enabled again on every update.
+    The two lines printed by the previously installed version still appear
+    once, on the update to this version.
+
+ -- root <jens@proknx.com>  Fri, 30 Oct 2026 16:00:00 +0100
+
+aragon-ai (1.5.74) stable; urgency=medium
+
+  * Fixed: the daily log rotation of the system failed on every box because
+    the thermal manager's rotation file had Windows line endings
+    ("found error in file thermal-manager"). It is now installed without
+    them.
+
+ -- root <jens@proknx.com>  Fri, 30 Oct 2026 12:00:00 +0100
+
 aragon-ai (1.5.73) stable; urgency=medium
 
   * Safety of the AI tools (review of 2026-10-28):
