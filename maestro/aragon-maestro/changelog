@@ -1,3 +1,27 @@
+aragon-maestro (2.6.3) stable; urgency=low
+
+  * Aragon Control MCP: the "Setup Guide" button opens the guide in the
+    language of the page. Before, it followed the voice language, so a
+    French page could open the German guide.
+
+ -- root <jens@proknx.com>  Tue, 10 Nov 2026 16:30:00 +0100
+
+aragon-maestro (2.6.2) stable; urgency=low
+
+  * Remote Connect: new "Support access" section. With the owner password,
+    an AI assistant such as Claude can be allowed to check the Maestro for
+    problems for 48 hours; it can read, not change anything. The section
+    shows until when it is on, whether it is reachable from the internet,
+    the connector address with a Copy button, the last access (time, check
+    and way in) and a link to the user guide. "Turn off now" ends the
+    access at once.
+  * While support access is on, a notice at the top of every page says so,
+    with a button to turn it off.
+  * Needs the Aragon System MCP connector of aragon-ai; without it the
+    section says that it is not installed.
+
+ -- root <jens@proknx.com>  Tue, 10 Nov 2026 12:00:00 +0100
+
 aragon-maestro (2.6.0) stable; urgency=low
 
   * About page, licences: credits for the carrier sentences of aragon-ai

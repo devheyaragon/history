@@ -1,3 +1,26 @@
+aragon-ai (2.1.0) stable; urgency=medium
+
+  * New: Aragon System MCP, a read-only troubleshooting connector. When the
+    owner turns on Support access on the Maestro page (Remote Connect,
+    owner password, aragon-maestro 2.6.2 or later), an AI assistant such as
+    Claude can check the Maestro for 48 hours: health check, errors in the
+    logs, recent changes, CPU and memory, speech counts, the KNX gateway,
+    the satellites and Aragon's own guides. It cannot change anything.
+    Passwords and keys are removed from everything it returns, and what was
+    said at home is never shared. It switches itself off after 48 hours or
+    with "Turn off now"; its public address exists only while it is on.
+  * The connector runs on the Maestro itself (local only) and is off for
+    remote access after installation. It uses the owner password and the
+    public address of Aragon Control MCP, and follows a change of either
+    without a restart by hand. Changing the owner password signs out every
+    assistant connected to it.
+  * While support access is on, its public address is put back on its own
+    when it went missing (for example after Remote Connect was switched
+    off and on). When Remote Connect is not connected, the Maestro page
+    says so instead of asking to turn support access off and on.
+
+ -- root <jens@proknx.com>  Tue, 10 Nov 2026 14:00:00 +0100
+
 aragon-ai (2.0.0) stable; urgency=medium
 
   * llama-server stops within 15 s (TimeoutStopSec). During the chat
