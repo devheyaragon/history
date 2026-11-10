@@ -1,3 +1,12 @@
+aragon-maestro (2.6.4) stable; urgency=low
+
+  * Support access: shows whether the read-only checks can be used in the
+    Aragon chat (they need cloud AI and do not depend on the switch), and
+    how to turn them on there. "What is shared" now also names the cloud
+    AI service for the chat.
+
+ -- root <jens@proknx.com>  Tue, 10 Nov 2026 17:30:00 +0100
+
 aragon-maestro (2.6.3) stable; urgency=low
 
   * Aragon Control MCP: the "Setup Guide" button opens the guide in the
