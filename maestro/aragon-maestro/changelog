@@ -1,3 +1,15 @@
+aragon-maestro (2.6.5) stable; urgency=low
+
+  * About page: licence credits for piper-tts, which aragon-ai installs
+    to speak voices for the language spoken at home that the Maestro's
+    own Piper cannot speak, and for its Lithuanian stress dictionary.
+  * About, "Update Language files": the button works again. It now
+    downloads the voice set of the Maestro's language (English: about
+    125 MB) and is offered only when a newer set exists. Before, it ran a
+    script that is no longer on the Maestro.
+
+ -- root <jens@proknx.com>  Thu, 12 Nov 2026 09:00:00 +0100
+
 aragon-maestro (2.6.4) stable; urgency=low
 
   * Support access: shows whether the read-only checks can be used in the

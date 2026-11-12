@@ -1,3 +1,63 @@
+aragon-ai (2.1.5) stable; urgency=medium
+
+  * Cloud AI voices (Estonian, Lithuanian and others spoken by the newer
+    Piper): the voice now stays loaded instead of being unloaded after
+    15 minutes without an answer. Voice control is often used only a few
+    times a day, so after a pause the first answer took 2.5 to 4 seconds
+    longer. The voice is also loaded again after a restart, so the first
+    answer after a reboot is not slower either.
+
+ -- root <jens@proknx.com>  Thu, 12 Nov 2026 14:00:00 +0100
+
+aragon-ai (2.1.4) stable; urgency=medium
+
+  * Cloud AI voices: answers in Estonian, Bengali, Marathi and Urdu come
+    about 1.5 seconds sooner. The newer Piper now stays loaded in a small
+    background service instead of starting for every answer. A voice is
+    loaded with its first answer and unloaded after 15 minutes without
+    one. If the service is not running, the voice is spoken as before.
+  * The newer Piper is now included in the package. It can also speak
+    Lithuanian, but Lithuanian voices are not offered yet because they
+    are not licensed for commercial use.
+
+ -- root <jens@proknx.com>  Thu, 12 Nov 2026 12:00:00 +0100
+
+aragon-ai (2.1.3) stable; urgency=medium
+
+  * Cloud AI voices: Estonian, Bengali, Marathi and Urdu voices can now be
+    installed and speak. Their voices were made with a newer Piper than
+    the Maestro's, so the Cloud AI page refused them. The package now
+    installs piper-tts 1.8.0 next to the Maestro's Piper; it speaks only
+    the voices the Maestro's Piper cannot. If the Maestro's Piper fails on
+    a voice, the newer one is tried before the Maestro's own voice reads
+    the answer.
+  * Lithuanian, Hebrew, Japanese and Thai voices are still refused: they
+    need language tools that piper-tts does not install by default, or
+    that are not released yet (Lithuanian).
+
+ -- root <jens@proknx.com>  Thu, 12 Nov 2026 09:00:00 +0100
+
+aragon-ai (2.1.2) stable; urgency=medium
+
+  * Aragon chat: the MCP Servers page no longer stays on its loading
+    placeholders. Aragon System is off for new chats: turn it on under
+    MCP Servers and start a new chat.
+  * Aragon chat with cloud AI: its own instructions for the cloud model.
+    Questions are answered in their language (German with "du"); an
+    answer can still come in the Maestro's language when the search
+    results are in that language. The chat searches again before saying
+    it found nothing, and for live timetables gives the provider's page.
+    A system prompt changed in the chat's settings is kept.
+  * House control in the chat: an action is reported as done only when
+    the Maestro confirmed it. Without a room the chat asks; "all lights"
+    means the whole house. Room names are not translated, and shutter
+    positions are given in percent closed.
+  * Aragon System checks in the chat: how-to and restart questions are
+    answered from Aragon's guides, with the link.
+  * Weather: a forecast for a weekday or the weekend shows the right days.
+
+ -- root <jens@proknx.com>  Wed, 11 Nov 2026 12:00:00 +0100
+
 aragon-ai (2.1.1) stable; urgency=medium
 
   * Aragon chat with cloud AI: the read-only checks of the Aragon System
