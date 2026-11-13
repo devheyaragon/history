@@ -1,3 +1,17 @@
+* 2026-11-13
+ - Jung SVS: fixed login with SVS software 1.2.1885 and later (SV-SERVER2
+   1.2.1880 and later), which rejected it with HTTP 468 (web application
+   firewall). Login and token refresh now send no body and
+   "Content-Length: 0"; before, a body without Content-Type was sent.
+ - Jung SVS: when a token refresh fails, or there is no token because the
+   login failed, the gateway now logs in again instead of staying logged
+   out until Node-RED restarts. It no longer refreshes with
+   "refreshToken=undefined".
+ - Jung SVS: the Aragon UI showed "Connected" while the server did not
+   answer. The connection state now comes from the request for the areas
+   (every minute): no answer shows "Communication failed", an answer other
+   than 200 shows "In communication".
+
 * 2026-11-07
  - The KNX gateway check (every minute, Jung SVS and Gira) now writes one
    line to the log when the gateway becomes unreachable (4 failed checks

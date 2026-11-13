@@ -1,3 +1,24 @@
+aragon-ai (2.1.7) stable; urgency=medium
+
+  * Aragon System checks: requests refused by the free search engines
+    (CAPTCHA, HTTP 403) are no longer reported as errors when Web search
+    is on. When it is off, one line says this is not a big issue, only web
+    searches may not work, and how to turn Web search on.
+  * Aragon System checks: a report on the Maestro now includes the disk
+    space, used and free.
+
+ -- root <jens@proknx.com>  Fri, 13 Nov 2026 12:00:00 +0100
+
+aragon-ai (2.1.6) stable; urgency=medium
+
+  * The newer Piper's background service now also speaks the Maestro's
+    own German and French voices (new in aragon-rhasspy-maestro 2.0.9),
+    and keeps two voices loaded: the Maestro's voice and the voice of the
+    language spoken at home. Before, switching between the two loaded the
+    other voice again each time, which took a few seconds.
+
+ -- root <jens@proknx.com>  Thu, 12 Nov 2026 20:00:00 +0100
+
 aragon-ai (2.1.5) stable; urgency=medium
 
   * Cloud AI voices (Estonian, Lithuanian and others spoken by the newer
