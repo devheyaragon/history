@@ -1,3 +1,20 @@
+aragon-ai (2.1.9) stable; urgency=medium
+
+  * Cloud AI voice commands now work on a Maestro where Remote Connect is
+    not set up. The house connector is now started for local use (cloud AI
+    voice commands only, nothing reachable from the internet). Before, it
+    stayed off until Remote Connect was set up: a command in the Maestro's
+    language went to the local speech path, and a command in another
+    language got no answer.
+  * Cloud AI voice commands: when the house connector cannot be reached,
+    questions such as the date and time are still answered in any
+    language. Before, every command stopped there.
+  * Aragon System checks: a stopped house connector is reported with what
+    it breaks (commands in other languages get no answer) and how to start
+    it.
+
+ -- root <jens@proknx.com>  Sat, 14 Nov 2026 20:00:00 +0100
+
 aragon-ai (2.1.8) stable; urgency=medium
 
   * Chat with cloud AI: English questions get English answers again. After
