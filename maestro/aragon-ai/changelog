@@ -1,3 +1,21 @@
+aragon-ai (2.1.8) stable; urgency=medium
+
+  * Chat with cloud AI: English questions get English answers again. After
+    the support checks or other long tool results, the answer sometimes
+    came in German or Swedish.
+  * Chat with cloud AI: the informal "du" only on a German Maestro.
+  * Chat with cloud AI, weather: the answer comes in the language of the
+    question, for the home location when no place is named and for the
+    day asked (tomorrow, a weekday, the weekend), also with the support
+    checks on.
+  * Chat with cloud AI with the support checks on: a light, shutter or
+    heating command now always names the room. Before, the room could be
+    left out, and a command without a room acts on the whole house.
+  * Chat with cloud AI: Aragon System (the support checks) is now on in
+    every new chat. It can still be turned off for a chat under MCP Servers.
+
+ -- root <jens@proknx.com>  Sat, 14 Nov 2026 16:00:00 +0100
+
 aragon-ai (2.1.7) stable; urgency=medium
 
   * Aragon System checks: requests refused by the free search engines
