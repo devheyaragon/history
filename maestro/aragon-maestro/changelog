@@ -1,3 +1,12 @@
+aragon-maestro (2.6.7) stable; urgency=low
+
+  * Maestro page, Technology section: the caption under the Maestro
+    picture now shows the eMMC and RAM size the Maestro really has.
+    Before, it always said 32GB eMMC and 8GB RAM, also on a Maestro with
+    64GB eMMC.
+
+ -- root <jens@proknx.com>  Mon, 16 Nov 2026 15:30:00 +0100
+
 aragon-maestro (2.6.6) stable; urgency=low
 
   * Correction to 2.6.5: the note about the "Update Language files"
