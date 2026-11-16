@@ -1,3 +1,22 @@
+aragon-maestro (2.6.6) stable; urgency=low
+
+  * Correction to 2.6.5: the note about the "Update Language files"
+    button was wrong. That button is not shown on the About page. The
+    voices of the Maestro's language are updated automatically with the
+    voice package.
+  * About page: credits for the voices of the Maestro's language (English,
+    German and French), including the datasets that require attribution.
+  * Cloud AI: when the AI service refuses the API key (for example because
+    it expired or the account was deleted), a red banner at the top of
+    the page says so, with a link to the Cloud AI section, and the status
+    line there is shown in red. Before, this was only in the status line,
+    and the assistant quietly fell back to the small local model.
+  * Cloud AI, Web search and Online voice: a "Remove key" button next to
+    Save, shown while a key is set. Before, a key could not be removed
+    from the page.
+
+ -- root <jens@proknx.com>  Mon, 16 Nov 2026 12:00:00 +0100
+
 aragon-maestro (2.6.5) stable; urgency=low
 
   * About page: licence credits for piper-tts, which aragon-ai installs

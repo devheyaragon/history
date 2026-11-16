@@ -1,3 +1,27 @@
+aragon-ai (2.1.12) stable; urgency=medium
+
+  * Cloud AI: the Maestro now checks by itself whether the AI service
+    accepts the API key, a minute after it starts and then every six
+    hours (every ten minutes while the key is refused). A refused key now
+    shows on the Maestro page even when nobody has used cloud AI since
+    the last restart, and the warning goes away by itself once the key
+    works again. Each check is one very short request.
+
+ -- root <jens@proknx.com>  Mon, 16 Nov 2026 16:00:00 +0100
+
+aragon-ai (2.1.11) stable; urgency=medium
+
+  * Chat with cloud AI: when the AI service refuses the API key (for
+    example because it expired or the account was deleted), the answer
+    now starts with one line saying so and how to fix it. The answer
+    still comes from the small local model. Before, it switched to the
+    local model without a word, and the answers were much weaker.
+  * Aragon System checks: a refused API key is now reported as a warning,
+    with what it breaks and what to do. The setup help explains each
+    reason why cloud AI is not working in words, with what to do.
+
+ -- root <jens@proknx.com>  Mon, 16 Nov 2026 12:00:00 +0100
+
 aragon-ai (2.1.10) stable; urgency=medium
 
   * Aragon System checks: new setup help for installers. Asked how to set
