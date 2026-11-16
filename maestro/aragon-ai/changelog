@@ -1,3 +1,23 @@
+aragon-ai (2.1.10) stable; urgency=medium
+
+  * Aragon System checks: new setup help for installers. Asked how to set
+    up or configure the Aragon system, in the Aragon AI Chat or from Claude
+    or ChatGPT, the assistant now goes through the steps of the user guide
+    (configuration page, language, gateway, updates, gateway configuration
+    and training, satellites, Sonos, then cloud AI and Remote Connect) and
+    says for each one whether it is done on this Maestro, what to do next,
+    and where it is in the guide, with a short extract and the link in the
+    Maestro's language. Ask again after each step. Before, a setup question
+    could be answered with general steps that do not apply to Aragon.
+  * The setup help shows an update as needed only when the About page
+    shows one; gives the time of the last voice training with the rooms
+    and devices it included, and names gateway rooms not in it; and
+    compares the Sonos zone names with the satellites' rooms (a difference
+    in upper/lower case lets music play but the speaker is not muted on
+    the wake word).
+
+ -- root <jens@proknx.com>  Sun, 15 Nov 2026 18:00:00 +0100
+
 aragon-ai (2.1.9) stable; urgency=medium
 
   * Cloud AI voice commands now work on a Maestro where Remote Connect is
