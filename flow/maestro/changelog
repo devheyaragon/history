@@ -1,3 +1,9 @@
+* 2026-11-17
+ - Theben GW: removed the "BAOS webSocket" group. Its live datapoint
+   events were not linked to anything; the group only (re)started the
+   baos-websocket service. The service is no longer installed by
+   aragon-maestro.
+
 * 2026-11-13
  - Jung SVS: fixed login with SVS software 1.2.1885 and later (SV-SERVER2
    1.2.1880 and later), which rejected it with HTTP 468 (web application

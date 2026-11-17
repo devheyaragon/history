@@ -1,3 +1,12 @@
+aragon-maestro (2.6.8) stable; urgency=low
+
+  * The baos-websocket service is no longer installed. It was only used
+    for live data from the Theben gateway, which nothing used any more.
+    On update, the service is stopped and removed together with its
+    program file.
+
+ -- root <jens@proknx.com>  Tue, 17 Nov 2026 09:12:00 +0100
+
 aragon-maestro (2.6.7) stable; urgency=low
 
   * Maestro page, Technology section: the caption under the Maestro
