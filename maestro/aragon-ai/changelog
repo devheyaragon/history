@@ -1,3 +1,9 @@
+aragon-ai (2.1.14) stable; urgency=medium
+
+  * Internal packaging changes only; no functional changes
+  
+ -- root <jens@proknx.com>  Tue, 17 Nov 2026 16:00:00 +0100
+
 aragon-ai (2.1.12) stable; urgency=medium
 
   * Cloud AI: the Maestro now checks by itself whether the AI service
