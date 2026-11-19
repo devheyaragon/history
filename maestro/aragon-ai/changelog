@@ -1,3 +1,19 @@
+aragon-ai (2.1.15) stable; urgency=medium
+
+  * Aragon Control (Claude, ChatGPT and other AI assistants), German:
+    setting the brightness of a light could move the shutters of the room
+    instead. The German sentence for "this light in this room to N
+    percent" was understood by the voice assistant as a shutter position
+    for the room, without the light. Brightness is now sent as
+    "stelle <Licht> im <Raum> auf N prozent", which is understood as a
+    light command. Brightness for a whole room without a named light is
+    sent to each dimmable light of the room one by one; nothing is sent
+    when the room has no dimmable light or the device list cannot be read.
+    English and French are unchanged. Reading the brightness was not
+    affected.
+
+ -- root <jens@proknx.com>  Thu, 19 Nov 2026 12:00:00 +0100
+
 aragon-ai (2.1.14) stable; urgency=medium
 
   * Internal packaging changes only; no functional changes
