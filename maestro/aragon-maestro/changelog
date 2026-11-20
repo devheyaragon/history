@@ -1,3 +1,12 @@
+aragon-maestro (2.7.1) stable; urgency=low
+
+  * KNX service: in its telegram messages, the service's own writes now
+    show the address the KNX interface gave the Maestro as the sender.
+    Before, they showed 0.0.0. The telegrams on the KNX bus were already
+    right.
+
+ -- root <jens@proknx.com>  Fri, 20 Nov 2026 14:00:00 +0100
+
 aragon-maestro (2.7.0) stable; urgency=low
 
   * New: the Aragon KNX service (aragon-knx) for the all-KNX gateway. It

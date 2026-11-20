@@ -1,3 +1,19 @@
+aragon-ai (2.1.16) stable; urgency=medium
+
+  * Aragon System checks (Claude, ChatGPT and the Aragon AI Chat): the
+    Aragon KNX service of aragon-maestro 2.7.0 can now be checked. The
+    gateway check shows, for the all-KNX gateway, whether the flow uses
+    the KNX service or knxUltimate, the knx_engine setting, whether the
+    service runs, its connection to the KNX interface and how many devices
+    the flow gave it (never their names). It warns when the service is
+    stopped (the flow then uses knxUltimate), when the KNX interface has
+    no free tunnel connection or cannot be reached, and when the service
+    still holds a configuration after the gateway was changed to another
+    type. The service list and the error log can now name aragon-knx, and
+    the health check warns when it is not running on an all-KNX Maestro.
+
+ -- root <jens@proknx.com>  Fri, 20 Nov 2026 15:00:00 +0100
+
 aragon-ai (2.1.15) stable; urgency=medium
 
   * Aragon Control (Claude, ChatGPT and other AI assistants), German:

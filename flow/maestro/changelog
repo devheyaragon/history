@@ -1,3 +1,9 @@
+* 2026-11-20
+ - KNX gateway (all-KNX): the error handler of the device list page's web
+   requests (/files, /allknx) now handles only those requests. Before, in
+   the installed flow it received every error of the whole flow and wrote
+   "No response object" to the Node-RED log every minute.
+
 * 2026-11-19
  - KNX gateway (all-KNX): the KNX connection can go through the Aragon KNX
    service (aragon-maestro 2.7.0 and later) instead of knxUltimate. The flow
