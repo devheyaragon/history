@@ -1,3 +1,12 @@
+* 2026-11-19
+ - KNX gateway (all-KNX): the KNX connection can go through the Aragon KNX
+   service (aragon-maestro 2.7.0 and later) instead of knxUltimate. The flow
+   uses the service when it is installed and running, otherwise knxUltimate
+   as before; never both. Support can force knxUltimate with
+   "knx_engine": "knxultimate" in /opt/aragon-maestro/settings.json.
+ - KNX gateway with the KNX service: a status question about a device that
+   does not answer gets "could not be determined" after about 3 seconds.
+
 * 2026-11-17
  - Theben GW: removed the "BAOS webSocket" group. Its live datapoint
    events were not linked to anything; the group only (re)started the

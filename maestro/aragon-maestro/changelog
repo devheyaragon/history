@@ -1,3 +1,21 @@
+aragon-maestro (2.7.0) stable; urgency=low
+
+  * New: the Aragon KNX service (aragon-knx) for the all-KNX gateway. It
+    connects to the KNX IP interface (tunnelling) and replaces
+    knxUltimate for the Node-RED flow of 2026-11-19 and later. With an
+    older flow it stays idle and knxUltimate works as before. Installed
+    under /opt/aragon-maestro/aragon-knx (Python 3.11 from aragon-ai,
+    hence the new dependency aragon-ai 2.1.0 or later), systemd service
+    aragon-knx.
+  * New: GET and POST /gateway/knxengine (knx_engine in settings.json):
+    "auto" (default) uses the KNX service when it runs, "knxultimate"
+    makes the flow use knxUltimate.
+  * Installing a flow from the Maestro page ("Voice application") first
+    removes the KNX service's configuration, so the service never stays
+    connected next to knxUltimate after an older flow is installed.
+
+ -- root <jens@proknx.com>  Thu, 19 Nov 2026 16:00:00 +0100
+
 aragon-maestro (2.6.8) stable; urgency=low
 
   * The baos-websocket service is no longer installed. It was only used
