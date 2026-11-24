@@ -1,3 +1,33 @@
+aragon-maestro (2.8.0) stable; urgency=low
+
+  * KNX service: every device change it reports now says who or what
+    caused it: the Maestro itself (voice, AI, the app through the
+    Maestro), the KNX address of the device that sent the command (a wall
+    switch, a timer, an app through another KNX interface), or nothing
+    when it is not known (for example a central address that is not in
+    the device list). Other parts of the Maestro can use it, for example
+    to tell a change made by the Maestro from one made at the wall.
+  * KNX service: device history, switched off. When it is switched on,
+    the service records on the Maestro what changed, when and why: only
+    real changes, room temperatures only in steps of 0.2 degrees or every
+    15 minutes, at most 90 days and 200 MB. Nothing leaves the Maestro.
+    There is no switch on the Maestro page yet; the history stays off
+    unless support switches it on.
+
+ -- root <jens@proknx.com>  Tue, 24 Nov 2026 16:00:00 +0100
+
+aragon-maestro (2.7.2) stable; urgency=low
+
+  * Aragon Upgrade and System Update: when an earlier installation was
+    interrupted (for example by a power cut or a reboot during an
+    update), they now finish it first. Before, every package install
+    then failed with "dpkg was interrupted" and nothing was updated.
+  * Aragon Upgrade and System Update now end with exit code 1 in their
+    log when a package step failed. Before, the log always showed exit
+    code 0. The other steps still run.
+
+ -- root <jens@proknx.com>  Mon, 23 Nov 2026 12:00:00 +0100
+
 aragon-maestro (2.7.1) stable; urgency=low
 
   * KNX service: in its telegram messages, the service's own writes now
