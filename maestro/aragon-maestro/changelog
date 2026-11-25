@@ -1,3 +1,12 @@
+aragon-maestro (2.9.0) stable; urgency=medium
+
+  * The Maestro page now asks for a login. The username and password are
+    the same as for Node-RED and are printed on the Aragon Maestro box.
+    You stay logged in for 30 days; "Log out" is in the menu.
+  * Security improvements in the Maestro page and its settings.
+
+ -- root <jens@proknx.com>  Wed, 25 Nov 2026 17:00:00 +0100
+
 aragon-maestro (2.8.0) stable; urgency=low
 
   * KNX service: every device change it reports now says who or what

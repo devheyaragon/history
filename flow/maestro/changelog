@@ -1,3 +1,8 @@
+* 2026-11-25
+ - Pushover notifications: the message text is now passed on more
+   safely. Special characters in a message no longer affect the
+   notification.
+
 * 2026-11-20
  - KNX gateway (all-KNX): the error handler of the device list page's web
    requests (/files, /allknx) now handles only those requests. Before, in
