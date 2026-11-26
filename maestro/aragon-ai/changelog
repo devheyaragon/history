@@ -1,3 +1,13 @@
+aragon-ai (2.1.17) stable; urgency=medium
+
+  * Security improvements: internal services of the Maestro can now only
+    be reached from the Maestro itself, not from the home network.
+  * Aragon Control and Aragon System (Claude, ChatGPT and other AI
+    assistants): after several wrong passwords, sign-in pauses for a
+    while. A new owner password must have at least 10 characters.
+
+ -- root <jens@proknx.com>  Wed, 25 Nov 2026 18:00:00 +0100
+
 aragon-ai (2.1.16) stable; urgency=medium
 
   * Aragon System checks (Claude, ChatGPT and the Aragon AI Chat): the

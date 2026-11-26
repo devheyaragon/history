@@ -2,6 +2,8 @@
  - Pushover notifications: the message text is now passed on more
    safely. Special characters in a message no longer affect the
    notification.
+ - Gateway diagnostics no longer write passwords or access tokens to
+   the Node-RED log.
 
 * 2026-11-20
  - KNX gateway (all-KNX): the error handler of the device list page's web
