@@ -1,3 +1,9 @@
+aragon-companion (1.8.12) stable; urgency=high
+
+  * Fixes 1.8.11, where the companion services did not start.
+
+ -- root <jens@proknx.com>  Thu, 26 Nov 2026 12:00:00 +0100
+
 aragon-companion (1.8.11) stable; urgency=medium
 
   * Security improvements: internal services can now only be reached from
