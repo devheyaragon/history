@@ -1,3 +1,13 @@
+aragon-maestro (2.9.2) stable; urgency=low
+
+  * Login page: the hint now says that the username and password are
+    printed on the bottom of the Maestro's case (before: on the box).
+  * Login page in German: "Benutzername" is now "Username".
+  * Login page: the login button now has the same look in every browser.
+    Before, some browsers drew it in their own style.
+
+ -- root <jens@proknx.com>  Fri, 27 Nov 2026 12:00:00 +0100
+
 aragon-maestro (2.9.1) stable; urgency=medium
 
   * Gateway passwords are no longer written to the logs.
