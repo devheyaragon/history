@@ -1,3 +1,28 @@
+aragon-ai (2.1.19) stable; urgency=medium
+
+  * Aragon AI Chat with cloud AI: a long troubleshooting question could
+    end with an error about the context size. The chat now makes at most
+    five rounds of checks for one question and then answers, saying which
+    checks it did not make. When the AI service's usage limit per minute
+    is reached, the chat says so and asks to wait a minute, instead of
+    passing the question to the small local model.
+  * Aragon System checks (Claude, ChatGPT and the Aragon AI Chat): the
+    health check lists only the results that need attention and counts
+    the passed ones, so an answer uses less of the AI service's limit;
+    the support report still lists every result. A satellite on Wi-Fi
+    that misses one search while other satellites on Wi-Fi are found is
+    no longer reported as a network problem: the check suggests asking
+    again.
+
+ -- root <jens@proknx.com>  Fri, 27 Nov 2026 12:00:00 +0100
+
+aragon-ai (2.1.18) stable; urgency=high
+
+  * Fixes the chat's tools (weather, calculator, date and time,
+    Wikipedia), which could not connect after 2.1.17.
+
+ -- root <jens@proknx.com>  Thu, 26 Nov 2026 15:00:00 +0100
+
 aragon-ai (2.1.17) stable; urgency=medium
 
   * Security improvements: internal services of the Maestro can now only
