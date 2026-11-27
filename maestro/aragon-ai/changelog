@@ -1,3 +1,14 @@
+aragon-ai (2.1.20) stable; urgency=medium
+
+  * Aragon AI Chat with cloud AI: after the five rounds of checks, the
+    chat could show a technical line instead of a written answer. The AI
+    is now asked again, right before it writes, to answer in words and
+    to say which checks it did not make.
+  * Aragon System checks: clearer wording when a satellite does not
+    answer the Maestro's search.
+
+ -- root <jens@proknx.com>  Fri, 27 Nov 2026 16:00:00 +0100
+
 aragon-ai (2.1.19) stable; urgency=medium
 
   * Aragon AI Chat with cloud AI: a long troubleshooting question could
