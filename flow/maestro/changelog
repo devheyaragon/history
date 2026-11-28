@@ -1,3 +1,19 @@
+* 2026-11-28
+ - Jung SVS: roller shutters and awnings of type "UP / DOWN / STOP (State)"
+   (ft_up_down_stop_feedback), the type current SVS software uses for them,
+   are now read and can be controlled by voice (up, down, position in %).
+   Before, they were left out of the device list. Also Jung Home roller
+   shutters (ft_junghome_rollershutter). Position-only awnings without
+   up/down/stop work too, as all of these are controlled by position.
+ - Jung SVS: with the gateway debug switch on, functions left out because
+   their type is not supported are named in the Node-RED log, once.
+ - Jung SVS: much less debug output. The areas and devices, read every
+   minute, are logged only when a count changes or a request fails
+   (before: about 4 lines per room every minute). The device count per
+   room is now the count for that room, not a running total.
+ - Jung SVS: the debug output after login and token refresh no longer
+   contains the session cookie (login token), only the cookie names.
+
 * 2026-11-27
  - Jung SVS: fixed reading the devices when the SVS has an area named
    "actions" that is not the last one. The area list then had an empty
