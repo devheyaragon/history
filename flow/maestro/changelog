@@ -13,6 +13,9 @@
    room is now the count for that room, not a running total.
  - Jung SVS: the debug output after login and token refresh no longer
    contains the session cookie (login token), only the cookie names.
+ - Jung SVS: device names are tidied when read from the SVS: spaces at
+   the start or end are removed and double spaces become one ("Rollo "
+   becomes "Rollo", "Rollo  Schlafen " becomes "Rollo Schlafen").
 
 * 2026-11-27
  - Jung SVS: fixed reading the devices when the SVS has an area named
